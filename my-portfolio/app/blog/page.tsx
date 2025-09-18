@@ -1,26 +1,28 @@
-import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import BlogCard from "@/components/BlogCard";
 
 export const metadata = {
   title: "Blog",
-  description: "Writing and notes by Brian Bett",
+  description: "Notes and articles by Brian Bett.",
 };
 
 export default async function BlogIndexPage() {
   const posts = await getAllPosts();
+
   return (
-    <section className="py-16">
-      <h1 className="text-2xl font-bold mb-6">Blog</h1>
-      <ul className="space-y-4">
-        {posts.map((post) => (
-          <li key={post.slug} className="border border-foreground/10 rounded-md p-4">
-            <Link href={`/blog/${post.slug}`} className="font-medium underline underline-offset-4">
-              {post.title}
-            </Link>
-            <p className="text-sm text-foreground/70">{post.summary}</p>
-          </li>
-        ))}
-      </ul>
+    <section className="py-12">
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
+          <p className="text-foreground/70">Notes, tutorials, and thoughts on building for the web.</p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard key={post.slug} post={post} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

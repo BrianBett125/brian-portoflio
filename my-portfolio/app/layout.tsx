@@ -36,18 +36,23 @@ export const metadata: Metadata = {
     description:
       "Personal portfolio built with Next.js App Router, Tailwind CSS, and TypeScript.",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  },
 };
 
 function Navbar() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur bg-background/70 border-b border-foreground/10">
-      <div className="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="font-semibold">Brian Bett</Link>
-        <nav className="flex items-center gap-5 text-sm">
-          <Link href="/about" className="hover:underline underline-offset-4">About</Link>
-          <Link href="/projects" className="hover:underline underline-offset-4">Projects</Link>
-          <Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
-          <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
+      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+        <Link href="/" className="font-semibold tracking-tight hover:text-accent transition-colors">Brian Bett</Link>
+        <nav className="flex items-center gap-6 text-sm">
+          <Link href="/about" className="hover:text-accent transition-colors">About</Link>
+          <Link href="/projects" className="hover:text-accent transition-colors">Projects</Link>
+          <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
+          <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
         </nav>
       </div>
     </header>
@@ -57,10 +62,10 @@ function Navbar() {
 function Footer() {
   return (
     <footer className="border-t border-foreground/10 mt-16">
-      <div className="mx-auto max-w-5xl px-4 py-8 text-xs text-foreground/70 flex items-center justify-between">
+      <div className="mx-auto max-w-6xl px-4 py-10 text-xs text-foreground/70 flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-between">
         <p>© {new Date().getFullYear()} Brian Bett. All rights reserved.</p>
         <p>
-          Built with <a className="underline underline-offset-2" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>
+          Built with <a className="underline underline-offset-2 hover:text-accent transition-colors" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>
         </p>
       </div>
     </footer>
@@ -74,9 +79,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> 
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
         <Navbar />
-        <main className="mx-auto max-w-5xl px-4">{children}</main>
+        <main className="mx-auto max-w-6xl px-4">{children}</main>
         <Footer />
       </body>
     </html>
