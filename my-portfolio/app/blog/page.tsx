@@ -11,9 +11,9 @@ export default async function BlogIndexPage() {
   return (
     <section className="py-16">
       <h1 className="text-2xl font-bold mb-6">Blog</h1>
-      <ul className="space-y-3">
+      <ul className="space-y-4">
         {posts.map((post) => (
-          <li key={post.slug} className="border-b border-foreground/10 pb-3">
+          <li key={post.slug} className="border border-foreground/10 rounded-md p-4">
             <Link href={`/blog/${post.slug}`} className="font-medium underline underline-offset-4">
               {post.title}
             </Link>

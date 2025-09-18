@@ -14,8 +14,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const filePath = path.join(BLOG_DIR, `${params.slug}.mdx`);
+  const filePathMdx = path.join(BLOG_DIR, `${params.slug}.mdx`);
+  const filePathMd = path.join(BLOG_DIR, `${params.slug}.md`);
   try {
+    const filePath = await fs.stat(filePathMdx).then(() => filePathMdx).catch(async () => (await fs.stat(filePathMd).then(() => filePathMd)));
     const raw = await fs.readFile(filePath, "utf8");
     const { data } = matter(raw);
     return {
@@ -28,11 +30,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const mdxPath = path.join(BLOG_DIR, `${params.slug}.mdx`);
   try {
-    const MDXContent = (await import(`@/content/blog/${params.slug}.mdx`)).default;
+    const MDXContent = (await import(`@/content/blog/${params.slug}.mdx`).catch(() => import(`@/content/blog/${params.slug}.md`)) ).default;
     return (
-      <article className="prose prose-invert max-w-none py-16">
+      <article className="py-16 prose prose-invert max-w-none">
         <MDXContent />
       </article>
     );
