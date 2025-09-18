@@ -10,7 +10,11 @@
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "next": "15.5.3",
+    "@next/mdx": "^15.0.0",
+    "gray-matter": "^4.0.3",
+    "zod": "^3.23.8",
+    "@resend/client": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^5",
