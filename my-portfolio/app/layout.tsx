@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Brian Bett – Portfolio",
     description:
       "Personal portfolio built with Next.js App Router, Tailwind CSS, and TypeScript.",
-    url: "https://example.com", // Update this to your deployment URL
+    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000", // Update this to your deployment URL
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

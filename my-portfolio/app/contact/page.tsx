@@ -3,6 +3,14 @@ import ContactForm from "@/components/ContactForm";
 export const metadata = {
   title: "Contact",
   description: "Get in touch with Brian Bett.",
+  openGraph: {
+    title: "Brian Bett – Contact",
+    description: "Get in touch with Brian Bett.",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+    siteName: "Brian Bett Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {

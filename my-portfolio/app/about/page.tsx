@@ -1,6 +1,16 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "About",
   description: "About Brian Bett, a backend developer building modern web apps.",
+  openGraph: {
+    title: "Brian Bett – About",
+    description: "About Brian Bett, a backend developer building modern web apps.",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+    siteName: "Brian Bett Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {
