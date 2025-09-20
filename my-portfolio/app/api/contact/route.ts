@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 // Optionally enable Resend email integration by uncommenting and setting RESEND_API_KEY
-// import { Resend } from "resend";
+import { Resend } from "resend";
 
 const ContactSchema = z.object({
   name: z.string().min(2, "Name is too short"),
@@ -40,13 +40,13 @@ export async function POST(req: NextRequest) {
 
     // If you want to send an email via Resend, uncomment the following block
     // and set RESEND_API_KEY in your environment.
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: "Portfolio Contact <onboarding@resend.dev>",
-    //   to: ["you@example.com"],
-    //   subject: `New contact from ${name}`,
-    //   text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    // });
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: ["your-email@example.com"], // TODO: Replace with your actual email address
+      subject: `New contact from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    });
 
     return NextResponse.json({ success: true });
   } catch (err) {
