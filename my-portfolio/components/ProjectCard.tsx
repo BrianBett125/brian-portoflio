@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
+import { usePlausible } from "next-plausible";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const plausible = usePlausible();
+
+  const trackProjectClick = (eventName: string) => {
+    plausible(eventName, { props: { project: project.title } });
+  };
+
   return (
     <article className="group rounded-lg border border-foreground/10 p-5 hover:border-accent/50 transition-colors flex flex-col h-full">
       <div className="relative w-full h-48 rounded-md overflow-hidden mb-4">
@@ -34,6 +41,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <Link
           href={`/projects/${project.slug}`}
           className="text-sm text-foreground/80 hover:text-accent transition-colors flex items-center"
+          onClick={() => trackProjectClick("Project Case Study Click")}
         >
           Case Study ↗
         </Link>
@@ -43,6 +51,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noreferrer"
             className="text-sm text-foreground/80 hover:text-accent transition-colors flex items-center"
+            onClick={() => trackProjectClick("Project GitHub Click")}
           >
             GitHub ↗
           </Link>
@@ -53,6 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noreferrer"
             className="text-sm text-foreground/80 hover:text-accent transition-colors flex items-center"
+            onClick={() => trackProjectClick("Project Live Demo Click")}
           >
             Live Demo ↗
           </Link>

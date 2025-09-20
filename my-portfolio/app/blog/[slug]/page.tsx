@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image"; // Import Image component
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -87,6 +88,35 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
     return (
       <article className="py-12 max-w-3xl mx-auto">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: data.title ?? params.slug,
+              description: data.description ?? data.summary ?? "",
+              image: thumbnail ? `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}${thumbnail}` : undefined,
+              datePublished: data.date,
+              author: {
+                "@type": "Person",
+                name: "Brian Bett", // Replace with your name
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "Brian Bett Portfolio", // Replace with your portfolio name
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/images/logo.png`, // Replace with your logo URL
+                },
+              },
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/blog/${params.slug}`,
+              },
+            }),
+          }}
+        />
         <header className="space-y-3 mb-8">
           <h1 className="text-3xl font-semibold tracking-tight">{data.title ?? params.slug}</h1>
           {(date || tags.length) && (
@@ -109,10 +139,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
         {thumbnail && (
           <div className="mb-8 overflow-hidden rounded-lg border border-foreground/10">
-            {/* using native img to avoid remote domain config */}
-            <img
+            <Image
               src={thumbnail}
               alt={data.title ?? params.slug}
+              width={1200} // You might need to adjust these values
+              height={630} // You might need to adjust these values
               className="w-full h-auto object-cover"
             />
           </div>

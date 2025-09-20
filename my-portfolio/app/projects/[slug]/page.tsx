@@ -1,9 +1,42 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { caseStudies } from "@/lib/caseStudies";
+import type { Metadata } from "next";
 
 interface CaseStudyPageProps {
   params: { slug: string };
+}
+
+export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
+  const caseStudy = caseStudies.find((cs) => cs.slug === params.slug);
+
+  if (!caseStudy) {
+    return {};
+  }
+
+  const title = caseStudy.title;
+  const description = caseStudy.overview.solution;
+  const imageUrl = caseStudy.screenshots[0]; // Assuming the first screenshot is the main image
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      images: imageUrl ? [imageUrl] : undefined,
+      url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${params.slug}`,
+      siteName: "Brian Bett Portfolio",
+      locale: "en_US",
+    },
+    twitter: {
+      card: imageUrl ? "summary_large_image" : "summary",
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : undefined,
+    },
+  };
 }
 
 export default function CaseStudyPage({ params }: CaseStudyPageProps) {
@@ -13,8 +46,26 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    name: caseStudy.title,
+    description: caseStudy.overview.solution,
+    url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${caseStudy.slug}`,
+    image: caseStudy.screenshots[0] ? `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}${caseStudy.screenshots[0]}` : undefined,
+    creator: {
+      "@type": "Person",
+      name: "Brian Bett",
+    },
+    keywords: caseStudy.techStack.join(", "),
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h1 className="text-4xl font-bold mb-6">{caseStudy.title}</h1>
 
       <section className="mb-8">

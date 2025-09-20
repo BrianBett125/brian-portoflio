@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import Link from "next/link";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import PlausibleProvider from "next-plausible";
 
-const geistSans = Geist({
+const geistSans = GeistSans({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = GeistMono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -55,47 +59,30 @@ export const metadata: Metadata = {
   },
 };
 
-function Navbar() {
-  return (
-    <header className="sticky top-0 z-40 backdrop-blur bg-background/70 border-b border-foreground/10">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight hover:text-accent transition-colors">Brian Bett</Link>
-        <nav className="flex items-center gap-6 text-sm">
-          <Link href="/about" className="hover:text-accent transition-colors">About</Link>
-          <Link href="/projects" className="hover:text-accent transition-colors">Projects</Link>
-          <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-foreground/10 mt-16">
-      <div className="mx-auto max-w-6xl px-4 py-10 text-xs text-foreground/70 flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-between">
-        <p>© {new Date().getFullYear()} Brian Bett. All rights reserved.</p>
-        <p>
-          Built with <a className="underline underline-offset-2 hover:text-accent transition-colors" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>
-        </p>
-      </div>
-    </footer>
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
-        <Navbar />
-        <main className="mx-auto max-w-6xl px-4">{children}</main>
-        <Footer />
-        <Toaster />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <PlausibleProvider domain={process.env.NEXT_PUBLIC_DOMAIN!} />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main className="mx-auto max-w-6xl px-4">{children}</main>
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

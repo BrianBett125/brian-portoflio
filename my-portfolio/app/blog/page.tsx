@@ -4,6 +4,14 @@ import BlogCard from "@/components/BlogCard";
 export const metadata = {
   title: "Blog",
   description: "Notes and articles by Brian Bett.",
+  openGraph: {
+    title: "Brian Bett – Blog",
+    description: "Notes, tutorials, and thoughts on building for the web by Brian Bett.",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+    siteName: "Brian Bett Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default async function BlogIndexPage() {
