@@ -31,6 +31,12 @@ export default function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       <div className="mt-4 flex gap-4">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="text-sm text-foreground/80 hover:text-accent transition-colors flex items-center"
+        >
+          Case Study ↗
+        </Link>
         {project.githubLink && (
           <Link
             href={project.githubLink}

@@ -1,0 +1,4 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#FFDDC1"/>
+  <text x="50%" y="50%" font-family="Arial" font-size="40" fill="#333" text-anchor="middle" alignment-baseline="middle">Project One Screenshot 1</text>
+</svg>

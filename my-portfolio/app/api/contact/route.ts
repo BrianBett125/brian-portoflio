@@ -1,59 +1,39 @@
-// Route handler for contact form submissions
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-
-// Optionally enable Resend email integration by uncommenting and setting RESEND_API_KEY
+import { NextResponse } from "next/server";
+import * as z from "zod";
 import { Resend } from "resend";
 
-const ContactSchema = z.object({
-  name: z.string().min(2, "Name is too short"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message should be at least 10 characters"),
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Invalid email address." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const contentType = req.headers.get("content-type") || "";
+    const body = await request.json();
+    const { name, email, message } = contactFormSchema.parse(body);
 
-    let data: unknown;
-    if (contentType.includes("application/json")) {
-      data = await req.json();
-    } else if (contentType.includes("application/x-www-form-urlencoded")) {
-      const formData = await req.formData();
-      data = Object.fromEntries(formData.entries());
-    } else {
-      return NextResponse.json(
-        { error: "Unsupported content type" },
-        { status: 415 }
-      );
-    }
-
-    const parsed = ContactSchema.safeParse(data);
-    if (!parsed.success) {
-      return NextResponse.json(
-        { error: "Validation failed", details: parsed.error.flatten() },
-        { status: 400 }
-      );
-    }
-
-    const { name, email, message } = parsed.data;
-
-    // If you want to send an email via Resend, uncomment the following block
-    // and set RESEND_API_KEY in your environment.
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // Send email using Resend
     await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: ["your-email@example.com"], // TODO: Replace with your actual email address
+      from: "onboarding@resend.dev", // Replace with your verified Resend domain
+      to: "your-email@example.com", // Replace with your actual email address
       subject: `New contact from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
     });
 
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("Contact form error:", err);
-    return NextResponse.json(
-      { error: "Something went wrong" },
-      { status: 500 }
-    );
+    // In a real application, you would also:
+    // 2. Save message to a database (SQLite/Postgres)
+
+    console.log("Contact form submission:", { name, email, message });
+
+    return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.errors }, { status: 400 });
+    }
+    console.error("Error processing contact form:", error);
+    return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
   }
 }
