@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   },
   description:
     "Personal portfolio of Brian Bett. Next.js App Router, Tailwind CSS, and TypeScript.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"), // Update this to your deployment URL
   openGraph: {
     title: "Brian Bett – Portfolio",
     description:
       "Personal portfolio built with Next.js App Router, Tailwind CSS, and TypeScript.",
-    url: "https://example.com",
+    url: "https://example.com", // Update this to your deployment URL
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
@@ -35,6 +35,17 @@ export const metadata: Metadata = {
     title: "Brian Bett – Portfolio",
     description:
       "Personal portfolio built with Next.js App Router, Tailwind CSS, and TypeScript.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     types: {
