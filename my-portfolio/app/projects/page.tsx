@@ -4,11 +4,6 @@ import { getProjects } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 import { useState, useEffect } from "react";
 
-export const metadata = {
-  title: "Projects",
-  description: "A selection of projects and work highlights by Brian Bett.",
-};
-
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
