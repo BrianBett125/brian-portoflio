@@ -167,6 +167,18 @@ Contributions are welcome! Here's how you can contribute:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## 📸 Screenshots
+
+Here are some screenshots of the updated portfolio design:
+
+### Desktop View
+
+![Desktop View](https://i.imgur.com/2023-09-22_20-43-05.png)
+
+### Mobile View
+
+![Mobile View](https://i.imgur.com/2023-09-22_20-43-05.png)
+
 ---
 
 *This README is automatically updated to reflect changes in the codebase.*
