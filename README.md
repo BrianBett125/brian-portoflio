@@ -1,102 +1,172 @@
 # Brian Bett Portfolio
 
-Welcome to my personal portfolio! I'm Brian Bett, a passionate developer focused on building modern, responsive web applications. This portfolio showcases my projects, skills, and experience, and is powered by next-generation AI-native tooling for rapid development and review.
+A modern, responsive portfolio website built with Next.js, showcasing projects, blog posts, and professional information.
+
+## 🚀 Project Overview
+
+This portfolio website is built using Next.js App Router, React, TypeScript, and Tailwind CSS. It features:
+
+- Responsive design with dark/light mode
+- Project showcase with filtering by technology
+- Blog section with MDX support
+- Contact form with validation
+- Analytics dashboard
+- SEO optimization with metadata
+- Testing with Jest and React Testing Library
+
+## 📋 Installation Instructions
+
+### Prerequisites
+
+- Node.js (v18 or newer)
+- npm or yarn
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/brian-portoflio.git
+
+# Navigate to the project directory
+cd brian-portoflio/my-portfolio
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+The site will be available at [http://localhost:3000](http://localhost:3000).
+
+### Production Deployment
+
+```bash
+# Build the application
+npm run build
+
+# Start the production server
+npm start
+```
+
+### Docker Deployment
+
+```bash
+# Build the Docker image
+docker build -t brian-portfolio .
+
+# Run the container
+docker run -p 3000:3000 brian-portfolio
+```
+
+## 🔧 Environment Variables
+
+The following environment variables are used in this project:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_VERCEL_URL` | The URL where the site is deployed | http://localhost:3000 |
+| `NEXT_PUBLIC_DOMAIN` | Domain for Plausible analytics | - |
+
+Create a `.env.local` file in the root directory with these variables for local development.
+
+## 📦 Dependencies
+
+### Main Dependencies
+
+- **next**: 15.5.3 - React framework
+- **react**: 19.1.0 - UI library
+- **react-dom**: 19.1.0 - React DOM renderer
+- **typescript**: ^5 - Type checking
+- **framer-motion**: ^12.23.15 - Animations
+- **next-plausible**: ^3.12.4 - Analytics
+- **react-hook-form**: ^7.63.0 - Form handling
+- **react-hot-toast**: ^2.6.0 - Toast notifications
+- **recharts**: ^3.2.1 - Charts for analytics
+- **resend**: ^4.8.0 - Email sending
+- **@prisma/client**: ^6.16.2 - Database ORM
+- **gray-matter**: ^4.0.3 - Markdown frontmatter parsing
+- **@next/mdx**: ^15.0.0 - MDX support
+
+### Development Dependencies
+
+- **jest**: ^30.1.3 - Testing framework
+- **@testing-library/react**: ^16.3.0 - React testing utilities
+- **@testing-library/jest-dom**: ^6.8.0 - DOM testing utilities
+- **tailwindcss**: ^4 - Utility-first CSS framework
+- **prisma**: ^6.16.2 - Database schema management
+- **zod**: ^4.0.0 - Schema validation
+
+## 🧪 Testing
+
+This project uses Jest and React Testing Library for testing. Tests are located in the `__tests__` directory.
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+
+# Run tests in watch mode
+npm test -- --watch
+```
+
+## 📁 Codebase Structure
+
+```
+my-portfolio/
+├── __tests__/            # Test files
+├── app/                  # Next.js App Router pages
+│   ├── about/            # About page
+│   ├── analytics/        # Analytics dashboard
+│   ├── api/              # API routes
+│   ├── blog/             # Blog pages
+│   ├── contact/          # Contact page
+│   ├── projects/         # Projects pages
+│   └── layout.tsx        # Root layout
+├── components/           # Reusable React components
+│   ├── BlogCard.tsx      # Blog post card
+│   ├── ContactForm.tsx   # Contact form
+│   ├── Footer.tsx        # Site footer
+│   ├── HeroSection.tsx   # Hero section
+│   ├── Navbar.tsx        # Navigation bar
+│   ├── ProjectCard.tsx   # Project card
+│   └── ThemeToggle.tsx   # Theme toggle button
+├── content/              # Content files
+│   └── blog/             # Blog posts in MDX
+├── lib/                  # Utility functions and data
+│   ├── caseStudies.ts    # Case studies data
+│   ├── posts.ts          # Blog post utilities
+│   ├── projects.ts       # Projects data
+│   └── testimonialsData.ts # Testimonials data
+├── prisma/               # Prisma database schema
+├── public/               # Static assets
+└── jest.config.js        # Jest configuration
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can contribute:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Current TODOs and Roadmap
+
+- [ ] Add more blog posts
+- [ ] Implement search functionality
+- [ ] Add more project case studies
+- [ ] Improve accessibility
+- [ ] Add internationalization support
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 🚀 Tech Stack
-
-- **Language:** TypeScript
-- **Frontend Framework:** React (Vite)
-- **Styling:** TailwindCSS (utility-first CSS)
-- **Animations:** Framer Motion
-- **Icons:** React Icons
-- **Forms:** TailwindCSS Forms plugin
-- **Deployment:** Vercel (CI/CD ready)
-- **Version Control:** Git + GitHub
-
-> **Note:** No backend or database required for this project, but optional integrations (e.g., Django REST API or Firebase) may be added later.
-
----
-
-## 🤖 AI Integration Plan
-
-### Code & Feature Generation
-- AI (Trae IDE + ChatGPT) scaffolds portfolio components:
-  - `Navbar.tsx`: Responsive navigation with smooth scroll
-  - `Hero.tsx`: Landing intro with CTA buttons
-  - `Projects.tsx`: Grid layout for project cards
-  - `Timeline.tsx`: Education & experience timeline
-- Prompts drive component creation and styling for responsive design and consistent UI/UX.
-
-### Testing Support
-- AI generates unit tests for reusable components (e.g., Navbar rendering, Contact form validation).
-- Integration tests for form submission flows using Jest + React Testing Library.
-- Example AI tasks:
-  - Suggest edge cases for Contact form input validation.
-  - Scaffold Jest test suites with TypeScript typings.
-
-### Schema-Aware / API-Aware Generation
-- If connected to an API (e.g., CMS or blog):
-  - AI generates API hooks (`useProjects.ts`, `useBlogPosts.ts`) based on schema/OpenAPI definitions.
-  - AI scaffolds TypeScript interfaces for responses and requests.
-
-### In-Editor / PR Review Tooling
-- **AI Tool:** Trae IDE (AI-native), supplemented by GitHub Copilot or CodeRabbit for PR review.
-- **PR Support:**
-  - Generate clear commit messages
-  - Suggest improvements in code style, accessibility, and performance
-  - Provide inline feedback on React patterns and Tailwind usage
-
----
-
-## ✍️ Prompting Strategy
-
-**Component Scaffolding Example:**
-> Create a responsive Navbar component in React + TypeScript with TailwindCSS. Include links: Home, About, Projects, Experience, Contact. On desktop: inline menu. On mobile: hamburger menu with sliding sidebar. Highlight the active section on scroll. Use React Icons for the hamburger.
-
-**Test Generation Example:**
-> Write Jest + React Testing Library unit tests for ContactForm.tsx. Cover:
-> - Renders all input fields
-> - Shows validation error if fields are empty
-> - Calls onSubmit with correct data when filled
-
----
-
-## 🗺️ Roadmap
-
-- [x] Initialize project with Vite + React + TypeScript
-- [x] Configure TailwindCSS
-- [ ] Add Navbar, Hero, Projects, Timeline, and Contact components
-- [ ] Implement dark mode toggle
-- [ ] Add animations (Framer Motion)
-- [ ] Deploy on Vercel
-
----
-
-## 📬 Contact
-
-- **Email:** [brianbett756@gmail.com](mailto:brianbett756@gmail.com)
-- **GitHub:** [github.com/brianbett](https://github.com/brianbett)
-- **LinkedIn:** [linkedin.com/in/brianbett](https://linkedin.com/in/brianbett)
-
----
-
-## 🛠️ Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/brianbett/brian-portoflio.git
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
----
-
-Feel free to explore, contribute, or reach out for collaboration!
+*This README is automatically updated to reflect changes in the codebase.*

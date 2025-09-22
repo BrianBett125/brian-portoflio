@@ -4,6 +4,7 @@ import Testimonials from "@/components/Testimonials";
 import { getProjects } from "@/lib/projects";
 import { testimonialsData } from "@/lib/testimonialsData";
 import type { Metadata } from "next";
+import { motion } from "framer-motion";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
@@ -20,22 +21,76 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
+// Animation variants for staggered children
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 export default async function Home() {
   const projects = await getProjects();
   return (
-    <div className="space-y-12">
-      <HeroSection />
+    <div className="space-y-24">
+      {/* Hero Section with background decoration */}
+      <div className="relative">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 blur-3xl opacity-20 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-full w-[30rem] h-[30rem]"></div>
+          <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 blur-3xl opacity-20 bg-gradient-to-br from-accent-secondary to-accent-tertiary rounded-full w-[25rem] h-[25rem]"></div>
+        </div>
+        <HeroSection />
+      </div>
 
-      <Testimonials testimonials={testimonialsData} />
+      {/* Testimonials with enhanced styling */}
+      <div className="py-12 bg-background-secondary rounded-3xl px-6">
+        <Testimonials testimonials={testimonialsData} />
+      </div>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold tracking-tight">Featured Projects</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.slice(0, 3).map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+      {/* Featured Projects with animations */}
+      <motion.section 
+        className="space-y-8 py-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <motion.div variants={itemVariants} className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <a href="/projects" className="text-sm font-medium text-accent-primary hover:text-accent-secondary transition-colors flex items-center gap-2">
+            View all projects
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </motion.div>
+        
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(0, 3).map((p, index) => (
+            <motion.div key={p.slug} variants={itemVariants}>
+              <ProjectCard project={p} />
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

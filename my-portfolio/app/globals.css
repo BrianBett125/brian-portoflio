@@ -1,25 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark as default */
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --accent: #22d3ee; /* cyan-400 */
+  /* Dark as default - Enhanced vibrant scheme */
+  --background: #0f172a; /* Slate 900 - richer dark blue background */
+  --background-secondary: #1e293b; /* Slate 800 - for cards and sections */
+  --foreground: #f8fafc; /* Slate 50 - crisp white text */
+  --foreground-secondary: #cbd5e1; /* Slate 300 - secondary text */
+  --accent-primary: #8b5cf6; /* Violet 500 - vibrant primary accent */
+  --accent-secondary: #3b82f6; /* Blue 500 - secondary accent */
+  --accent-tertiary: #ec4899; /* Pink 500 - tertiary accent for highlights */
+  --success: #10b981; /* Emerald 500 */
+  --warning: #f59e0b; /* Amber 500 */
+  --error: #ef4444; /* Red 500 */
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  --gradient-secondary: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --accent: #0ea5e9; /* adjust accent in light */
+    --background: #f8fafc; /* Slate 50 */
+    --background-secondary: #f1f5f9; /* Slate 100 */
+    --foreground: #0f172a; /* Slate 900 */
+    --foreground-secondary: #334155; /* Slate 700 */
+    --accent-primary: #7c3aed; /* Violet 600 - slightly darker for light mode */
+    --accent-secondary: #2563eb; /* Blue 600 */
+    --accent-tertiary: #db2777; /* Pink 600 */
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
   }
 }
 
@@ -28,9 +47,72 @@ body {
   color: var(--foreground);
   /* Use Next Font via class on body; keep fallback only */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.015em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Subtle utility for focus rings aligned with accent */
 * {
-  outline-color: color-mix(in oklab, var(--accent), transparent 40%);
+  outline-color: color-mix(in oklab, var(--accent-primary), transparent 40%);
+}
+
+/* Modern card styling */
+.card {
+  background: var(--background-secondary);
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button styling */
+.btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+  color: white;
+}
+
+/* Section styling */
+.section {
+  padding: 4rem 0;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

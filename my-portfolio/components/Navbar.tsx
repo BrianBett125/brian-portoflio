@@ -2,20 +2,76 @@
 
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  
+  const isActive = (path: string) => {
+    return pathname === path;
+  };
+
   return (
-    <header className="sticky top-0 z-40 backdrop-blur bg-background/70 border-b border-foreground/10">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight hover:text-accent transition-colors">Brian Bett</Link>
-        <nav className="flex items-center gap-6 text-sm">
-          <Link href="/about" className="hover:text-accent transition-colors">About</Link>
-          <Link href="/projects" className="hover:text-accent transition-colors">Projects</Link>
-          <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
+    <motion.header 
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-foreground/5 shadow-sm"
+    >
+      <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
+        <Link 
+          href="/" 
+          className="group relative font-bold text-xl tracking-tight bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300"
+        >
+          Brian Bett
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary group-hover:w-full transition-all duration-300"></span>
+        </Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <Link 
+            href="/about" 
+            className={`relative py-1 ${isActive('/about') 
+              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
+              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
+          >
+            About
+          </Link>
+          <Link 
+            href="/projects" 
+            className={`relative py-1 ${isActive('/projects') 
+              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
+              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
+          >
+            Projects
+          </Link>
+          <Link 
+            href="/blog" 
+            className={`relative py-1 ${isActive('/blog') 
+              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
+              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
+          >
+            Blog
+          </Link>
+          <Link 
+            href="/contact" 
+            className={`relative py-1 ${isActive('/contact') 
+              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
+              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
+          >
+            Contact
+          </Link>
           <ThemeToggle />
         </nav>
+        
+        {/* Mobile menu button */}
+        <button className="md:hidden p-2 rounded-full hover:bg-foreground/5 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
-    </header>
+    </motion.header>
   );
 }
