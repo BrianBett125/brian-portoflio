@@ -58,19 +58,13 @@ export default async function Home() {
       </div>
 
       {/* Testimonials with enhanced styling */}
-      <div className="py-12 bg-background-secondary rounded-3xl px-6">
+      <div className="py-12 bg-background-secondary rounded-3xl px-4 sm:px-6">
         <Testimonials testimonials={testimonialsData} />
       </div>
 
       {/* Featured Projects with animations */}
-      <motion.section 
-        className="space-y-8 py-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <motion.div variants={itemVariants} className="flex items-center justify-between mb-8">
+      <section className="space-y-8 py-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <h2 className="text-2xl font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
             Featured Projects
           </h2>
@@ -81,16 +75,16 @@ export default async function Home() {
               <path d="m12 5 7 7-7 7"></path>
             </svg>
           </a>
-        </motion.div>
+        </div>
         
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.slice(0, 3).map((p, index) => (
-            <motion.div key={p.slug} variants={itemVariants}>
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(0, 3).map((p) => (
+            <div key={p.slug}>
               <ProjectCard project={p} />
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
