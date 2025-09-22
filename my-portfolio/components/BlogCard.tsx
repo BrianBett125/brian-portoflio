@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { Post } from "@/lib/posts";
 import { usePlausible } from "next-plausible";

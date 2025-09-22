@@ -8,16 +8,6 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import PlausibleProvider from "next-plausible";
 
-const geistSans = GeistSans({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = GeistMono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: {
     default: "Brian Bett – Portfolio",
@@ -70,7 +60,7 @@ export default function RootLayout({
         <PlausibleProvider domain={process.env.NEXT_PUBLIC_DOMAIN!} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider>
           <Navbar />
