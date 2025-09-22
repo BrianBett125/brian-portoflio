@@ -173,11 +173,11 @@ Here are some screenshots of the updated portfolio design:
 
 ### Desktop View
 
-![Desktop View](https://i.imgur.com/2023-09-22_20-43-05.png)
+![Desktop View](https://i.imgur.com/2023-09-22_23-44-05.png)
 
 ### Mobile View
 
-![Mobile View](https://i.imgur.com/2023-09-22_20-43-05.png)
+![Mobile View](https://i.imgur.com/2023-09-22_23-46-05.png)
 
 ---
 
