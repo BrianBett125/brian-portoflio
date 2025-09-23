@@ -40,28 +40,28 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Here are some screenshots of the application:
 
 ### Home Page
-![Home Page](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/home-page.png?raw=true)
+![Home Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/home-page.png)
 
 ### Testimonials Section
-![Testimonials Section](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/testimonials-section.png?raw=true)
+![Testimonials Section](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/testimonials-section.png)
 
 ### About Page
-![About Page](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/about-page.png?raw=true)
+![About Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/about-page.png)
 
 ### Projects Page
-![Projects Page](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/projects-page.png?raw=true)
+![Projects Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/projects-page.png)
 
 ### Contact Page
-![Contact Page](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/contact-page.png?raw=true)
+![Contact Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/contact-page.png)
 
 ### Featured Projects Section
-![Featured Projects Section](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/featured-projects-section.png?raw=true)
+![Featured Projects Section](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/featured-projects-section.png)
 
 ### Blog Page
-![Blog Page](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/blog-page.png?raw=true)
+![Blog Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/blog-page.png)
 
 ### Projects Page (Featured)
-![Projects Page (Featured)](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/projects-page-featured.png?raw=true)
+![Projects Page (Featured)](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/projects-page-featured.png)
 
 ### Blog Page (Featured)
-![Blog Page (Featured)](https://github.com/BrianBett/my-portfolio/blob/main/screenshots/blog-page-featured.png?raw=true)
+![Blog Page (Featured)](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/blog-page-featured.png)
