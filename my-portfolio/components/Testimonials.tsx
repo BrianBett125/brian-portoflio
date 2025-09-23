@@ -37,6 +37,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
             width={56}
             height={56}
             className="rounded-full object-cover border-2 border-background relative z-10"
+            unoptimized
           />
         </div>
         <div>
@@ -69,8 +70,7 @@ const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
+    },
   }
 };
 
@@ -97,7 +97,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants as any}>
               <TestimonialCard {...testimonial} />
             </motion.div>
           ))}

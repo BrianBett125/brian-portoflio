@@ -22,6 +22,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           fill
           style={{ objectFit: "cover" }}
           className="group-hover:scale-105 transition-transform duration-500 ease-in-out"
+          unoptimized
         />
       </div>
       <h3 className="font-bold tracking-tight text-xl mb-3 bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent group-hover:from-accent-secondary group-hover:to-accent-tertiary transition-all duration-300">
