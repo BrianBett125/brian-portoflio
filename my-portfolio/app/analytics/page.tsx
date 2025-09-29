@@ -11,6 +11,9 @@ import {
   BarChart,
   Bar,
 } from "recharts";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export const metadata: Metadata = {
   title: "Analytics Dashboard",
@@ -44,6 +47,23 @@ const blogPostPerformanceData = [
 ];
 
 export default function AnalyticsDashboard() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/api/auth/signin");
+    }
+  }, [session, status, router]);
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (!session) {
+    return null; // or a loading spinner
+  }
+
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-8">Analytics Dashboard</h1>
