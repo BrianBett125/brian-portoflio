@@ -24,9 +24,8 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-3">Connect</h4>
               <ul className="space-y-2 text-foreground-secondary">
-                <li><a href="https://github.com/brianbett" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/brianbett" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">LinkedIn</a></li>
-                <li><a href="https://twitter.com/brianbett" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">Twitter</a></li>
+                <li><a href="https://github.com/BrianBett125" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/brian-bett-kipkoech/" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">LinkedIn</a></li>
               </ul>
             </div>
           </div>

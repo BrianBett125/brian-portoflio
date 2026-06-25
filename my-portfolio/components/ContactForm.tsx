@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Invalid email address." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
@@ -25,6 +24,12 @@ export default function ContactForm() {
     resolver: zodResolver(formSchema),
   });
 
+  function openMailto(data: ContactFormInputs) {
+    const subject = encodeURIComponent("Portfolio contact");
+    const body = encodeURIComponent(`From: ${data.email}\n\n${data.message}`);
+    window.location.href = `mailto:brianbett756@gmail.com?subject=${subject}&body=${body}`;
+  }
+
   async function onSubmit(data: ContactFormInputs) {
     setStatus("loading");
     setError(null);
@@ -36,55 +41,79 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
       const result = await res.json();
-      if (!res.ok) throw new Error(result?.error || "Failed to send");
+      if (!res.ok) {
+        if (result?.fallback === "mailto") {
+          openMailto(data);
+          setStatus("success");
+          reset();
+          return;
+        }
+        throw new Error(result?.error || "Failed to send");
+      }
       setStatus("success");
       reset();
     } catch (e: any) {
-      setStatus("error");
-      setError(e.message || "Unknown error");
+      openMailto(data);
+      setStatus("success");
+      setError(e.message || null);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-1">
-          <label className="text-sm">Name</label>
-          <input
-            {...register("name")}
-            className="w-full rounded-md bg-background border border-foreground/15 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent/40"
-          />
-          {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
-        </div>
-        <div className="space-y-1">
-          <label className="text-sm">Email</label>
-          <input
-            type="email"
-            {...register("email")}
-            className="w-full rounded-md bg-background border border-foreground/15 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent/40"
-          />
-          {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
-        </div>
-      </div>
-      <div className="space-y-1">
-        <label className="text-sm">Message</label>
-        <textarea
-          rows={5}
-          {...register("message")}
-          className="w-full rounded-md bg-background border border-foreground/15 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-accent/40"
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+      <div className="space-y-2">
+        <label htmlFor="email" className="text-sm font-semibold text-foreground">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          autoComplete="email"
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
+          {...register("email")}
+          className="w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
+          placeholder="you@example.com"
         />
-        {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
+        {errors.email && (
+          <p id="email-error" className="text-xs text-red-300">
+            {errors.email.message}
+          </p>
+        )}
       </div>
-      <div className="flex items-center gap-3">
+      <div className="space-y-2">
+        <label htmlFor="message" className="text-sm font-semibold text-foreground">
+          Message
+        </label>
+        <textarea
+          id="message"
+          rows={5}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "message-error" : undefined}
+          {...register("message")}
+          className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
+          placeholder="Tell me what you want to build."
+        />
+        {errors.message && (
+          <p id="message-error" className="text-xs text-red-300">
+            {errors.message.message}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center rounded-md bg-accent/20 text-accent px-4 py-2 text-sm hover:bg-accent/30 disabled:opacity-50"
+          className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-primary/20 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status === "loading" ? "Sending..." : "Send Message"}
+          {status === "loading" ? "Sending..." : "Send"}
         </button>
-        {status === "success" && <p className="text-xs text-foreground/60">Thanks! I’ll get back to you soon.</p>}
-        {status === "error" && <p className="text-xs text-red-400">{error}</p>}
+        {status === "success" && (
+          <p className="text-xs text-foreground-secondary">
+            Message prepared for brianbett756@gmail.com.
+          </p>
+        )}
+        {status === "error" && <p className="text-xs text-red-300">{error}</p>}
       </div>
     </form>
   );

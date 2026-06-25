@@ -95,6 +95,22 @@ export default function HeroSection() {
               <path d="m12 5 7 7-7 7"></path>
             </svg>
           </Link>
+          <a
+            href="https://github.com/BrianBett125"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-medium hover:border-accent-secondary/70 hover:bg-white/[0.08] transition-all duration-300"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/brian-bett-kipkoech/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-medium hover:border-accent-secondary/70 hover:bg-white/[0.08] transition-all duration-300"
+          >
+            LinkedIn
+          </a>
         </motion.div>
         
         <motion.div

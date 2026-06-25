@@ -11,28 +11,28 @@ jest.mock('../lib/projects', () => ({
 describe('ProjectsPage', () => {
   const mockProjects = [
     {
-      slug: 'project-one',
-      title: 'Project One',
-      description: 'Description for project one',
+      slug: 'learning-log',
+      title: 'Learning Log',
+      description: 'Personal knowledge management app',
+      whyItMatters: "Most knowledge is lost because it's never written down",
+      techStack: ['Python', 'Django'],
+      solution: 'Capture and organize learning notes.',
+    },
+    {
+      slug: 'polling-app',
+      title: 'Polling App',
+      description: 'Real-time AI-native polling platform',
+      whyItMatters: 'Frictionless feedback at the speed of a QR scan',
       techStack: ['Next.js', 'TypeScript'],
-      image: '/images/project-one.png',
-      githubLink: 'https://github.com/user/project-one',
+      solution: 'Collect real-time feedback quickly.',
     },
     {
-      slug: 'project-two',
-      title: 'Project Two',
-      description: 'Description for project two',
-      techStack: ['React', 'JavaScript'],
-      image: '/images/project-two.png',
-      githubLink: 'https://github.com/user/project-two',
-    },
-    {
-      slug: 'project-three',
-      title: 'Project Three',
-      description: 'Description for project three',
-      techStack: ['Next.js', 'Tailwind'],
-      image: '/images/project-three.png',
-      githubLink: 'https://github.com/user/project-three',
+      slug: 'python-projects',
+      title: 'Python Projects',
+      description: 'Collection of automation tools and scripts',
+      whyItMatters: 'Real problems deserve real solutions',
+      techStack: ['Python', 'Docker'],
+      solution: 'Practical automation scripts and tools.',
     },
   ];
 
@@ -48,8 +48,8 @@ describe('ProjectsPage', () => {
     render(<ProjectsPage />);
     
     // Check if the title is rendered
-    expect(await screen.findByText('Projects')).toBeInTheDocument();
-    expect(await screen.findByText('A selection of work I\'ve built and shipped.')).toBeInTheDocument();
+    expect(await screen.findByText('Projects built around real problems.')).toBeInTheDocument();
+    expect(await screen.findByText(/A focused portfolio of learning systems/)).toBeInTheDocument();
   });
 
   test('loads and displays projects', async () => {
@@ -61,9 +61,9 @@ describe('ProjectsPage', () => {
     });
     
     // Check if project titles are displayed
-    expect(await screen.findByText('Project One')).toBeInTheDocument();
-    expect(await screen.findByText('Project Two')).toBeInTheDocument();
-    expect(await screen.findByText('Project Three')).toBeInTheDocument();
+    expect(await screen.findByText('Learning Log')).toBeInTheDocument();
+    expect(await screen.findByText('Polling App')).toBeInTheDocument();
+    expect(await screen.findByText('Python Projects')).toBeInTheDocument();
   });
 
   test('filters projects when tech filter is clicked', async () => {
@@ -71,17 +71,17 @@ describe('ProjectsPage', () => {
     
     // Wait for projects and tech filters to load
     await waitFor(() => {
-      expect(screen.getByText('Next.js')).toBeInTheDocument();
+      expect(screen.getByText('Python')).toBeInTheDocument();
     });
     
-    // Click on Next.js filter
-    fireEvent.click(screen.getByText('Next.js'));
+    // Click on Python filter
+    fireEvent.click(screen.getByText('Python'));
     
-    // Should show Next.js projects and hide others
+    // Should show Python projects and hide others
     await waitFor(() => {
-      expect(screen.getByText('Project One')).toBeInTheDocument();
-      expect(screen.getByText('Project Three')).toBeInTheDocument();
-      expect(screen.queryByText('Project Two')).not.toBeInTheDocument();
+      expect(screen.getByText('Learning Log')).toBeInTheDocument();
+      expect(screen.getByText('Python Projects')).toBeInTheDocument();
+      expect(screen.queryByText('Polling App')).not.toBeInTheDocument();
     });
     
     // Click on All filter to reset
@@ -89,9 +89,9 @@ describe('ProjectsPage', () => {
     
     // Should show all projects again
     await waitFor(() => {
-      expect(screen.getByText('Project One')).toBeInTheDocument();
-      expect(screen.getByText('Project Two')).toBeInTheDocument();
-      expect(screen.getByText('Project Three')).toBeInTheDocument();
+      expect(screen.getByText('Learning Log')).toBeInTheDocument();
+      expect(screen.getByText('Polling App')).toBeInTheDocument();
+      expect(screen.getByText('Python Projects')).toBeInTheDocument();
     });
   });
 });

@@ -35,29 +35,40 @@ export default function ProjectsPage() {
   }, [selectedTech, projects]);
 
   return (
-    <section className="py-12">
-      <div className="space-y-6">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
-          <p className="text-foreground/70">A selection of work I've built and shipped.</p>
+    <section className="relative w-full overflow-hidden px-4 py-12 sm:px-6 lg:py-20">
+      <div className="absolute left-1/2 top-0 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-accent-primary/20 blur-3xl" />
+      <div className="mx-auto max-w-6xl space-y-10">
+        <div className="max-w-3xl space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+            Selected systems
+          </p>
+          <h1 className="text-4xl font-black tracking-tight text-foreground sm:text-6xl">
+            Projects built around real problems.
+          </h1>
+          <p className="text-base leading-8 text-foreground-secondary sm:text-lg">
+            A focused portfolio of learning systems, inventory workflows,
+            polling experiences, and automation tools.
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2" aria-label="Filter projects by technology">
           {techStacks.map((tech) => (
             <button
               key={tech}
               onClick={() => setSelectedTech(tech)}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${selectedTech === tech
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-foreground/10 text-foreground/70 hover:bg-foreground/20"
-                } transition-colors`}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                selectedTech === tech
+                  ? "bg-gradient-to-r from-accent-primary to-accent-secondary text-white shadow-lg shadow-accent-primary/20"
+                  : "border border-white/10 bg-white/[0.06] text-foreground-secondary hover:border-accent-primary/50 hover:text-foreground"
+              }`}
+              aria-pressed={selectedTech === tech}
             >
               {tech}
             </button>
           ))}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}

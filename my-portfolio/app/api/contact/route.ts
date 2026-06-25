@@ -3,7 +3,6 @@ import * as z from "zod";
 import { Resend } from "resend";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Invalid email address." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
@@ -11,13 +10,13 @@ const contactFormSchema = z.object({
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message } = contactFormSchema.parse(body);
+    const { email, message } = contactFormSchema.parse(body);
     const apiKey = process.env.RESEND_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: "Email service is not configured." },
-        { status: 500 }
+        { error: "Email service is not configured.", fallback: "mailto" },
+        { status: 503 }
       );
     }
 
@@ -25,16 +24,14 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     await resend.emails.send({
-      from: "onboarding@resend.dev", // Replace with your verified Resend domain
-      to: "your-email@example.com", // Replace with your actual email address
-      subject: `New contact from ${name}`,
-      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
+      from: "onboarding@resend.dev",
+      to: "brianbett756@gmail.com",
+      replyTo: email,
+      subject: "New portfolio contact",
+      html: `<p>Email: ${email}</p><p>Message: ${message}</p>`,
     });
 
-    // In a real application, you would also:
-    // 2. Save message to a database (SQLite/Postgres)
-
-    console.log("Contact form submission:", { name, email, message });
+    console.log("Contact form submission:", { email });
 
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
   } catch (error) {
