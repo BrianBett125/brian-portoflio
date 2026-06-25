@@ -1,12 +1,13 @@
 'use client';
 
 import { getProjects } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 import { useState, useEffect } from "react";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedTech, setSelectedTech] = useState("All");
   const [techStacks, setTechStacks] = useState<string[]>([]);
 
@@ -38,7 +39,7 @@ export default function ProjectsPage() {
       <div className="space-y-6">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
-          <p className="text-foreground/70">A selection of work I’ve built and shipped.</p>
+          <p className="text-foreground/70">A selection of work I've built and shipped.</p>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">

@@ -4,44 +4,22 @@ import Testimonials from "@/components/Testimonials";
 import { getProjects } from "@/lib/projects";
 import { testimonialsData } from "@/lib/testimonialsData";
 import type { Metadata } from "next";
-import { motion } from "framer-motion";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "Home",
-    description: "Welcome to Brian Bett's portfolio. Discover my projects, blog posts, and learn more about me.",
+    description:
+      "Brian Bett is a Java and Python backend engineer with over three years of experience building APIs, services, and data-driven systems.",
     openGraph: {
       title: "Brian Bett – Home",
-      description: "Welcome to Brian Bett's portfolio. Discover my projects, blog posts, and learn more about me.",
+      description:
+        "Brian Bett is a Java and Python backend engineer with over three years of experience building APIs, services, and data-driven systems.",
       url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
       type: "website",
     },
   };
-};
-
-// Animation variants for staggered children
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
 };
 
 export default async function Home() {

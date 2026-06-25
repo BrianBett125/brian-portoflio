@@ -7,6 +7,10 @@ import Image from "next/image"; // Import Image component
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
+type BlogPostPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
 export async function generateStaticParams() {
   const files = await fs.readdir(BLOG_DIR);
   return files
@@ -14,9 +18,10 @@ export async function generateStaticParams() {
     .map((f) => ({ slug: f.replace(/\.mdx?$/, "") }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const filePathMdx = path.join(BLOG_DIR, `${params.slug}.mdx`);
-  const filePathMd = path.join(BLOG_DIR, `${params.slug}.md`);
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const filePathMdx = path.join(BLOG_DIR, `${slug}.mdx`);
+  const filePathMd = path.join(BLOG_DIR, `${slug}.md`);
   try {
     const filePath = await fs
       .stat(filePathMdx)
@@ -25,7 +30,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const raw = await fs.readFile(filePath, "utf8");
     const { data } = matter(raw);
 
-    const title = data.title ?? params.slug;
+    const title = data.title ?? slug;
     const description = data.description ?? data.summary ?? "";
     const date: string | undefined = data.date;
     const tags: string[] | undefined = Array.isArray(data.tags)
@@ -52,15 +57,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       other: tags && tags.length ? { "article:tag": tags } : undefined,
     };
   } catch {
-    return { title: params.slug };
+    return { title: slug };
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+
   try {
     // Frontmatter for metadata rendering
-    const filePathMdx = path.join(BLOG_DIR, `${params.slug}.mdx`);
-    const filePathMd = path.join(BLOG_DIR, `${params.slug}.md`);
+    const filePathMdx = path.join(BLOG_DIR, `${slug}.mdx`);
+    const filePathMd = path.join(BLOG_DIR, `${slug}.md`);
     const filePath = await fs
       .stat(filePathMdx)
       .then(() => filePathMdx)
@@ -69,8 +76,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     const { data } = matter(raw);
 
     const MDXContent = (
-      await import(`@/content/blog/${params.slug}.mdx`).catch(() =>
-        import(`@/content/blog/${params.slug}.md`)
+      await import(`@/content/blog/${slug}.mdx`).catch(() =>
+        import(`@/content/blog/${slug}.md`)
       )
     ).default;
 
@@ -94,7 +101,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: data.title ?? params.slug,
+              headline: data.title ?? slug,
               description: data.description ?? data.summary ?? "",
               image: thumbnail ? `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}${thumbnail}` : undefined,
               datePublished: data.date,
@@ -112,13 +119,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               },
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/blog/${params.slug}`,
+                "@id": `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/blog/${slug}`,
               },
             }),
           }}
         />
         <header className="space-y-3 mb-8">
-          <h1 className="text-3xl font-semibold tracking-tight">{data.title ?? params.slug}</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">{data.title ?? slug}</h1>
           {(date || tags.length) && (
             <div className="flex flex-wrap items-center gap-2 text-sm text-foreground/60">
               {date && <span>{date}</span>}
@@ -141,7 +148,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="mb-8 overflow-hidden rounded-lg border border-foreground/10">
             <Image
               src={thumbnail}
-              alt={data.title ?? params.slug}
+              alt={data.title ?? slug}
               width={1200} // You might need to adjust these values
               height={630} // You might need to adjust these values
               className="w-full h-auto object-cover"

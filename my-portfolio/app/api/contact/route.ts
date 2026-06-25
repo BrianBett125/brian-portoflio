@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import * as z from "zod";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Invalid email address." }),
@@ -14,6 +12,16 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, message } = contactFormSchema.parse(body);
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Email service is not configured." },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
 
     // Send email using Resend
     await resend.emails.send({
@@ -31,7 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     console.error("Error processing contact form:", error);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });

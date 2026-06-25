@@ -4,11 +4,12 @@ import { caseStudies } from "@/lib/caseStudies";
 import type { Metadata } from "next";
 
 interface CaseStudyPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
-  const caseStudy = caseStudies.find((cs) => cs.slug === params.slug);
+  const { slug } = await params;
+  const caseStudy = caseStudies.find((cs) => cs.slug === slug);
 
   if (!caseStudy) {
     return {};
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
       description,
       type: "article",
       images: imageUrl ? [imageUrl] : undefined,
-      url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${params.slug}`,
+      url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${slug}`,
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
     },
@@ -39,8 +40,9 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   };
 }
 
-export default function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const caseStudy = caseStudies.find((cs) => cs.slug === params.slug);
+export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+  const { slug } = await params;
+  const caseStudy = caseStudies.find((cs) => cs.slug === slug);
 
   if (!caseStudy) {
     notFound();

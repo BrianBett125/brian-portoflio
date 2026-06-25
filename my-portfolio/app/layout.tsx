@@ -11,10 +11,12 @@ export const metadata: Metadata = {
     default: "Brian Bett – Portfolio",
     template: "%s | Brian Bett",
   },
-  description: "Brian Bett's personal portfolio website.",
+  description:
+    "Brian Bett's personal portfolio website for Java and Python backend engineering work.",
   openGraph: {
     title: "Brian Bett – Portfolio",
-    description: "Brian Bett's personal portfolio website.",
+    description:
+      "Brian Bett's personal portfolio website for Java and Python backend engineering work.",
     url: "https://brianbett.com",
     siteName: "Brian Bett – Portfolio",
     images: [

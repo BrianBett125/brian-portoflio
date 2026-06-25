@@ -32,7 +32,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           className="text-2xl sm:text-4xl font-bold tracking-tight mt-2 text-foreground"
         >
-          Software Engineer & AI/ML Enthusiast
+          Java & Python Backend Engineer
         </motion.h2>
         
         <motion.p
@@ -41,7 +41,9 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           className="mt-6 text-base sm:text-lg text-foreground-secondary max-w-2xl leading-relaxed"
         >
-          My mission is to build innovative and impactful web applications that solve real-world problems. I specialize in creating robust, scalable, and user-friendly experiences using modern web technologies.
+          I am a backend-focused Java and Python developer with over three
+          years of experience building reliable APIs, services, and data-driven
+          systems that solve real business problems.
         </motion.p>
         
         <motion.div
