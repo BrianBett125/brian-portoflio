@@ -22,17 +22,17 @@ export default function ContactPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
             Contact
           </p>
-          <h1 className="text-4xl font-black tracking-tight text-foreground sm:text-6xl">
+          <h1 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Build the next useful system.
           </h1>
-          <p className="text-base leading-8 text-foreground-secondary sm:text-lg">
+          <p className="text-base leading-8 text-foreground-secondary lg:text-lg">
             Send a message directly to brianbett756@gmail.com. If the server
             email provider is unavailable, the form opens a prepared email in
             your mail app.
           </p>
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-8">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-8">
           <ContactForm />
         </div>
       </div>

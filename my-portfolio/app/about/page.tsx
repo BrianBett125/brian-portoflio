@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Brian Bett, a Java and Python backend engineer with over three years of experience.",
+    "About Brian Bett, a software engineer focused on backend systems, developer platforms, automation tools, and real-world solutions.",
   openGraph: {
-    title: "Brian Bett – About",
+    title: "Brian Bett - About",
     description:
-      "About Brian Bett, a Java and Python backend engineer with over three years of experience.",
+      "About Brian Bett, a software engineer focused on backend systems, developer platforms, automation tools, and real-world solutions.",
     url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
@@ -17,33 +17,49 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="py-12">
-      <div className="space-y-6 max-w-2xl">
-        <h1 className="text-3xl font-bold tracking-tight">About</h1>
-        <div className="space-y-4 text-foreground/80">
-          <p>
-            I am <strong>Brian Bett</strong>, a{" "}
-            <strong>Java and Python backend developer</strong> with over three
-            years of experience building dependable software systems.
+    <section className="relative w-full overflow-hidden px-4 py-12 sm:px-6 lg:py-20">
+      <div className="absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-accent-primary/20 blur-3xl" />
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+            About
           </p>
+          <h1 className="mt-4 text-3xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            Backend-minded engineering for real product work.
+          </h1>
+        </div>
 
+        <div className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-base leading-8 text-foreground-secondary backdrop-blur-xl sm:p-8 lg:text-lg">
           <p>
-            My work focuses on backend engineering: designing APIs, structuring
-            services, working with databases, and building integrations that are
-            maintainable, secure, and ready to scale.
+            I am <strong className="text-foreground">Brian Bett</strong>, a
+            software engineer who builds backend systems, developer platforms,
+            automation tools, and practical applications for real workflows.
           </p>
-
           <p>
-            I enjoy turning product requirements into practical server-side
-            solutions, whether that means developing REST APIs, improving data
-            flows, optimizing application logic, or connecting systems cleanly
-            across a larger platform.
+            I think in systems: data models, boundaries, dependencies, failure
+            paths, and the cost of future change. Before adding complexity, I
+            look for the simplest structure that can scale, remain maintainable,
+            and keep behavior understandable.
           </p>
-
           <p>
-            When I am not coding, I am usually learning better engineering
-            practices, exploring new backend tools, or contributing to
-            open-source projects.
+            My project work includes a Django learning log, a structured
+            developer learning platform, a construction inventory workflow, a
+            real-time polling app, and Python automation projects. Across those
+            projects, the focus is consistent: organize information, make
+            operations clearer, and build software that solves a specific
+            problem.
+          </p>
+          <p>
+            The stack represented in this portfolio includes Python, Django,
+            Spring Boot, PostgreSQL, MySQL, SQLite, Next.js, TypeScript,
+            Supabase, Docker, Bootstrap, HTML, CSS, and JavaScript.
+          </p>
+          <p className="font-semibold text-foreground">
+            My strongest work happens where product needs meet system design.
+          </p>
+          <p className="font-semibold text-foreground">
+            I build systems because the best software removes operational drag
+            and gives people clearer control over real work.
           </p>
         </div>
       </div>

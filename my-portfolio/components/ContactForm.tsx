@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -13,6 +14,7 @@ type ContactFormInputs = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [deliveryMode, setDeliveryMode] = useState<"direct" | "mailto" | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const {
@@ -32,6 +34,7 @@ export default function ContactForm() {
 
   async function onSubmit(data: ContactFormInputs) {
     setStatus("loading");
+    setDeliveryMode(null);
     setError(null);
 
     try {
@@ -44,16 +47,19 @@ export default function ContactForm() {
       if (!res.ok) {
         if (result?.fallback === "mailto") {
           openMailto(data);
+          setDeliveryMode("mailto");
           setStatus("success");
           reset();
           return;
         }
         throw new Error(result?.error || "Failed to send");
       }
+      setDeliveryMode("direct");
       setStatus("success");
       reset();
     } catch (e: any) {
       openMailto(data);
+      setDeliveryMode("mailto");
       setStatus("success");
       setError(e.message || null);
     }
@@ -83,7 +89,7 @@ export default function ContactForm() {
       </div>
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-semibold text-foreground">
-          Message
+          Notes
         </label>
         <textarea
           id="message"
@@ -92,7 +98,7 @@ export default function ContactForm() {
           aria-describedby={errors.message ? "message-error" : undefined}
           {...register("message")}
           className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
-          placeholder="Tell me what you want to build."
+          placeholder="Tell me what you want to build, improve, or automate."
         />
         {errors.message && (
           <p id="message-error" className="text-xs text-red-300">
@@ -104,13 +110,16 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-primary/20 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-primary/20 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
+          <PaperAirplaneIcon className="h-4 w-4" aria-hidden="true" />
           {status === "loading" ? "Sending..." : "Send"}
         </button>
         {status === "success" && (
           <p className="text-xs text-foreground-secondary">
-            Message prepared for brianbett756@gmail.com.
+            {deliveryMode === "direct"
+              ? "Message sent to brianbett756@gmail.com."
+              : "Email draft prepared for brianbett756@gmail.com."}
           </p>
         )}
         {status === "error" && <p className="text-xs text-red-300">{error}</p>}

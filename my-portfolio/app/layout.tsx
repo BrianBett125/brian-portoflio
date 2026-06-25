@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     template: "%s | Brian Bett",
   },
   description:
-    "Brian Bett's personal portfolio website for Java and Python backend engineering work.",
+    "Brian Bett's portfolio for backend systems, developer platforms, automation tools, and practical software engineering work.",
   openGraph: {
     title: "Brian Bett – Portfolio",
     description:
-      "Brian Bett's personal portfolio website for Java and Python backend engineering work.",
+      "Brian Bett's portfolio for backend systems, developer platforms, automation tools, and practical software engineering work.",
     url: "https://brianbett.com",
     siteName: "Brian Bett – Portfolio",
     images: [
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${GeistSans.className} antialiased`}>
         <Providers>
           <Navbar />
-          <main className="flex flex-col items-center py-16">
+          <main className="flex flex-col items-center py-8 sm:py-12 lg:py-16">
             {children}
           </main>
           <Footer />

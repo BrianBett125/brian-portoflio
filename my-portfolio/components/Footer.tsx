@@ -1,37 +1,67 @@
 "use client";
 
+import {
+  CodeBracketIcon,
+  ChatBubbleLeftRightIcon,
+  DocumentTextIcon,
+  FolderOpenIcon,
+  LinkIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+
+const links = [
+  { href: "/about", label: "About", icon: UserCircleIcon },
+  { href: "/projects", label: "Projects", icon: FolderOpenIcon },
+  { href: "/blog", label: "Blog", icon: DocumentTextIcon },
+  { href: "/contact", label: "Contact", icon: ChatBubbleLeftRightIcon },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-foreground/5 mt-20 bg-background-secondary">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
+          <div className="max-w-md">
             <h3 className="font-bold text-xl bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-3">Brian Bett</h3>
-            <p className="text-foreground-secondary max-w-md">Java and Python backend engineer with over three years of experience building reliable APIs, services, and data-driven systems.</p>
+            <p className="text-foreground-secondary max-w-md">Software engineer building backend systems, developer platforms, automation tools, and real-world solutions.</p>
           </div>
           
-          <div className="flex gap-8">
+          <div className="grid w-full grid-cols-2 gap-8 sm:w-auto">
             <div>
               <h4 className="font-semibold mb-3">Links</h4>
               <ul className="space-y-2 text-foreground-secondary">
-                <li><a href="/about" className="hover:text-accent-primary transition-colors">About</a></li>
-                <li><a href="/projects" className="hover:text-accent-primary transition-colors">Projects</a></li>
-                <li><a href="/blog" className="hover:text-accent-primary transition-colors">Blog</a></li>
-                <li><a href="/contact" className="hover:text-accent-primary transition-colors">Contact</a></li>
+                {links.map(({ href, label, icon: Icon }) => (
+                  <li key={href}>
+                    <a href={href} className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-3">Connect</h4>
               <ul className="space-y-2 text-foreground-secondary">
-                <li><a href="https://github.com/BrianBett125" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/brian-bett-kipkoech/" target="_blank" rel="noreferrer" className="hover:text-accent-primary transition-colors">LinkedIn</a></li>
+                <li>
+                  <a href="https://github.com/BrianBett125" target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                    <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/brian-bett-kipkoech/" target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                    <LinkIcon className="h-4 w-4" aria-hidden="true" />
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         
-        <div className="mt-10 pt-6 border-t border-foreground/5 flex flex-col sm:flex-row gap-4 items-center justify-between text-sm text-foreground-secondary">
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-foreground/5 pt-6 text-sm text-foreground-secondary sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Brian Bett. All rights reserved.</p>
           <p>
             Built with <a className="text-accent-primary hover:text-accent-secondary transition-colors" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>

@@ -14,25 +14,37 @@ describe('ProjectsPage', () => {
       slug: 'learning-log',
       title: 'Learning Log',
       description: 'Personal knowledge management app',
-      whyItMatters: "Most knowledge is lost because it's never written down",
+      problem: "Most knowledge is lost because it is never written down in a structure that is easy to return to.",
       techStack: ['Python', 'Django'],
       solution: 'Capture and organize learning notes.',
+      impact: 'Turns fragmented study notes into a searchable learning record.',
+      architecture: ['Django application organized around topics and learning entries.'],
+      category: 'Learning system',
+      accent: 'from-violet-500 via-blue-500 to-cyan-400',
     },
     {
       slug: 'polling-app',
       title: 'Polling App',
       description: 'Real-time AI-native polling platform',
-      whyItMatters: 'Frictionless feedback at the speed of a QR scan',
+      problem: 'Collecting feedback is often slower than the moment when the feedback is most useful.',
       techStack: ['Next.js', 'TypeScript'],
       solution: 'Collect real-time feedback quickly.',
+      impact: 'Supports faster feedback loops.',
+      architecture: ['Next.js application for the polling user experience.'],
+      category: 'Real-time platform',
+      accent: 'from-fuchsia-500 via-violet-500 to-blue-500',
     },
     {
       slug: 'python-projects',
       title: 'Python Projects',
       description: 'Collection of automation tools and scripts',
-      whyItMatters: 'Real problems deserve real solutions',
+      problem: 'Repeated operational tasks cost time and attention when they are handled manually.',
       techStack: ['Python', 'Docker'],
       solution: 'Practical automation scripts and tools.',
+      impact: 'Captures reusable automation patterns.',
+      architecture: ['Python scripts and tools for task automation.'],
+      category: 'Automation',
+      accent: 'from-emerald-400 via-cyan-400 to-blue-500',
     },
   ];
 
@@ -48,8 +60,8 @@ describe('ProjectsPage', () => {
     render(<ProjectsPage />);
     
     // Check if the title is rendered
-    expect(await screen.findByText('Projects built around real problems.')).toBeInTheDocument();
-    expect(await screen.findByText(/A focused portfolio of learning systems/)).toBeInTheDocument();
+    expect(await screen.findByText('Case studies for practical software systems.')).toBeInTheDocument();
+    expect(await screen.findByText(/Each project is framed by the problem/)).toBeInTheDocument();
   });
 
   test('loads and displays projects', async () => {

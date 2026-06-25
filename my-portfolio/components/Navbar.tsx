@@ -5,6 +5,23 @@ import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import {
+  Bars3Icon,
+  ChatBubbleLeftRightIcon,
+  DocumentTextIcon,
+  FolderOpenIcon,
+  HomeIcon,
+  UserCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+
+const navItems = [
+  { href: "/", label: "Home", icon: HomeIcon },
+  { href: "/about", label: "About", icon: UserCircleIcon },
+  { href: "/projects", label: "Projects", icon: FolderOpenIcon },
+  { href: "/blog", label: "Blog", icon: DocumentTextIcon },
+  { href: "/contact", label: "Contact", icon: ChatBubbleLeftRightIcon },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -23,75 +40,46 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-foreground/5 shadow-sm"
     >
-      <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 sm:py-5">
         <Link 
           href="/" 
-          className="group relative font-bold text-xl tracking-tight bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300"
+          className="group relative bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-lg font-bold tracking-tight text-transparent transition-all duration-300 hover:from-accent-secondary hover:to-accent-tertiary sm:text-xl"
           onClick={closeMenu}
         >
           Brian Bett
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary group-hover:w-full transition-all duration-300"></span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <Link 
-            href="/about" 
-            className={`relative py-1 ${isActive('/about') 
-              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
-              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
-          >
-            About
-          </Link>
-          <Link 
-            href="/projects" 
-            className={`relative py-1 ${isActive('/projects') 
-              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
-              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
-          >
-            Projects
-          </Link>
-          <Link 
-            href="/blog" 
-            className={`relative py-1 ${isActive('/blog') 
-              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
-              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
-          >
-            Blog
-          </Link>
-          <Link 
-            href="/contact" 
-            className={`relative py-1 ${isActive('/contact') 
-              ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary' 
-              : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
-          >
-            Contact
-          </Link>
+          {navItems.map(({ href, label, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`relative inline-flex items-center gap-1.5 py-1 ${isActive(href)
+                ? 'text-accent-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-gradient-to-r after:from-accent-primary after:to-accent-secondary'
+                : 'text-foreground-secondary hover:text-foreground transition-colors'}`}
+            >
+              <Icon className="h-4 w-4" aria-hidden="true" />
+              {label}
+            </Link>
+          ))}
           <ThemeToggle />
         </nav>
         
-        {/* Mobile menu button */}
         <button 
-          className="md:hidden p-2 rounded-full hover:bg-foreground/5 transition-colors"
+          className="rounded-full p-2 transition-colors hover:bg-foreground/5 md:hidden"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen(v => !v)}
         >
           {menuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12"></line>
-              <line x1="4" x2="20" y1="6" y2="6"></line>
-              <line x1="4" x2="20" y1="18" y2="18"></line>
-            </svg>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           )}
         </button>
       </div>
 
-      {/* Mobile menu drawer */}
       {menuOpen && (
         <>
           <button 
@@ -105,12 +93,34 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-72 max-w-[85%] z-50 md:hidden bg-background shadow-xl border-l border-foreground/10 p-6 flex flex-col gap-4"
+            className="fixed right-0 top-0 z-50 flex h-full w-80 max-w-[86vw] flex-col gap-3 border-l border-foreground/10 bg-background p-5 shadow-xl md:hidden"
           >
-            <Link href="/about" onClick={closeMenu} className={`py-2 ${isActive('/about') ? 'text-accent-primary' : 'text-foreground'}`}>About</Link>
-            <Link href="/projects" onClick={closeMenu} className={`py-2 ${isActive('/projects') ? 'text-accent-primary' : 'text-foreground'}`}>Projects</Link>
-            <Link href="/blog" onClick={closeMenu} className={`py-2 ${isActive('/blog') ? 'text-accent-primary' : 'text-foreground'}`}>Blog</Link>
-            <Link href="/contact" onClick={closeMenu} className={`py-2 ${isActive('/contact') ? 'text-accent-primary' : 'text-foreground'}`}>Contact</Link>
+            <div className="mb-2 flex items-center justify-between">
+              <span className="text-sm font-bold text-foreground-secondary">Menu</span>
+              <button
+                className="rounded-full p-2 hover:bg-foreground/5"
+                type="button"
+                onClick={closeMenu}
+                aria-label="Close menu"
+              >
+                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+            {navItems.map(({ href, label, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={closeMenu}
+                className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-sm font-semibold ${
+                  isActive(href)
+                    ? 'border-accent-primary/40 bg-accent-primary/10 text-accent-primary'
+                    : 'border-foreground/10 bg-foreground/[0.03] text-foreground'
+                }`}
+              >
+                <Icon className="h-5 w-5" aria-hidden="true" />
+                {label}
+              </Link>
+            ))}
             <div className="pt-2 border-t border-foreground/10 mt-2">
               <ThemeToggle />
             </div>

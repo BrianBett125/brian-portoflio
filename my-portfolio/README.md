@@ -18,6 +18,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Contact Email
+
+The contact form accepts a visitor email and notes, then posts to `/api/contact`.
+Direct delivery to `brianbett756@gmail.com` requires these environment variables
+in local development or in the deployment provider:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL=Portfolio <verified-sender@yourdomain.com>
+```
+
+If `RESEND_API_KEY` is missing, the API returns a `mailto` fallback and the
+browser opens a prepared email addressed to `brianbett756@gmail.com`.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

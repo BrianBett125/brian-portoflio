@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark as default - Enhanced vibrant scheme */
-  --background: #0f172a; /* Slate 900 - richer dark blue background */
-  --background-secondary: #1e293b; /* Slate 800 - for cards and sections */
-  --foreground: #f8fafc; /* Slate 50 - crisp white text */
-  --foreground-secondary: #cbd5e1; /* Slate 300 - secondary text */
-  --accent-primary: #8b5cf6; /* Violet 500 - vibrant primary accent */
-  --accent-secondary: #3b82f6; /* Blue 500 - secondary accent */
-  --accent-tertiary: #ec4899; /* Pink 500 - tertiary accent for highlights */
+  --background: #08090f;
+  --background-secondary: #11131c;
+  --foreground: #f8fafc;
+  --foreground-secondary: #cbd5e1;
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #3b82f6;
+  --accent-tertiary: #22d3ee;
   --success: #10b981; /* Emerald 500 */
   --warning: #f59e0b; /* Amber 500 */
   --error: #ef4444; /* Red 500 */
@@ -31,13 +30,13 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --background: #f8fafc; /* Slate 50 */
-    --background-secondary: #f1f5f9; /* Slate 100 */
-    --foreground: #0f172a; /* Slate 900 */
-    --foreground-secondary: #334155; /* Slate 700 */
-    --accent-primary: #7c3aed; /* Violet 600 - slightly darker for light mode */
-    --accent-secondary: #2563eb; /* Blue 600 */
-    --accent-tertiary: #db2777; /* Pink 600 */
+    --background: #f8fafc;
+    --background-secondary: #eef2f7;
+    --foreground: #0f172a;
+    --foreground-secondary: #334155;
+    --accent-primary: #7c3aed;
+    --accent-secondary: #2563eb;
+    --accent-tertiary: #0891b2;
     --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
   }
 }
@@ -48,7 +47,7 @@ body {
   /* Use Next Font via class on body; keep fallback only */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height: 1.6;
-  letter-spacing: 0.015em;
+  letter-spacing: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

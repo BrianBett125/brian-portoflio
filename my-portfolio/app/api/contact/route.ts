@@ -22,16 +22,13 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey);
 
-    // Send email using Resend
     await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: "brianbett756@gmail.com",
       replyTo: email,
-      subject: "New portfolio contact",
-      html: `<p>Email: ${email}</p><p>Message: ${message}</p>`,
+      subject: `New portfolio contact from ${email}`,
+      text: `Email: ${email}\n\nNotes:\n${message}`,
     });
-
-    console.log("Contact form submission:", { email });
 
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
   } catch (error) {
