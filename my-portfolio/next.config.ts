@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import path from "node:path";
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
@@ -7,6 +8,7 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  outputFileTracingRoot: path.resolve(__dirname),
   experimental: {
     mdxRs: true,
   },

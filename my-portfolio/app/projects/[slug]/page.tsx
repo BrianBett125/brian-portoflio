@@ -93,6 +93,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </span>
             ))}
           </div>
+          {project.editorialTakeaway && (
+            <div className="mt-8 max-w-3xl border-l-2 border-accent-secondary/40 pl-4">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
+                Editorial takeaway
+              </p>
+              <p className="mt-2 text-base leading-8 text-foreground-secondary italic">
+                {project.editorialTakeaway}
+              </p>
+            </div>
+          )}
         </header>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_0.8fr]">

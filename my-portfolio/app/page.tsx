@@ -228,21 +228,38 @@ export default async function Home() {
 
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
-              Field Logs
-            </p>
-            <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Short notes from building real systems.
-            </h2>
+          <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+                Field Logs
+              </p>
+              <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                Short notes from building real systems.
+              </h2>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl sm:p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
+                Editorial note
+              </p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary">
+                These notes are not filler. They are the operating principles
+                behind the portfolio: model the workflow, respect the database,
+                and keep the system legible when the work gets messy.
+              </p>
+            </div>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {engineeringNotes.map((note) => (
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {engineeringNotes.map((note, index) => (
               <article
                 key={note.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl transition hover:border-accent-secondary/50 hover:bg-white/[0.08] sm:p-6"
+                className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.08] sm:p-6"
               >
-                <BeakerIcon className="h-7 w-7 text-cyan-300" aria-hidden="true" />
+                <div className="flex items-start justify-between gap-4">
+                  <BeakerIcon className="h-7 w-7 shrink-0 text-cyan-300" aria-hidden="true" />
+                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-foreground-secondary">
+                    Note {index + 1}
+                  </span>
+                </div>
                 <h3 className="mt-4 text-lg font-black text-foreground">
                   {note.title}
                 </h3>
@@ -471,6 +488,20 @@ export default async function Home() {
               otherwise the form opens a prepared email so the note still
               reaches me from your mail app.
             </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <a
+                href="mailto:brianbett756@gmail.com"
+                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
+              >
+                brianbett756@gmail.com
+              </a>
+              <a
+                href="tel:+254728085834"
+                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
+              >
+                +254 728 085 834
+              </a>
+            </div>
           </div>
           <ContactForm />
         </div>

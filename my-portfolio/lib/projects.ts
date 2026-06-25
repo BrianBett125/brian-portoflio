@@ -2,6 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   description: string;
+  editorialTakeaway?: string;
   problem: string;
   techStack: string[];
   whyThisStack: {
@@ -22,6 +23,8 @@ export const projects: Project[] = [
     slug: "learning-log",
     title: "Learning Log",
     description: "Personal knowledge management app",
+    editorialTakeaway:
+      "The architecture treats recall as a product feature, not a side effect.",
     problem: "Most knowledge is lost because it is never written down in a structure that is easy to return to.",
     techStack: ["Python", "Django", "SQLite", "Bootstrap"],
     whyThisStack: [
@@ -54,6 +57,8 @@ export const projects: Project[] = [
     slug: "skillup",
     title: "SkillUp",
     description: "Structured learning platform for developers",
+    editorialTakeaway:
+      "Progress only compounds when the learning model is durable enough to guide the next step.",
     problem: "Developers can plateau when learning is scattered across tutorials, exercises, and disconnected practice.",
     techStack: ["Python", "PostgreSQL"],
     whyThisStack: [
@@ -82,6 +87,8 @@ export const projects: Project[] = [
     slug: "nail-it",
     title: "Nail It",
     description: "Construction inventory management system",
+    editorialTakeaway:
+      "Operational software has to stay legible in the middle of a noisy workflow.",
     problem: "Construction materials can be difficult to track once they move through active site operations.",
     techStack: ["HTML", "CSS", "JavaScript"],
     whyThisStack: [
@@ -114,6 +121,8 @@ export const projects: Project[] = [
     slug: "polling-app",
     title: "Polling App",
     description: "Real-time AI-native polling platform",
+    editorialTakeaway:
+      "Real-time feedback only matters when the state model stays clean under pressure.",
     problem: "Collecting feedback is often slower than the moment when the feedback is most useful.",
     techStack: ["Next.js", "TypeScript", "Supabase"],
     whyThisStack: [
@@ -146,6 +155,8 @@ export const projects: Project[] = [
     slug: "python-projects",
     title: "Python Projects",
     description: "Collection of automation tools and scripts",
+    editorialTakeaway:
+      "Automation is mostly a packaging problem: repeatable inputs, predictable runtime, and trustworthy output.",
     problem: "Repeated operational tasks cost time and attention when they are handled manually.",
     techStack: ["Python", "Docker"],
     whyThisStack: [

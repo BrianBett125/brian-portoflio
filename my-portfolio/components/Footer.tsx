@@ -5,7 +5,9 @@ import {
   ChatBubbleLeftRightIcon,
   DocumentTextIcon,
   FolderOpenIcon,
+  EnvelopeIcon,
   LinkIcon,
+  PhoneIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 
@@ -44,6 +46,18 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-3">Connect</h4>
               <ul className="space-y-2 text-foreground-secondary">
+                <li>
+                  <a href="tel:+254728085834" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                    <PhoneIcon className="h-4 w-4" aria-hidden="true" />
+                    +254 728 085 834
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:brianbett756@gmail.com" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                    <EnvelopeIcon className="h-4 w-4" aria-hidden="true" />
+                    Email
+                  </a>
+                </li>
                 <li>
                   <a href="https://github.com/BrianBett125" target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
                     <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />

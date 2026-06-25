@@ -12,6 +12,9 @@ import {
 
 export default function ProjectCard({ project }: { project: Project }) {
   const plausible = usePlausible();
+  const stackRationale = (project.whyThisStack ?? []).slice(0, 2);
+  const editorialTakeaway =
+    project.editorialTakeaway ?? project.architecture[0] ?? "";
 
   const trackProjectClick = (eventName: string) => {
     plausible(eventName, { props: { project: project.title } });
@@ -43,6 +46,14 @@ export default function ProjectCard({ project }: { project: Project }) {
       <p className="relative mt-3 text-sm leading-6 text-foreground-secondary">
         {project.description}.
       </p>
+      <div className="relative mt-4 border-l-2 border-accent-secondary/40 pl-4">
+        <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-accent-secondary">
+          Editorial takeaway
+        </p>
+        <p className="mt-2 text-sm leading-7 text-foreground-secondary italic">
+          {editorialTakeaway}
+        </p>
+      </div>
       <p className="relative mt-4 flex-grow rounded-xl border border-accent-primary/20 bg-accent-primary/10 p-3 text-sm leading-6 text-foreground">
         {project.problem}
       </p>
@@ -57,6 +68,24 @@ export default function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
+
+      {stackRationale.length > 0 && (
+        <div className="relative mt-5 rounded-xl border border-white/10 bg-black/20 p-4">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-accent-secondary">
+            Why this stack
+          </p>
+          <div className="mt-3 space-y-3">
+            {stackRationale.map((choice) => (
+              <div key={choice.tech}>
+                <p className="text-sm font-semibold text-foreground">{choice.tech}</p>
+                <p className="mt-1 text-sm leading-6 text-foreground-secondary">
+                  {choice.reason}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="relative mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-5">
         <Link

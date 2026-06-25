@@ -30,6 +30,20 @@ export default function ContactPage() {
             email provider is unavailable, the form opens a prepared email in
             your mail app.
           </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <a
+              href="mailto:brianbett756@gmail.com"
+              className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+            >
+              brianbett756@gmail.com
+            </a>
+            <a
+              href="tel:+254728085834"
+              className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+            >
+              +254 728 085 834
+            </a>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-8">

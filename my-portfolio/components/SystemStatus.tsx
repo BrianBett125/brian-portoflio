@@ -6,12 +6,20 @@ export default function SystemStatus() {
   const [timestamp, setTimestamp] = useState("");
 
   useEffect(() => {
-    setTimestamp(
+    const formatTimestamp = () =>
       new Intl.DateTimeFormat(undefined, {
         dateStyle: "medium",
         timeStyle: "short",
-      }).format(new Date())
-    );
+      }).format(new Date());
+
+    const updateTimestamp = () => {
+      setTimestamp(formatTimestamp());
+    };
+
+    updateTimestamp();
+    const interval = window.setInterval(updateTimestamp, 60_000);
+
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
