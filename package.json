@@ -1,6 +1,18 @@
 {
+  "name": "brian-portfolio-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix my-portfolio",
+    "build": "npm run build --prefix my-portfolio",
+    "start": "npm run start --prefix my-portfolio",
+    "test": "npm run test --prefix my-portfolio"
+  },
   "dependencies": {
+    "next": "^16.2.9",
     "next-auth": "^4.24.11",
-    "next-plausible": "^3.12.4"
+    "next-plausible": "^3.12.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
