@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
         <svg className="absolute text-accent-primary opacity-20 w-12 h-12 -top-4 -left-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32">
           <path d="M10 8c-2.2 0-4 1.8-4 4v10c0 2.2 1.8 4 4 4h10c2.2 0 4-1.8 4-4v-6.17c0-1.09-.43-2.13-1.2-2.9L16.9 7.03A4.01 4.01 0 0 0 14 6h-4zm7.5 4c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5S17.5 13.38 17.5 12z"/>
         </svg>
-        <p className="text-base text-foreground-secondary leading-relaxed italic relative z-10">"{testimonial}"</p>
+        <p className="text-base text-foreground-secondary leading-relaxed italic relative z-10">&ldquo;{testimonial}&rdquo;</p>
       </div>
       
       <div className="flex items-center">
@@ -86,7 +86,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-4">What People Say</h2>
-          <p className="text-foreground-secondary max-w-2xl mx-auto">Feedback from clients and collaborators I've had the pleasure to work with on various projects.</p>
+          <p className="text-foreground-secondary max-w-2xl mx-auto">Feedback from clients and collaborators I&apos;ve had the pleasure to work with on various projects.</p>
         </motion.div>
         
         <motion.div 

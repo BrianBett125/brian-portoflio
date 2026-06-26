@@ -83,11 +83,11 @@ describe('ProjectsPage', () => {
     
     // Wait for projects and tech filters to load
     await waitFor(() => {
-      expect(screen.getByText('Python')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Python' })).toBeInTheDocument();
     });
     
     // Click on Python filter
-    fireEvent.click(screen.getByText('Python'));
+    fireEvent.click(screen.getByRole('button', { name: 'Python' }));
     
     // Should show Python projects and hide others
     await waitFor(() => {
@@ -97,7 +97,7 @@ describe('ProjectsPage', () => {
     });
     
     // Click on All filter to reset
-    fireEvent.click(screen.getByText('All'));
+    fireEvent.click(screen.getByRole('button', { name: 'All' }));
     
     // Should show all projects again
     await waitFor(() => {

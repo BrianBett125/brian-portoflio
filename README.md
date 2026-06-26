@@ -145,6 +145,18 @@ my-portfolio/
 └── jest.config.js        # Jest configuration
 ```
 
+## ☁️ Vercel Deployment
+
+This project is set up to deploy seamlessly on Vercel. 
+
+### Recommended Vercel Settings:
+1. **Root Directory**: Set this to `my-portfolio` in your Vercel Project Settings. This ensures Vercel installs the correct dependencies and executes the build directly inside the Next.js app directory.
+2. **Build Command**: `npm run build` (This automatically runs `prisma generate && next build` as configured in `my-portfolio/package.json`).
+3. **Output Directory**: `default` (which resolves to `my-portfolio/.next`).
+4. **Environment Variables**:
+   - `RESEND_API_KEY`: (Optional) Your Resend API key for the contact form email delivery.
+   - `RESEND_FROM_EMAIL`: (Optional) The email address to send contact notifications from.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can contribute:

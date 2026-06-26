@@ -25,6 +25,7 @@ import {
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -180,12 +181,12 @@ export default async function Home() {
                 Selected project systems.
               </h2>
             </div>
-            <a
+            <Link
               href="/projects"
               className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-bold text-foreground transition hover:border-accent-secondary/70 hover:bg-white/[0.09] sm:w-fit"
             >
               View all projects
-            </a>
+            </Link>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

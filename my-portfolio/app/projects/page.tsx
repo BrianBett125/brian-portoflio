@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedTech, setSelectedTech] = useState("All");
   const [techStacks, setTechStacks] = useState<string[]>([]);
 
@@ -24,15 +23,9 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  useEffect(() => {
-    if (selectedTech === "All") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.techStack.includes(selectedTech))
-      );
-    }
-  }, [selectedTech, projects]);
+  const filteredProjects = selectedTech === "All"
+    ? projects
+    : projects.filter((project) => project.techStack.includes(selectedTech));
 
   return (
     <section className="relative w-full overflow-hidden px-4 py-12 sm:px-6 lg:py-20">

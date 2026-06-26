@@ -54,13 +54,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    const storedTheme = getStoredTheme();
-    if (storedTheme) {
+    const storedTheme = getStoredTheme() ?? getSystemTheme();
+    const timer = setTimeout(() => {
       setTheme(storedTheme);
-      return;
-    }
-
-    setTheme(getSystemTheme());
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {

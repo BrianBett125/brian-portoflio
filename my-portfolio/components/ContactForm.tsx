@@ -29,7 +29,7 @@ export default function ContactForm() {
   function openMailto(data: ContactFormInputs) {
     const subject = encodeURIComponent("Portfolio contact");
     const body = encodeURIComponent(`From: ${data.email}\n\n${data.message}`);
-    window.location.href = `mailto:brianbett756@gmail.com?subject=${subject}&body=${body}`;
+    window.location.assign(`mailto:brianbett756@gmail.com?subject=${subject}&body=${body}`);
   }
 
   async function onSubmit(data: ContactFormInputs) {
