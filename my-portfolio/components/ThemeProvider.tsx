@@ -1,8 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
-type Theme = 'light' | 'dark';
+type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
@@ -10,27 +16,59 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const STORAGE_KEY = "theme";
+
+function getSystemTheme(): Theme {
+  if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+
+  return "light";
+}
+
+function getStoredTheme(): Theme | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const storedTheme = window.localStorage.getItem(STORAGE_KEY);
+  return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
+}
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.classList.remove("light", "dark");
+  root.classList.add(theme);
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+  window.localStorage.setItem(STORAGE_KEY, theme);
+}
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") {
+      return "dark";
+    }
+
+    return getStoredTheme() ?? getSystemTheme();
+  });
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme;
+    const storedTheme = getStoredTheme();
     if (storedTheme) {
       setTheme(storedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+      return;
     }
+
+    setTheme(getSystemTheme());
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-    localStorage.setItem('theme', theme);
+    applyTheme(theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   return (
@@ -43,7 +81,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 }

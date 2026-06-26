@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getProjects } from '@/lib/projects';
 import { getAllPosts } from '@/lib/posts';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
+  const baseUrl = getSiteUrl();
 
   const projects = await getProjects();
   const projectRoutes = projects.map((project) => ({

@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getSiteUrl } from "@/lib/site-url";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -102,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               "@type": "Article",
               headline: data.title ?? slug,
               description: data.description ?? data.summary ?? "",
-              image: thumbnail ? `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}${thumbnail}` : undefined,
+              image: thumbnail ? `${getSiteUrl()}${thumbnail}` : undefined,
               datePublished: data.date,
               author: {
                 "@type": "Person",
@@ -113,12 +114,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 name: "Brian Bett Portfolio",
                 logo: {
                   "@type": "ImageObject",
-                  url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/next.svg`,
+                  url: `${getSiteUrl()}/next.svg`,
                 },
               },
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/blog/${slug}`,
+                "@id": `${getSiteUrl()}/blog/${slug}`,
               },
             }),
           }}

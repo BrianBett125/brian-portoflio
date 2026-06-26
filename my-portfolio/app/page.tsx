@@ -25,6 +25,7 @@ import {
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
@@ -35,7 +36,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: "Brian Bett - Software Engineer",
       description:
         "Backend systems, developer platforms, automation tools, and practical real-world solutions by Brian Bett.",
-      url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+      url: getSiteUrl(),
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
       type: "website",
@@ -111,36 +112,36 @@ export default async function Home() {
               About
             </p>
             <h2 className="text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              I build the server-side logic and product workflows that keep
-              software useful.
+              I design backend systems and product workflows with discipline,
+              clarity, and operational force.
             </h2>
           </div>
           <div className="space-y-5 text-base leading-8 text-foreground-secondary lg:text-lg">
             <p>
-              I am Brian Bett, a software engineer focused on backend systems,
-              developer platforms, automation tools, and real-world solutions
-              that need clean structure underneath the interface.
+              I am Brian Bett, a software engineer focused on backend
+              architecture, developer platforms, automation, and applications
+              that demand more than a polished interface. My work begins with
+              the structure beneath the surface: data, boundaries, workflows,
+              and the decisions that determine whether software remains useful
+              under real pressure.
             </p>
             <p>
-              My engineering approach starts with the system: the data model,
-              the workflow, the failure points, and the long-term cost of
-              maintaining the code. I care about scalability and efficiency
-              because software gets tested hardest after it starts solving real
-              problems.
+              I approach engineering as a matter of judgment, not decoration.
+              Before adding complexity, I examine the model, the failure paths,
+              the maintenance cost, and the operational consequences of every
+              choice. The aim is software that is legible, resilient, and
+              difficult to misuse.
             </p>
             <p>
               The work in this portfolio spans Python, Django, PostgreSQL,
               MySQL, SQLite, Spring Boot, Next.js, TypeScript, Supabase,
-              Docker, and browser-native HTML, CSS, and JavaScript. The common
-              thread is practical engineering: organize the data, simplify the
-              flow, and ship something dependable.
+              Docker, and browser-native HTML, CSS, and JavaScript. Across that
+              range, the standard is consistent: organize the domain, reduce
+              ambiguity, and ship systems that people can depend on.
             </p>
-            <p className="font-semibold text-foreground">
-              I build systems that make complicated work easier to operate.
-            </p>
-            <p className="font-semibold text-foreground">
-              What drives my engineering is simple: I want software to reduce
-              operational friction instead of creating a prettier version of it.
+            <p>
+              I build software to remove operational drag, sharpen control, and
+              make complicated work easier to govern.
             </p>
           </div>
         </div>

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Brian Bett, a software engineer focused on backend systems, developer platforms, automation tools, and real-world solutions.",
+    "About Brian Bett, a software engineer focused on backend architecture, developer platforms, automation, and durable product systems.",
   openGraph: {
     title: "Brian Bett - About",
     description:
-      "About Brian Bett, a software engineer focused on backend systems, developer platforms, automation tools, and real-world solutions.",
-    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+      "About Brian Bett, a software engineer focused on backend architecture, developer platforms, automation, and durable product systems.",
+    url: getSiteUrl(),
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
@@ -25,41 +26,39 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="mt-4 text-3xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Backend-minded engineering for real product work.
+            Backend discipline for software that has to endure.
           </h1>
         </div>
 
         <div className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-base leading-8 text-foreground-secondary backdrop-blur-xl sm:p-8 lg:text-lg">
           <p>
-            I am <strong className="text-foreground">Brian Bett</strong>, a
-            software engineer who builds backend systems, developer platforms,
-            automation tools, and practical applications for real workflows.
+            I am Brian Bett, a software engineer who builds backend systems,
+            developer platforms, automation tools, and product workflows with
+            a bias toward durability, clarity, and operational usefulness.
           </p>
           <p>
-            I think in systems: data models, boundaries, dependencies, failure
-            paths, and the cost of future change. Before adding complexity, I
-            look for the simplest structure that can scale, remain maintainable,
-            and keep behavior understandable.
+            I think in systems before I think in screens. Data models,
+            boundaries, dependencies, permissions, failure paths, and the cost
+            of future change determine whether an application remains coherent
+            after the first version ships. My work is shaped by that reality.
           </p>
           <p>
             My project work includes a Django learning log, a structured
             developer learning platform, a construction inventory workflow, a
-            real-time polling app, and Python automation projects. Across those
-            projects, the focus is consistent: organize information, make
-            operations clearer, and build software that solves a specific
-            problem.
+            real-time polling app, and Python automation projects. Each project
+            is treated as a concrete operating problem: define the domain,
+            reduce confusion, protect the workflow, and make the system easier
+            to reason about over time.
           </p>
           <p>
             The stack represented in this portfolio includes Python, Django,
             Spring Boot, PostgreSQL, MySQL, SQLite, Next.js, TypeScript,
             Supabase, Docker, Bootstrap, HTML, CSS, and JavaScript.
           </p>
-          <p className="font-semibold text-foreground">
-            My strongest work happens where product needs meet system design.
-          </p>
-          <p className="font-semibold text-foreground">
-            I build systems because the best software removes operational drag
-            and gives people clearer control over real work.
+          <p>
+            My strongest work sits where product judgment meets system design:
+            translating messy operational needs into software that is precise,
+            maintainable, and hard to break.
           </p>
         </div>
       </div>

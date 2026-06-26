@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const revalidate = 3600; // Regenerate RSS every hour
 
@@ -12,7 +13,7 @@ function escapeXml(unsafe: string) {
 }
 
 export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = getSiteUrl();
   const posts = await getAllPosts();
 
   const items = posts

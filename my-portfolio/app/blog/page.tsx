@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/posts";
 import BlogCard from "@/components/BlogCard";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata = {
   title: "Blog",
@@ -9,7 +10,7 @@ export const metadata = {
     title: "Brian Bett - Blog",
     description:
       "Engineering essays by Brian Bett on AI, systems, backend architecture, and the future of work.",
-    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+    url: getSiteUrl(),
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: project.title,
       description: project.description,
       type: "article",
-      url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${slug}`,
+      url: `${getSiteUrl()}/projects/${slug}`,
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
     },
@@ -47,7 +48,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     "@type": "CreativeWork",
     name: project.title,
     description: project.description,
-    url: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/projects/${project.slug}`,
+    url: `${getSiteUrl()}/projects/${project.slug}`,
     creator: {
       "@type": "Person",
       name: "Brian Bett",

@@ -1,22 +1,21 @@
 "use client";
 
 import { useTheme } from "./ThemeProvider";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid"; // Assuming you have @heroicons/react installed
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-md hover:bg-foreground/10 transition-colors"
+      type="button"
+      className="inline-flex items-center justify-center rounded-md p-2 transition-colors hover:bg-foreground/10"
       aria-label="Toggle theme"
+      title="Toggle theme"
     >
-      {theme === "light" ? (
-        <MoonIcon className="h-5 w-5 text-foreground" />
-      ) : (
-        <SunIcon className="h-5 w-5 text-foreground" />
-      )}
+      <SunIcon className="theme-icon-light hidden h-5 w-5 text-foreground" aria-hidden="true" />
+      <MoonIcon className="theme-icon-dark hidden h-5 w-5 text-foreground" aria-hidden="true" />
     </button>
   );
 }

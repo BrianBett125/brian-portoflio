@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/private'], // Add any paths you want to disallow
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'}/sitemap.xml`,
+    sitemap: `${getSiteUrl()}/sitemap.xml`,
   };
 }

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-:root {
+:root,
+html.dark {
   --background: #08090f;
   --background-secondary: #11131c;
   --foreground: #f8fafc;
@@ -14,6 +15,24 @@
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   --gradient-secondary: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+  color-scheme: dark;
+}
+
+html.light {
+  --background: #f8fafc;
+  --background-secondary: #eef2f7;
+  --foreground: #0f172a;
+  --foreground-secondary: #334155;
+  --accent-primary: #7c3aed;
+  --accent-secondary: #2563eb;
+  --accent-tertiary: #0891b2;
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  --gradient-secondary: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+  color-scheme: light;
 }
 
 @theme inline {
@@ -26,19 +45,6 @@
   --color-accent-tertiary: var(--accent-tertiary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #f8fafc;
-    --background-secondary: #eef2f7;
-    --foreground: #0f172a;
-    --foreground-secondary: #334155;
-    --accent-primary: #7c3aed;
-    --accent-secondary: #2563eb;
-    --accent-tertiary: #0891b2;
-    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-  }
 }
 
 body {
@@ -54,6 +60,22 @@ body {
 /* Subtle utility for focus rings aligned with accent */
 * {
   outline-color: color-mix(in oklab, var(--accent-primary), transparent 40%);
+}
+
+html.dark .theme-icon-light {
+  display: block;
+}
+
+html.dark .theme-icon-dark {
+  display: none;
+}
+
+html.light .theme-icon-light {
+  display: none;
+}
+
+html.light .theme-icon-dark {
+  display: block;
 }
 
 /* Modern card styling */

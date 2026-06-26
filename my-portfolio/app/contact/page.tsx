@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata = {
   title: "Contact",
@@ -6,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Brian Bett – Contact",
     description: "Get in touch with Brian Bett.",
-    url: process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000",
+    url: getSiteUrl(),
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
