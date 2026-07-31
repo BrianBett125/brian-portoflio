@@ -51,13 +51,29 @@ html.light {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.16), transparent 24%),
+    var(--background);
   color: var(--foreground);
-  /* Use Next Font via class on body; keep fallback only */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height: 1.6;
   letter-spacing: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at center, black, transparent 88%);
+  opacity: 0.35;
 }
 
 /* Subtle utility for focus rings aligned with accent */
@@ -87,6 +103,27 @@ html.light .theme-icon-dark {
   border-radius: 0.75rem;
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frosted-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 70px rgba(10, 14, 29, 0.28);
+}
+
+.section-eyebrow {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.story-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035)),
+    rgba(10, 12, 22, 0.52);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 55px rgba(7, 10, 21, 0.26);
 }
 
 .card:hover {

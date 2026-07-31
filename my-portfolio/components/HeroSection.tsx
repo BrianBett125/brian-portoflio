@@ -29,74 +29,111 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="absolute right-8 top-8 hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground-secondary backdrop-blur-xl sm:block"
+          className="mb-6 flex flex-wrap items-center gap-3"
         >
-          Software Engineer
+          <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-foreground-secondary backdrop-blur-xl sm:text-[0.7rem]">
+            Software Engineer
+          </span>
+          <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+            Available for selected product and platform work
+          </span>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-accent-secondary"
-        >
-          Brian Bett
-        </motion.p>
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-accent-secondary"
+            >
+              Brian Bett
+            </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-5xl text-4xl font-black tracking-tight text-foreground sm:text-6xl lg:text-8xl"
-        >
-          Software Engineer building backend systems that turn messy problems
-          into reliable products.
-        </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="max-w-5xl text-4xl font-black tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            >
+              Building backend systems that turn messy complexity into useful product motion.
+            </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-          className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
-        >
-          I work across Python, Django, PostgreSQL, Next.js, and TypeScript to
-          design practical systems, automation tools, and developer platforms
-          with clear data flow, maintainable structure, and real operational
-          value.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+              className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
+            >
+              I design practical software across Python, Django, PostgreSQL, Next.js,
+              and TypeScript — with an emphasis on clarity, operational leverage, and systems that stay trustworthy under real pressure.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.7 }}
-          className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:gap-4"
-        >
-          <Link
-            href="/projects"
-            className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary via-accent-secondary to-cyan-400 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-accent-primary/25 transition duration-300 hover:-translate-y-0.5 hover:shadow-accent-secondary/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.7 }}
+              className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:gap-4"
+            >
+              <Link
+                href="/projects"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary via-accent-secondary to-cyan-400 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-accent-primary/25 transition duration-300 hover:-translate-y-0.5 hover:shadow-accent-secondary/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+              >
+                View Projects
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+              >
+                <ChatBubbleLeftRightIcon className="h-4 w-4" aria-hidden="true" />
+                Contact Me
+              </Link>
+
+              <a
+                href="https://github.com/BrianBett125"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-primary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+              >
+                <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />
+                GitHub
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.aside
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="frosted-panel rounded-3xl p-5 sm:p-6"
           >
-            View Projects
-            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+              <div>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-accent-secondary">System Snapshot</p>
+                <p className="mt-2 text-sm font-semibold text-foreground-secondary">Engineering instincts, product context, and clean operating decisions.</p>
+              </div>
+            </div>
 
-          <Link
-            href="/contact"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
-          >
-            <ChatBubbleLeftRightIcon className="h-4 w-4" aria-hidden="true" />
-            Contact Me
-          </Link>
-
-          <a
-            href="https://github.com/BrianBett125"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-primary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
-          >
-            <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />
-            GitHub
-          </a>
-        </motion.div>
+            <div className="mt-5 space-y-3">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Focus</p>
+                <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, developer platforms, and automation tooling with strong product awareness.</p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Stack</p>
+                  <p className="mt-2 text-sm font-semibold text-foreground">Python · Django · Next.js · TypeScript</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Strength</p>
+                  <p className="mt-2 text-sm font-semibold text-foreground">Systems thinking with execution discipline</p>
+                </div>
+              </div>
+            </div>
+          </motion.aside>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -106,13 +143,13 @@ export default function HeroSection() {
           aria-label="Engineering focus areas"
         >
           {focusAreas.map(({ label, icon: Icon }) => (
-              <div
-                key={label}
-                className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl"
-              >
-                <Icon className="h-5 w-5 shrink-0 text-accent-secondary" aria-hidden="true" />
-                {label}
-              </div>
+            <div
+              key={label}
+              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl"
+            >
+              <Icon className="h-5 w-5 shrink-0 text-accent-secondary" aria-hidden="true" />
+              {label}
+            </div>
           ))}
         </motion.div>
       </div>

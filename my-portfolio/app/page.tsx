@@ -99,6 +99,21 @@ const aiEssays = [
   },
 ];
 
+const portfolioThesis = [
+  {
+    title: "Operate from the data boundary",
+    body: "I shape the model, permissions, and workflow around the real risk before the interface ever tries to hide it.",
+  },
+  {
+    title: "Reduce operational drag",
+    body: "The goal is fewer unnecessary handoffs, shorter recovery time, and workflows that stay understandable after launch.",
+  },
+  {
+    title: "Ship with conviction",
+    body: "The best systems make teams more capable because their behavior is coherent, measurable, and easy to trust.",
+  },
+];
+
 export default async function Home() {
   const projects = await getProjects();
 
@@ -172,15 +187,50 @@ export default async function Home() {
 
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-8 grid gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+              <p className="section-eyebrow text-sm font-semibold text-accent-secondary">
                 Case studies
               </p>
               <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                Selected project systems.
+                Selected systems with operational weight.
               </h2>
             </div>
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-5 backdrop-blur-xl sm:p-6">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-cyan-200">
+                Portfolio proof
+              </p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary sm:text-base">
+                I tend to work where the real value sits beneath the interface: data integrity, permission structure, orchestration, and the systems that keep product workflows honest.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-6 grid gap-3 sm:grid-cols-3">
+            {[
+              { value: "5+", label: "product-leaning systems" },
+              { value: "3", label: "core engineering disciplines" },
+              { value: "1", label: "clear operating standard" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-4 text-center backdrop-blur-xl"
+              >
+                <p className="text-2xl font-black text-foreground sm:text-3xl">{stat.value}</p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground-secondary">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.slice(0, 3).map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+
+          <div className="mt-6 flex justify-end">
             <Link
               href="/projects"
               className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-bold text-foreground transition hover:border-accent-secondary/70 hover:bg-white/[0.09] sm:w-fit"
@@ -188,11 +238,38 @@ export default async function Home() {
               View all projects
             </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+      <section className="px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl story-panel rounded-[28px] p-6 sm:p-8">
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p className="section-eyebrow text-sm font-semibold text-accent-secondary">
+                Portfolio thesis
+              </p>
+              <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                The systems I build are meant to make work more legible, faster to trust, and harder to break.
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-foreground-secondary">
+                My value does not live in decoration. It lives in the structure that lets teams move with confidence when the real world starts to get messy.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {portfolioThesis.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-xl"
+                >
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-accent-secondary">
+                    {item.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-foreground-secondary">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -230,6 +307,40 @@ export default async function Home() {
 
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
+          <div className="mb-8 grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+                Outcomes
+              </p>
+              <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                Systems that reduce drag, clarify ownership, and ship with less ambiguity.
+              </h2>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl sm:p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
+                Editorial note
+              </p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary">
+                The best engineering work is not only visible in the interface. It shows up in the data model, permission boundaries, and the confidence the team gains when the system behaves predictably.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Visibility</p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary">Clearer data flow, well-defined API boundaries, and system behavior that is easy to inspect and reason about.</p>
+            </article>
+            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Reliability</p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary">Failure paths designed early, operational noise reduced, and infrastructure decisions grounded in real use.</p>
+            </article>
+            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Leverage</p>
+              <p className="mt-3 text-sm leading-7 text-foreground-secondary">Practical automation, better coordination, and product workflows that move with less manual overhead.</p>
+            </article>
+          </div>
+
           <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">

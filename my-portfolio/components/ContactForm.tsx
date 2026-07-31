@@ -43,7 +43,8 @@ export default function ContactForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await res.json();
+      const result = await res.json().catch(() => null);
+
       if (!res.ok) {
         if (result?.fallback === "mailto") {
           openMailto(data);
@@ -52,16 +53,18 @@ export default function ContactForm() {
           reset();
           return;
         }
-        throw new Error(result?.error || "Failed to send");
+
+        setStatus("error");
+        setError(result?.error || "Failed to send message.");
+        return;
       }
+
       setDeliveryMode("direct");
       setStatus("success");
       reset();
     } catch (e: any) {
-      openMailto(data);
-      setDeliveryMode("mailto");
-      setStatus("success");
-      setError(e.message || null);
+      setStatus("error");
+      setError(e.message || "A network error occurred while sending your message.");
     }
   }
 
