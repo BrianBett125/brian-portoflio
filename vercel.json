@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "framework": "nextjs",
-  "installCommand": "npm install --prefix my-portfolio",
-  "buildCommand": "npm run build --prefix my-portfolio",
-  "devCommand": "npm run dev --prefix my-portfolio"
-}

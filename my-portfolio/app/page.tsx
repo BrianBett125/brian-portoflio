@@ -2,6 +2,7 @@ import ContactForm from "@/components/ContactForm";
 import DeveloperConsole from "@/components/DeveloperConsole";
 import HeroSection from "@/components/HeroSection";
 import ProjectCard from "@/components/ProjectCard";
+import Reveal from "@/components/Reveal";
 import SystemStatus from "@/components/SystemStatus";
 import {
   currentLearning,
@@ -121,6 +122,7 @@ export default async function Home() {
     <div className="w-full space-y-16 overflow-hidden sm:space-y-20 lg:space-y-24">
       <HeroSection />
 
+      <Reveal>
       <section id="about" className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-4">
@@ -162,7 +164,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-5">
@@ -184,7 +188,9 @@ export default async function Home() {
           <DeveloperConsole />
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 grid gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
@@ -240,7 +246,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl story-panel rounded-[28px] p-6 sm:p-8">
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
@@ -273,7 +281,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.75fr_1fr]">
           <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
@@ -304,7 +314,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
@@ -384,7 +396,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[1fr_0.85fr]">
           <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
@@ -438,7 +452,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-6 backdrop-blur-xl sm:p-8">
@@ -473,7 +489,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-6 backdrop-blur-xl sm:p-8">
@@ -525,7 +543,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
@@ -559,7 +579,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
@@ -584,7 +606,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section id="contact" className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-8 rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.8fr_1fr]">
           <div>
@@ -619,6 +643,7 @@ export default async function Home() {
           <ContactForm />
         </div>
       </section>
+      </Reveal>
     </div>
   );
 }
