@@ -1,8 +1,7 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "installCommand": "cd my-portfolio && npm install",
-  "buildCommand": "cd my-portfolio && npm run build",
-  "devCommand": "cd my-portfolio && npm run dev",
-  "outputDirectory": "my-portfolio/.next"
+  "installCommand": "npm install --prefix my-portfolio",
+  "buildCommand": "npm run build --prefix my-portfolio",
+  "devCommand": "npm run dev --prefix my-portfolio"
 }
