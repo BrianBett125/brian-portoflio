@@ -177,3 +177,37 @@ html.light .theme-icon-dark {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* Offset in-page anchor jumps so headings clear the fixed navbar */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+ * Respect the user's motion preference. Kill scroll-driven smoothness and
+ * collapse every animation/transition to a near-instant, no-movement state.
+ * Framer-motion is handled separately via useReducedMotion in components.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
+  }
+}
