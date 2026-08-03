@@ -14,8 +14,8 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       title="Toggle theme"
     >
-      <SunIcon className="theme-icon-light hidden h-5 w-5 text-foreground" aria-hidden="true" />
-      <MoonIcon className="theme-icon-dark hidden h-5 w-5 text-foreground" aria-hidden="true" />
+      <SunIcon className="theme-icon-light h-5 w-5 text-foreground" aria-hidden="true" />
+      <MoonIcon className="theme-icon-dark h-5 w-5 text-foreground" aria-hidden="true" />
     </button>
   );
 }
