@@ -2,14 +2,16 @@
 
 :root,
 html.dark {
-  --background: #08090f;
-  --background-secondary: #11131c;
-  --card: #131622;
+  --background: #09090b; /* Obsidian 950 — deepest base */
+  --background-secondary: #101014;
+  --card: #141419;
   --foreground: #f8fafc;
   --foreground-secondary: #cbd5e1;
-  --accent-primary: #8b5cf6;
-  --accent-secondary: #3b82f6;
-  --accent-tertiary: #22d3ee;
+  --accent-primary: #6366f1; /* Electric Indigo 500 */
+  --accent-secondary: #3b82f6; /* Blue 500 */
+  --accent-tertiary: #06b6d4; /* Cyber Cyan 500 */
+  --accent-primary-strong: #818cf8; /* Indigo 400 — large/display text on obsidian */
+  --accent-tertiary-strong: #22d3ee; /* Cyan 400 — large/display text on obsidian */
   --success: #10b981; /* Emerald 500 */
   --warning: #f59e0b; /* Amber 500 */
   --error: #ef4444; /* Red 500 */
@@ -25,9 +27,11 @@ html.light {
   --card: #ffffff;
   --foreground: #0f172a;
   --foreground-secondary: #334155;
-  --accent-primary: #7c3aed;
+  --accent-primary: #6366f1; /* Indigo 500 — same brand accent both themes */
   --accent-secondary: #2563eb;
   --accent-tertiary: #0891b2;
+  --accent-primary-strong: #4f46e5; /* Indigo 600 — text on light */
+  --accent-tertiary-strong: #0e7490; /* Cyan 700 — text on light */
   --success: #059669;
   --warning: #d97706;
   --error: #dc2626;
@@ -46,15 +50,18 @@ html.light {
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-tertiary: var(--accent-tertiary);
+  --color-accent-primary-strong: var(--accent-primary-strong);
+  --color-accent-tertiary-strong: var(--accent-tertiary-strong);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 32%),
-    radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 28%),
-    radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.16), transparent 24%),
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.20), transparent 34%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.16), transparent 26%),
+    radial-gradient(circle at 60% 120%, rgba(99, 102, 241, 0.12), transparent 40%),
     var(--background);
   color: var(--foreground);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
@@ -124,6 +131,89 @@ html.light .theme-icon-dark {
     rgba(10, 12, 22, 0.52);
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 55px rgba(7, 10, 21, 0.26);
+}
+
+/* Bento glass-card base: the repeated rounded/glass card pattern used by
+   ProjectBento and the skills matrix. Keeps the surface system consistent
+   in one place instead of a long Tailwind string on every card. */
+.bento-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(18px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(255, 255, 255, 0.085);
+  box-shadow: 0 22px 55px rgba(99, 102, 241, 0.16);
+}
+
+html.light .bento-card {
+  border-color: rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+html.light .bento-card:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 22px 55px rgba(99, 102, 241, 0.14);
+}
+
+/* Shine sweep for primary CTAs: a tilted sheen that crosses on hover. */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: -30%;
+  width: 40%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: translateX(-160%) rotate(12deg);
+  pointer-events: none;
+}
+
+.shine:hover::after {
+  animation: shine-sweep 0.8s ease forwards;
+}
+
+@keyframes shine-sweep {
+  to {
+    transform: translateX(520%) rotate(12deg);
+  }
+}
+
+/* Tabular numerals for count-up metrics so digits do not jitter. */
+.count-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Live status dot used by the hero status pill. */
+.glow-dot {
+  position: relative;
+  display: inline-flex;
+}
+
+.glow-dot::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.5);
+  filter: blur(6px);
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.9); }
+  50% { opacity: 0.9; transform: scale(1.15); }
 }
 
 .card:hover {
