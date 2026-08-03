@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -19,9 +19,14 @@ type RevealProps = {
  * the content statically with no transform or fade, so nothing moves.
  */
 export default function Reveal({ children, delay = 0, className }: RevealProps) {
+  const [mounted, setMounted] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (mounted && prefersReducedMotion) {
     return <div className={className}>{children}</div>;
   }
 

@@ -1,8 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import CopyEmail from "@/components/CopyEmail";
 import DeveloperConsole from "@/components/DeveloperConsole";
 import HeroSection from "@/components/HeroSection";
-import ProjectCard from "@/components/ProjectCard";
+import MetricsBand, { type Metric } from "@/components/MetricsBand";
+import ProjectBento from "@/components/ProjectBento";
 import Reveal from "@/components/Reveal";
+import SkillsMatrix from "@/components/SkillsMatrix";
 import SystemStatus from "@/components/SystemStatus";
 import {
   currentLearning,
@@ -118,6 +121,15 @@ const portfolioThesis = [
 export default async function Home() {
   const projects = await getProjects();
 
+  // Honest metrics, derived from real data so the numbers can never drift.
+  const distinctTech = new Set(projects.flatMap((p) => p.techStack)).size;
+  const metrics: Metric[] = [
+    { value: projects.length, label: "systems shipped" },
+    { value: distinctTech, label: "technologies in play" },
+    { value: stackGroups.length, label: "engineering disciplines" },
+    { value: aiEssays.length, label: "long-form essays" },
+  ];
+
   return (
     <div className="w-full space-y-16 overflow-hidden sm:space-y-20 lg:space-y-24">
       <HeroSection />
@@ -168,6 +180,22 @@ export default async function Home() {
 
       <Reveal>
       <section className="px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+              By the numbers
+            </p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl">
+              A portfolio measured by real, shipped work.
+            </h2>
+          </div>
+          <MetricsBand metrics={metrics} />
+        </div>
+      </section>
+      </Reveal>
+
+      <Reveal>
+      <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-5">
             <SystemStatus />
@@ -202,8 +230,8 @@ export default async function Home() {
                 Selected systems with operational weight.
               </h2>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-5 backdrop-blur-xl sm:p-6">
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-cyan-200">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-5 backdrop-blur-xl sm:p-6">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-accent-tertiary-strong">
                 Portfolio proof
               </p>
               <p className="mt-3 text-sm leading-7 text-foreground-secondary sm:text-base">
@@ -230,11 +258,7 @@ export default async function Home() {
             ))}
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+          <ProjectBento projects={projects.slice(0, 3)} featured />
 
           <div className="mt-6 flex justify-end">
             <Link
@@ -302,7 +326,7 @@ export default async function Home() {
                 className="group rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/50 hover:bg-white/[0.075]"
               >
                 <div className="flex gap-3 sm:gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-cyan-400 text-sm font-black text-white">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-accent-tertiary text-sm font-black text-white">
                     {index + 1}
                   </span>
                   <p className="text-sm leading-7 text-foreground-secondary sm:text-base">
@@ -380,7 +404,7 @@ export default async function Home() {
                 className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.08] sm:p-6"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <BeakerIcon className="h-7 w-7 shrink-0 text-cyan-300" aria-hidden="true" />
+                  <BeakerIcon className="h-7 w-7 shrink-0 text-accent-tertiary" aria-hidden="true" />
                   <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-foreground-secondary">
                     Note {index + 1}
                   </span>
@@ -425,9 +449,9 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-400/15 via-white/[0.055] to-accent-primary/20 p-6 backdrop-blur-xl sm:p-8">
-            <NewspaperIcon className="h-8 w-8 text-cyan-300 sm:h-9 sm:w-9" aria-hidden="true" />
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-tertiary/15 via-white/[0.055] to-accent-primary/20 p-6 backdrop-blur-xl sm:p-8">
+            <NewspaperIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               AI And Livelihood
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-3xl">
@@ -443,7 +467,7 @@ export default async function Home() {
                 <a
                   key={essay.href}
                   href={essay.href}
-                  className="block rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-bold text-foreground transition hover:border-cyan-300/60 hover:bg-white/[0.1]"
+                  className="block rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-bold text-foreground transition hover:border-accent-tertiary/60 hover:bg-white/[0.1]"
                 >
                   {essay.title}
                 </a>
@@ -457,9 +481,9 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-6 backdrop-blur-xl sm:p-8">
-            <WrenchScrewdriverIcon className="h-8 w-8 text-cyan-300 sm:h-9 sm:w-9" aria-hidden="true" />
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
+            <WrenchScrewdriverIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               Currently Building
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-3xl">
@@ -494,9 +518,9 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-cyan-400/15 p-6 backdrop-blur-xl sm:p-8">
-            <ExclamationTriangleIcon className="h-8 w-8 text-cyan-300 sm:h-9 sm:w-9" aria-hidden="true" />
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
+            <ExclamationTriangleIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               A Hard Problem I Solved
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl">
@@ -532,7 +556,7 @@ export default async function Home() {
               <div className="mt-4 grid gap-3">
                 {hardProblem.commonMistakes.map((mistake) => (
                   <div key={mistake} className="flex gap-3">
-                    <CheckCircleIcon className="mt-1 h-5 w-5 shrink-0 text-cyan-300" aria-hidden="true" />
+                    <CheckCircleIcon className="mt-1 h-5 w-5 shrink-0 text-accent-tertiary" aria-hidden="true" />
                     <p className="text-sm leading-7 text-foreground-secondary">
                       {mistake}
                     </p>
@@ -550,33 +574,13 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
-              Tech Stack
+              Skills Matrix
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Tools organized by the work they support.
             </h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {stackGroups.map(({ title, icon: Icon, items }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.085]"
-              >
-                <Icon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
-                <h3 className="mt-5 text-xl font-black text-foreground">{title}</h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-xs font-semibold text-foreground-secondary"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <SkillsMatrix />
         </div>
       </section>
       </Reveal>
@@ -599,7 +603,7 @@ export default async function Home() {
                 key={item}
                 className="flex min-h-14 items-center gap-3 rounded-xl border border-white/10 bg-background/40 px-4 text-sm font-bold text-foreground"
               >
-                <SparklesIcon className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden="true" />
+                <SparklesIcon className="h-5 w-5 shrink-0 text-accent-tertiary" aria-hidden="true" />
                 {item}
               </div>
             ))}
@@ -626,15 +630,10 @@ export default async function Home() {
               reaches me from your mail app.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <a
-                href="mailto:brianbett756@gmail.com"
-                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
-              >
-                brianbett756@gmail.com
-              </a>
+              <CopyEmail email="brianbett756@gmail.com" />
               <a
                 href="tel:+254728085834"
-                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
               >
                 +254 728 085 834
               </a>

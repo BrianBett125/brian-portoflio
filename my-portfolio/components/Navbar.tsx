@@ -3,7 +3,7 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
   Bars3Icon,
@@ -80,53 +80,58 @@ export default function Navbar() {
         </button>
       </div>
 
-      {menuOpen && (
-        <>
-          <button 
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
-            aria-label="Close menu overlay"
-            onClick={closeMenu}
-          />
-          <motion.nav 
-            id="mobile-menu"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-            className="fixed right-0 top-0 z-50 flex h-full w-80 max-w-[86vw] flex-col gap-3 border-l border-foreground/10 bg-background p-5 shadow-xl md:hidden"
-          >
-            <div className="mb-2 flex items-center justify-between">
-              <span className="text-sm font-bold text-foreground-secondary">Menu</span>
-              <button
-                className="rounded-full p-2 hover:bg-foreground/5"
-                type="button"
-                onClick={closeMenu}
-                aria-label="Close menu"
-              >
-                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
-            {navItems.map(({ href, label, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={closeMenu}
-                className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-sm font-semibold ${
-                  isActive(href)
-                    ? 'border-accent-primary/40 bg-accent-primary/10 text-accent-primary'
-                    : 'border-foreground/10 bg-foreground/[0.03] text-foreground'
-                }`}
-              >
-                <Icon className="h-5 w-5" aria-hidden="true" />
-                {label}
-              </Link>
-            ))}
-            <div className="pt-2 border-t border-foreground/10 mt-2">
-              <ThemeToggle />
-            </div>
-          </motion.nav>
-        </>
-      )}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.button 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
+              aria-label="Close menu overlay"
+              onClick={closeMenu}
+            />
+            <motion.nav 
+              id="mobile-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+              className="fixed right-0 top-0 z-50 flex h-full w-80 max-w-[86vw] flex-col gap-3 border-l border-foreground/10 bg-background p-5 shadow-xl md:hidden"
+            >
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-sm font-bold text-foreground-secondary">Menu</span>
+                <button
+                  className="rounded-full p-2 hover:bg-foreground/5"
+                  type="button"
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                >
+                  <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
+              {navItems.map(({ href, label, icon: Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={closeMenu}
+                  className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-sm font-semibold ${
+                    isActive(href)
+                      ? 'border-accent-primary/40 bg-accent-primary/10 text-accent-primary'
+                      : 'border-foreground/10 bg-foreground/[0.03] text-foreground'
+                  }`}
+                >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                  {label}
+                </Link>
+              ))}
+              <div className="pt-2 border-t border-foreground/10 mt-2">
+                <ThemeToggle />
+              </div>
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

@@ -21,7 +21,7 @@ export default function SignIn() {
         Object.values(providers).map((provider) => (
           <div key={provider.id}>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="btn-cyber btn-cyber-primary text-white py-2 px-4 rounded-xl"
               onClick={() => signIn(provider.id)}
             >
               Sign in with {provider.name}
