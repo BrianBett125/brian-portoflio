@@ -1,5 +1,9 @@
 import ContactForm from "@/components/ContactForm";
+import CopyEmail from "@/components/CopyEmail";
 import { getSiteUrl } from "@/lib/site-url";
+import { CodeBracketIcon } from "@heroicons/react/24/outline";
+
+const EMAIL = "brianbett756@gmail.com";
 
 export const metadata = {
   title: "Contact",
@@ -32,17 +36,27 @@ export default function ContactPage() {
             your mail app.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
+            <CopyEmail email={EMAIL} />
             <a
-              href="mailto:brianbett756@gmail.com"
-              className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+              href={`mailto:${EMAIL}`}
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
             >
-              brianbett756@gmail.com
+              Open in mail app
             </a>
             <a
               href="tel:+254728085834"
-              className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
             >
               +254 728 085 834
+            </a>
+            <a
+              href="https://github.com/BrianBett125"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-primary/50 hover:bg-white/[0.08]"
+            >
+              <CodeBracketIcon className="h-4 w-4 text-accent-secondary" aria-hidden="true" />
+              GitHub
             </a>
           </div>
         </div>

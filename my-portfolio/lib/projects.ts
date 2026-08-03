@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     slug: "learning-log",
     title: "Learning Log",
-    description: "Personal knowledge management app",
+    description: "Turns scattered study notes into a structured, returnable knowledge base",
     editorialTakeaway:
       "The architecture treats recall as a product feature, not a side effect.",
     problem: "Most knowledge is lost because it is never written down in a structure that is easy to return to.",
@@ -51,12 +51,12 @@ export const projects: Project[] = [
       "Bootstrap interface for structured, responsive views.",
     ],
     category: "Learning system",
-    accent: "from-violet-500 via-blue-500 to-cyan-400",
+    accent: "from-[#8B5CF6] via-[#A78BFA] to-[#22D3EE]",
   },
   {
     slug: "skillup",
     title: "SkillUp",
-    description: "Structured learning platform for developers",
+    description: "Focuses fragmented developer learning into one durable progression platform",
     editorialTakeaway:
       "Progress only compounds when the learning model is durable enough to guide the next step.",
     problem: "Developers can plateau when learning is scattered across tutorials, exercises, and disconnected practice.",
@@ -81,12 +81,12 @@ export const projects: Project[] = [
       "Platform model focused on organizing developer progression.",
     ],
     category: "Developer platform",
-    accent: "from-blue-500 via-cyan-400 to-emerald-400",
+    accent: "from-[#8B5CF6] to-[#A78BFA]",
   },
   {
     slug: "nail-it",
     title: "Nail It",
-    description: "Construction inventory management system",
+    description: "Keeps construction materials visible before losses turn expensive",
     editorialTakeaway:
       "Operational software has to stay legible in the middle of a noisy workflow.",
     problem: "Construction materials can be difficult to track once they move through active site operations.",
@@ -115,12 +115,12 @@ export const projects: Project[] = [
       "Focused UI surface for tracking construction-site materials.",
     ],
     category: "Operations tool",
-    accent: "from-cyan-400 via-blue-500 to-violet-500",
+    accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
   },
   {
     slug: "polling-app",
     title: "Polling App",
-    description: "Real-time AI-native polling platform",
+    description: "Collapses the gap between asking a question and acting on real-time feedback",
     editorialTakeaway:
       "Real-time feedback only matters when the state model stays clean under pressure.",
     problem: "Collecting feedback is often slower than the moment when the feedback is most useful.",
@@ -149,12 +149,12 @@ export const projects: Project[] = [
       "Supabase backend for real-time data workflows.",
     ],
     category: "Real-time platform",
-    accent: "from-fuchsia-500 via-violet-500 to-blue-500",
+    accent: "from-[#8B5CF6] via-[#22D3EE] to-[#8B5CF6]",
   },
   {
     slug: "python-projects",
     title: "Python Projects",
-    description: "Collection of automation tools and scripts",
+    description: "Packages repeatable operational work into dependable automation tools",
     editorialTakeaway:
       "Automation is mostly a packaging problem: repeatable inputs, predictable runtime, and trustworthy output.",
     problem: "Repeated operational tasks cost time and attention when they are handled manually.",
@@ -179,7 +179,7 @@ export const projects: Project[] = [
       "Collection structure centered on practical operational problems.",
     ],
     category: "Automation",
-    accent: "from-emerald-400 via-cyan-400 to-blue-500",
+    accent: "from-[#A78BFA] via-[#8B5CF6] to-[#22D3EE]",
   },
 ];
 

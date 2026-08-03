@@ -2,7 +2,7 @@
 
 import { getProjects } from "@/lib/projects";
 import type { Project } from "@/lib/projects";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectBento from "@/components/ProjectBento";
 import { useState, useEffect } from "react";
 
 export default function ProjectsPage() {
@@ -76,11 +76,7 @@ export default function ProjectsPage() {
           ))}
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
-          ))}
-        </div>
+        <ProjectBento projects={filteredProjects} featured={selectedTech === "All"} />
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/Providers";
 import { getMetadataBase, getSiteUrl } from "@/lib/site-url";
+import CursorGlow from "@/components/CursorGlow";
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}d.classList.remove('light','dark');d.classList.add(t);d.dataset.theme=t;d.style.colorScheme=t;}catch(e){}})();`}
         </Script>
         <Providers>
+          <CursorGlow />
           <Navbar />
           <main className="flex flex-col items-center py-8 sm:py-12 lg:py-16">
             {children}

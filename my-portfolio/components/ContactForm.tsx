@@ -54,8 +54,15 @@ export default function ContactForm() {
           return;
         }
 
+        let errorMsg = "Failed to send message.";
+        if (typeof result?.error === "string") {
+          errorMsg = result.error;
+        } else if (Array.isArray(result?.error)) {
+          errorMsg = result.error.map((issue: any) => issue.message).join(" ");
+        }
+
         setStatus("error");
-        setError(result?.error || "Failed to send message.");
+        setError(errorMsg);
         return;
       }
 
