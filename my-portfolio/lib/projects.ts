@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     slug: "learning-log",
     title: "Learning Log",
-    description: "Personal knowledge management app",
+    description: "Turns scattered study notes into a structured, returnable knowledge base",
     editorialTakeaway:
       "The architecture treats recall as a product feature, not a side effect.",
     problem: "Most knowledge is lost because it is never written down in a structure that is easy to return to.",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
   {
     slug: "skillup",
     title: "SkillUp",
-    description: "Structured learning platform for developers",
+    description: "Focuses fragmented developer learning into one durable progression platform",
     editorialTakeaway:
       "Progress only compounds when the learning model is durable enough to guide the next step.",
     problem: "Developers can plateau when learning is scattered across tutorials, exercises, and disconnected practice.",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
   {
     slug: "nail-it",
     title: "Nail It",
-    description: "Construction inventory management system",
+    description: "Keeps construction materials visible before losses turn expensive",
     editorialTakeaway:
       "Operational software has to stay legible in the middle of a noisy workflow.",
     problem: "Construction materials can be difficult to track once they move through active site operations.",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
   {
     slug: "polling-app",
     title: "Polling App",
-    description: "Real-time AI-native polling platform",
+    description: "Collapses the gap between asking a question and acting on real-time feedback",
     editorialTakeaway:
       "Real-time feedback only matters when the state model stays clean under pressure.",
     problem: "Collecting feedback is often slower than the moment when the feedback is most useful.",
@@ -154,7 +154,7 @@ export const projects: Project[] = [
   {
     slug: "python-projects",
     title: "Python Projects",
-    description: "Collection of automation tools and scripts",
+    description: "Packages repeatable operational work into dependable automation tools",
     editorialTakeaway:
       "Automation is mostly a packaging problem: repeatable inputs, predictable runtime, and trustworthy output.",
     problem: "Repeated operational tasks cost time and attention when they are handled manually.",
