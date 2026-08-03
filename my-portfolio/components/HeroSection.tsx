@@ -17,12 +17,17 @@ const focusAreas = [
   { label: "Automation tools", icon: WrenchScrewdriverIcon },
 ];
 
+// Fluid type: scales continuously from 2.25rem on mobile to 4.5rem on wide
+// screens instead of stepping at breakpoints. clamp() keeps it from blowing
+// out on ultrawide and from shrinking below a legible floor.
+const headlineSize = "clamp(2.25rem, 1.15rem + 4.6vw, 4.5rem)";
+
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden py-10 sm:py-16 lg:py-24">
       <div className="absolute inset-x-0 top-8 -z-10 h-px bg-gradient-to-r from-transparent via-accent-secondary/60 to-transparent" />
-      <div className="absolute left-0 top-0 -z-10 h-72 w-72 rounded-full bg-accent-primary/20 blur-3xl sm:h-96 sm:w-96" />
-      <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl sm:h-96 sm:w-96" />
+      <div className="absolute left-0 top-0 -z-10 h-72 w-72 rounded-full bg-accent-primary/25 blur-3xl sm:h-96 sm:w-96" />
+      <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-accent-tertiary/20 blur-3xl sm:h-96 sm:w-96" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
@@ -34,8 +39,11 @@ export default function HeroSection() {
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-foreground-secondary backdrop-blur-xl sm:text-[0.7rem]">
             Software Engineer
           </span>
-          <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
-            Available for selected product and platform work
+          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+            <span className="glow-dot" aria-hidden="true">
+              <span className="relative flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            Open for Opportunities
           </span>
         </motion.div>
 
@@ -54,7 +62,8 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="max-w-5xl text-4xl font-black tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+              style={{ fontSize: headlineSize, lineHeight: 1.05 }}
+              className="max-w-5xl font-black tracking-tight text-foreground"
             >
               Building backend systems that turn messy complexity into useful product motion.
             </motion.h1>
@@ -66,7 +75,7 @@ export default function HeroSection() {
               className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
             >
               I design practical software across Python, Django, PostgreSQL, Next.js,
-              and TypeScript — with an emphasis on clarity, operational leverage, and systems that stay trustworthy under real pressure.
+              and TypeScript, with an emphasis on clarity, operational leverage, and systems that stay trustworthy under real pressure.
             </motion.p>
 
             <motion.div
@@ -77,7 +86,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary via-accent-secondary to-cyan-400 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-accent-primary/25 transition duration-300 hover:-translate-y-0.5 hover:shadow-accent-secondary/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+                className="shine group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary px-6 py-3 text-sm font-bold text-white shadow-xl shadow-accent-primary/25 transition duration-300 hover:-translate-y-0.5 hover:shadow-accent-secondary/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
                 View Projects
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
