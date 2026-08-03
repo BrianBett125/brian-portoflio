@@ -76,7 +76,7 @@ export default function AnalyticsDashboard() {
               <Line
                 type="monotone"
                 dataKey="views"
-                stroke="#8884d8"
+                stroke="var(--color-primary)"
                 activeDot={{ r: 8 }}
               />
             </LineChart>
@@ -92,7 +92,7 @@ export default function AnalyticsDashboard() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="clicks" fill="#82ca9d" />
+              <Bar dataKey="clicks" fill="var(--color-accent)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -108,7 +108,7 @@ export default function AnalyticsDashboard() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="views" fill="#ffc658" />
+              <Bar dataKey="views" fill="var(--color-primary-glow)" />
             </BarChart>
           </ResponsiveContainer>
         </div>

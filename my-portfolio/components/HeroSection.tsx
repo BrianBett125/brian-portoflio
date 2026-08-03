@@ -68,7 +68,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-              className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#A78BFA]"
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-accent-secondary"
             >
               Brian Bett
             </motion.p>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                 href="/contact"
                 className="btn-cyber btn-cyber-secondary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold backdrop-blur-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
-                <ChatBubbleLeftRightIcon className="h-4 w-4 text-[#A78BFA]" aria-hidden="true" />
+                <ChatBubbleLeftRightIcon className="h-4 w-4 text-accent-secondary" aria-hidden="true" />
                 Contact Me
               </Link>
 
@@ -121,7 +121,7 @@ export default function HeroSection() {
                 rel="noreferrer"
                 className="btn-cyber btn-cyber-secondary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold backdrop-blur-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
-                <CodeBracketIcon className="h-4 w-4 text-[#A78BFA]" aria-hidden="true" />
+                <CodeBracketIcon className="h-4 w-4 text-accent-secondary" aria-hidden="true" />
                 GitHub
               </a>
             </motion.div>
@@ -137,23 +137,23 @@ export default function HeroSection() {
             <div className="glow-border-inner p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
                 <div>
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[#A78BFA]">System Snapshot</p>
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-accent-secondary">System Snapshot</p>
                   <p className="mt-2 text-sm font-semibold text-foreground-secondary">Engineering instincts, product context, and clean operating decisions.</p>
                 </div>
               </div>
 
               <div className="mt-5 space-y-3">
                 <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#22D3EE]">Focus</p>
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-tertiary">Focus</p>
                   <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, developer platforms, and automation tooling with strong product awareness.</p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#A78BFA]">Stack</p>
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Stack</p>
                     <p className="mt-2 text-sm font-semibold text-foreground">Python · Django · Next.js · TypeScript</p>
                   </div>
                   <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#A78BFA]">Strength</p>
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Strength</p>
                     <p className="mt-2 text-sm font-semibold text-foreground">Systems thinking with execution discipline</p>
                   </div>
                 </div>
@@ -172,9 +172,9 @@ export default function HeroSection() {
           {focusAreas.map(({ label, icon: Icon }) => (
             <div
               key={label}
-              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl hover:border-[#8B5CF6]/40 transition duration-300 hover:text-white"
+              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl hover:border-accent-primary/40 transition duration-300 hover:text-white"
             >
-              <Icon className="h-5 w-5 shrink-0 text-[#A78BFA]" aria-hidden="true" />
+              <Icon className="h-5 w-5 shrink-0 text-accent-secondary" aria-hidden="true" />
               {label}
             </div>
           ))}

@@ -1,25 +1,86 @@
 @import "tailwindcss";
 
 :root,
-html.dark,
-html.light {
-  --background: #0A0F1C; /* Cyberpunk deep space base */
+html.dark {
+  --color-bg: #0A0F1C;
+  --color-surface: #111827;
+  --color-primary: #8B5CF6;
+  --color-primary-glow: #A78BFA;
+  --color-accent: #22D3EE;
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #9CA3AF;
+  --color-border: rgba(139, 92, 246, 0.2);
+  --color-border-hover: rgba(139, 92, 246, 0.4);
+
+  --background: var(--color-bg);
   --background-secondary: #0e1527;
-  --card: #111827; /* Surface */
-  --foreground: #f8fafc;
-  --foreground-secondary: #9ca3af; /* muted gray-blue */
-  --accent-primary: #8B5CF6; /* neon violet */
-  --accent-secondary: #A78BFA; /* Glow violet */
-  --accent-tertiary: #22D3EE; /* Cyber Cyan */
-  --accent-primary-strong: #A78BFA; 
-  --accent-tertiary-strong: #22D3EE; 
+  --card: var(--color-surface);
+  --foreground: var(--color-text-primary);
+  --foreground-secondary: var(--color-text-secondary);
+  --accent-primary: var(--color-primary);
+  --accent-secondary: var(--color-primary-glow);
+  --accent-tertiary: var(--color-accent);
+  --accent-primary-strong: var(--color-primary-glow);
+  --accent-tertiary-strong: var(--color-accent);
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
-  --card-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.15), 0 4px 6px -2px rgba(139, 92, 246, 0.05);
-  --gradient-primary: linear-gradient(135deg, #8B5CF6, #A78BFA);
-  --gradient-secondary: linear-gradient(135deg, #8B5CF6, #22D3EE);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
+  --gradient-secondary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  
+  --glow-intensity-sm: rgba(139, 92, 246, 0.15);
+  --glow-intensity-md: rgba(139, 92, 246, 0.25);
+  --glow-intensity-lg: rgba(139, 92, 246, 0.4);
+  
+  --bg-radial-1: rgba(139, 92, 246, 0.12);
+  --bg-radial-2: rgba(167, 139, 250, 0.08);
+  --bg-radial-3: rgba(34, 211, 238, 0.06);
+  --bg-radial-4: rgba(139, 92, 246, 0.08);
+  
+  --bg-grid-color: rgba(139, 92, 246, 0.035);
   color-scheme: dark;
+}
+
+html.light {
+  --color-bg: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-primary: #8B5CF6; /* KEEP violet as primary */
+  --color-primary-glow: #A78BFA;
+  --color-accent: #0891B2; /* Muted cyan accent for light mode readability */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-border: rgba(139, 92, 246, 0.12);
+  --color-border-hover: rgba(139, 92, 246, 0.3);
+
+  --background: var(--color-bg);
+  --background-secondary: #F3F4F6;
+  --card: var(--color-surface);
+  --foreground: var(--color-text-primary);
+  --foreground-secondary: var(--color-text-secondary);
+  --accent-primary: var(--color-primary);
+  --accent-secondary: var(--color-primary-glow);
+  --accent-tertiary: var(--color-accent);
+  --accent-primary-strong: var(--color-primary);
+  --accent-tertiary-strong: var(--color-accent);
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
+  --gradient-secondary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  
+  --glow-intensity-sm: rgba(139, 92, 246, 0.06);
+  --glow-intensity-md: rgba(139, 92, 246, 0.12);
+  --glow-intensity-lg: rgba(139, 92, 246, 0.2);
+  
+  --bg-radial-1: rgba(139, 92, 246, 0.05);
+  --bg-radial-2: rgba(167, 139, 250, 0.03);
+  --bg-radial-3: rgba(8, 145, 178, 0.03);
+  --bg-radial-4: rgba(139, 92, 246, 0.03);
+  
+  --bg-grid-color: rgba(139, 92, 246, 0.015);
+  color-scheme: light;
 }
 
 @theme inline {
@@ -39,15 +100,15 @@ html.light {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(139, 92, 246, 0.12), transparent 35%),
-    radial-gradient(circle at top right, rgba(167, 139, 250, 0.08), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.06), transparent 25%),
-    radial-gradient(circle at 60% 120%, rgba(139, 92, 246, 0.08), transparent 40%),
+    radial-gradient(circle at top left, var(--bg-radial-1), transparent 35%),
+    radial-gradient(circle at top right, var(--bg-radial-2), transparent 30%),
+    radial-gradient(circle at bottom left, var(--bg-radial-3), transparent 25%),
+    radial-gradient(circle at 60% 120%, var(--bg-radial-4), transparent 40%),
     var(--background);
   color: var(--foreground);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height: 1.6;
-  letter-spacing: 0;
+  letter-spacing: 0.01em; /* Subtle spacing for premium feel */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -57,8 +118,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px);
+    linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-color) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: radial-gradient(circle at center, black, transparent 85%);
   opacity: 0.8;
@@ -116,8 +177,8 @@ html.light .theme-icon-dark {
 }
 
 .frosted-panel {
-  border: 1px solid rgba(139, 92, 246, 0.15);
-  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 70px rgba(10, 14, 29, 0.4);
 }
@@ -128,7 +189,7 @@ html.light .theme-icon-dark {
 }
 
 .story-panel {
-  border: 1px solid rgba(139, 92, 246, 0.15);
+  border: 1px solid var(--color-border);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
     rgba(10, 15, 28, 0.7);
@@ -139,8 +200,8 @@ html.light .theme-icon-dark {
 /* Bento glass-card base: hover translateY + border glow + shadow increase */
 .bento-card {
   position: relative;
-  border: 1px solid rgba(139, 92, 246, 0.12);
-  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   backdrop-filter: blur(18px);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), 
               border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
@@ -150,20 +211,20 @@ html.light .theme-icon-dark {
 
 .bento-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(167, 139, 250, 0.45);
-  background: rgba(17, 24, 39, 0.85);
-  box-shadow: 0 22px 55px rgba(139, 92, 246, 0.18), 0 0 15px rgba(167, 139, 250, 0.1);
+  border-color: var(--color-border-hover);
+  background: var(--color-surface);
+  box-shadow: 0 22px 55px var(--glow-intensity-sm), 0 0 15px var(--glow-intensity-sm);
 }
 
 html.light .bento-card {
-  border-color: rgba(139, 92, 246, 0.12);
-  background: rgba(17, 24, 39, 0.7);
+  border-color: var(--color-border);
+  background: var(--color-surface);
 }
 
 html.light .bento-card:hover {
-  border-color: rgba(167, 139, 250, 0.45);
-  background: rgba(17, 24, 39, 0.85);
-  box-shadow: 0 22px 55px rgba(139, 92, 246, 0.18), 0 0 15px rgba(167, 139, 250, 0.1);
+  border-color: var(--color-border-hover);
+  background: var(--color-surface);
+  box-shadow: 0 22px 55px var(--glow-intensity-sm), 0 0 15px var(--glow-intensity-sm);
 }
 
 /* Shine sweep for primary CTAs: a tilted sheen that crosses on hover. */
@@ -225,6 +286,17 @@ html.light .bento-card:hover {
   box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.05);
 }
 
+/* Reusable glow utilities using CSS shadow tokens */
+.glow-sm {
+  box-shadow: 0 0 10px var(--glow-intensity-sm);
+}
+.glow-md {
+  box-shadow: 0 0 18px var(--glow-intensity-md);
+}
+.glow-lg {
+  box-shadow: 0 0 28px var(--glow-intensity-lg);
+}
+
 /* Cyber Button styling with hover scale, glow, and transitions */
 .btn-cyber {
   position: relative;
@@ -242,27 +314,27 @@ html.light .bento-card:hover {
 .btn-cyber-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25);
-  border: 1px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 4px 15px var(--glow-intensity-sm);
+  border: 1px solid var(--color-border);
 }
 
 .btn-cyber-primary:hover {
   transform: scale(1.04);
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.6), 0 0 10px rgba(167, 139, 250, 0.3);
-  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 22px var(--glow-intensity-md), 0 0 10px var(--glow-intensity-sm);
+  border-color: var(--color-border-hover);
 }
 
 .btn-cyber-secondary {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
   color: var(--foreground);
 }
 
 .btn-cyber-secondary:hover {
   transform: scale(1.04);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(139, 92, 246, 0.5);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 0 20px var(--glow-intensity-sm);
 }
 
 /* Traveling border glow animation */

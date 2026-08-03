@@ -48,25 +48,25 @@ export default function TypewriterTerminal() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-20" />
       
       <div className="flex items-center gap-1.5 pb-2 mb-3 border-b border-white/5 text-foreground-secondary/40">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#8B5CF6]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#22D3EE]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-primary" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-tertiary" />
         <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
         <span className="ml-1 text-[10px] uppercase tracking-wider font-semibold">brian@portfolio:~</span>
       </div>
       
       <p className="text-foreground-secondary/80">
-        <span className="text-[#8B5CF6] font-bold">$</span> whoami
+        <span className="text-accent-primary font-bold">$</span> whoami
       </p>
       <p className="text-foreground font-bold mt-1">
-        Brian Bett — <span className="text-[#22D3EE]">Backend Systems Engineer</span>
+        Brian Bett — <span className="text-accent-tertiary">Backend Systems Engineer</span>
       </p>
       
       <p className="text-foreground-secondary/80 mt-3">
-        <span className="text-[#8B5CF6] font-bold">$</span> cat core_thesis.sh
+        <span className="text-accent-primary font-bold">$</span> cat core_thesis.sh
       </p>
-      <p className="text-[#A78BFA] font-medium mt-1 min-h-[24px] flex items-center">
+      <p className="text-accent-secondary font-medium mt-1 min-h-[24px] flex items-center">
         &gt;&nbsp;{displayText}
-        <span className="inline-block w-1.5 h-4 bg-[#A78BFA] ml-1 animate-pulse" />
+        <span className="inline-block w-1.5 h-4 bg-accent-secondary ml-1 animate-pulse" />
       </p>
     </div>
   );

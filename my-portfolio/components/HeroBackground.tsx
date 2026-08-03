@@ -46,9 +46,12 @@ export default function HeroBackground() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Color palette matching the strict design system
-    // Primary violet: #8B5CF6, Glow: #A78BFA, Accent Cyan: #22D3EE
-    const colors = ["#8B5CF6", "#A78BFA", "#22D3EE"];
+    // Retrieve colors dynamically from the CSS design tokens
+    const styles = getComputedStyle(document.documentElement);
+    const primaryColor = styles.getPropertyValue("--color-primary").trim() || "#8B5CF6";
+    const primaryGlowColor = styles.getPropertyValue("--color-primary-glow").trim() || "#A78BFA";
+    const accentColor = styles.getPropertyValue("--color-accent").trim() || "#22D3EE";
+    const colors = [primaryColor, primaryGlowColor, accentColor];
     
     // Initialize particles
     for (let i = 0; i < maxParticles; i++) {
