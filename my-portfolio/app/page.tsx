@@ -1,8 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import CopyEmail from "@/components/CopyEmail";
 import DeveloperConsole from "@/components/DeveloperConsole";
 import HeroSection from "@/components/HeroSection";
-import ProjectCard from "@/components/ProjectCard";
+import MetricsBand, { type Metric } from "@/components/MetricsBand";
+import ProjectBento from "@/components/ProjectBento";
 import Reveal from "@/components/Reveal";
+import SkillsMatrix from "@/components/SkillsMatrix";
 import SystemStatus from "@/components/SystemStatus";
 import {
   currentLearning,
@@ -118,6 +121,15 @@ const portfolioThesis = [
 export default async function Home() {
   const projects = await getProjects();
 
+  // Honest metrics, derived from real data so the numbers can never drift.
+  const distinctTech = new Set(projects.flatMap((p) => p.techStack)).size;
+  const metrics: Metric[] = [
+    { value: projects.length, label: "systems shipped" },
+    { value: distinctTech, label: "technologies in play" },
+    { value: stackGroups.length, label: "engineering disciplines" },
+    { value: aiEssays.length, label: "long-form essays" },
+  ];
+
   return (
     <div className="w-full space-y-16 overflow-hidden sm:space-y-20 lg:space-y-24">
       <HeroSection />
@@ -162,6 +174,22 @@ export default async function Home() {
               make complicated work easier to govern.
             </p>
           </div>
+        </div>
+      </section>
+      </Reveal>
+
+      <Reveal>
+      <section className="px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
+              By the numbers
+            </p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl">
+              A portfolio measured by real, shipped work.
+            </h2>
+          </div>
+          <MetricsBand metrics={metrics} />
         </div>
       </section>
       </Reveal>
@@ -230,11 +258,7 @@ export default async function Home() {
             ))}
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+          <ProjectBento projects={projects.slice(0, 3)} featured />
 
           <div className="mt-6 flex justify-end">
             <Link
@@ -550,33 +574,13 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
-              Tech Stack
+              Skills Matrix
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Tools organized by the work they support.
             </h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {stackGroups.map(({ title, icon: Icon, items }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.085]"
-              >
-                <Icon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
-                <h3 className="mt-5 text-xl font-black text-foreground">{title}</h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-xs font-semibold text-foreground-secondary"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <SkillsMatrix />
         </div>
       </section>
       </Reveal>
@@ -626,15 +630,10 @@ export default async function Home() {
               reaches me from your mail app.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <a
-                href="mailto:brianbett756@gmail.com"
-                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
-              >
-                brianbett756@gmail.com
-              </a>
+              <CopyEmail email="brianbett756@gmail.com" />
               <a
                 href="tel:+254728085834"
-                className="rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
               >
                 +254 728 085 834
               </a>
