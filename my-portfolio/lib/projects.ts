@@ -51,7 +51,7 @@ export const projects: Project[] = [
       "Bootstrap interface for structured, responsive views.",
     ],
     category: "Learning system",
-    accent: "from-violet-500 via-blue-500 to-cyan-400",
+    accent: "from-[#8B5CF6] via-[#A78BFA] to-[#22D3EE]",
   },
   {
     slug: "skillup",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
       "Platform model focused on organizing developer progression.",
     ],
     category: "Developer platform",
-    accent: "from-blue-500 via-cyan-400 to-emerald-400",
+    accent: "from-[#8B5CF6] to-[#A78BFA]",
   },
   {
     slug: "nail-it",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
       "Focused UI surface for tracking construction-site materials.",
     ],
     category: "Operations tool",
-    accent: "from-cyan-400 via-blue-500 to-violet-500",
+    accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
   },
   {
     slug: "polling-app",
@@ -149,7 +149,7 @@ export const projects: Project[] = [
       "Supabase backend for real-time data workflows.",
     ],
     category: "Real-time platform",
-    accent: "from-fuchsia-500 via-violet-500 to-blue-500",
+    accent: "from-[#8B5CF6] via-[#22D3EE] to-[#8B5CF6]",
   },
   {
     slug: "python-projects",
@@ -179,7 +179,7 @@ export const projects: Project[] = [
       "Collection structure centered on practical operational problems.",
     ],
     category: "Automation",
-    accent: "from-emerald-400 via-cyan-400 to-blue-500",
+    accent: "from-[#A78BFA] via-[#8B5CF6] to-[#22D3EE]",
   },
 ];
 

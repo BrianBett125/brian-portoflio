@@ -10,6 +10,8 @@ import {
   ServerStackIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
+import HeroBackground from "./HeroBackground";
+import TypewriterTerminal from "./TypewriterTerminal";
 
 const focusAreas = [
   { label: "Backend systems", icon: ServerStackIcon },
@@ -24,10 +26,13 @@ const headlineSize = "clamp(2.25rem, 1.15rem + 4.6vw, 4.5rem)";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-10 sm:py-16 lg:py-24">
-      <div className="absolute inset-x-0 top-8 -z-10 h-px bg-gradient-to-r from-transparent via-accent-secondary/60 to-transparent" />
-      <div className="absolute left-0 top-0 -z-10 h-72 w-72 rounded-full bg-accent-primary/25 blur-3xl sm:h-96 sm:w-96" />
-      <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-accent-tertiary/20 blur-3xl sm:h-96 sm:w-96" />
+    <section className="relative overflow-hidden py-10 sm:py-16 lg:py-24 w-full">
+      {/* Dynamic connected nodes canvas backdrop */}
+      <HeroBackground />
+      
+      <div className="absolute inset-x-0 top-8 -z-10 h-px bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent" />
+      <div className="absolute left-0 top-0 -z-10 h-72 w-72 rounded-full bg-accent-primary/10 blur-3xl sm:h-96 sm:w-96" />
+      <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-accent-tertiary/10 blur-3xl sm:h-96 sm:w-96" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
@@ -47,13 +52,23 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
+        {/* Terminal Intro above headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-8 max-w-2xl"
+        >
+          <TypewriterTerminal />
+        </motion.div>
+
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-accent-secondary"
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#A78BFA]"
             >
               Brian Bett
             </motion.p>
@@ -61,17 +76,17 @@ export default function HeroSection() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
               style={{ fontSize: headlineSize, lineHeight: 1.05 }}
               className="max-w-5xl font-black tracking-tight text-foreground"
             >
-              Building backend systems that turn messy complexity into useful product motion.
+              Building <span className="gradient-text-animate glow-word">backend systems</span> that turn messy complexity into <span className="gradient-text-animate glow-word">product motion</span>.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
               className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
             >
               I design practical software across Python, Django, PostgreSQL, Next.js,
@@ -86,7 +101,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="shine group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary px-6 py-3 text-sm font-bold text-white shadow-xl shadow-accent-primary/25 transition duration-300 hover:-translate-y-0.5 hover:shadow-accent-secondary/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+                className="shine btn-cyber btn-cyber-primary group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
                 View Projects
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -94,9 +109,9 @@ export default function HeroSection() {
 
               <Link
                 href="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+                className="btn-cyber btn-cyber-secondary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold backdrop-blur-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
-                <ChatBubbleLeftRightIcon className="h-4 w-4" aria-hidden="true" />
+                <ChatBubbleLeftRightIcon className="h-4 w-4 text-[#A78BFA]" aria-hidden="true" />
                 Contact Me
               </Link>
 
@@ -104,40 +119,43 @@ export default function HeroSection() {
                 href="https://github.com/BrianBett125"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 text-sm font-bold text-foreground shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-primary/70 hover:bg-white/[0.09] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+                className="btn-cyber btn-cyber-secondary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold backdrop-blur-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               >
-                <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />
+                <CodeBracketIcon className="h-4 w-4 text-[#A78BFA]" aria-hidden="true" />
                 GitHub
               </a>
             </motion.div>
           </div>
 
+          {/* Premium signature card with rotating border glow */}
           <motion.aside
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="frosted-panel rounded-3xl p-5 sm:p-6"
+            className="glow-border-container shadow-2xl shadow-accent-primary/10"
           >
-            <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
-              <div>
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-accent-secondary">System Snapshot</p>
-                <p className="mt-2 text-sm font-semibold text-foreground-secondary">Engineering instincts, product context, and clean operating decisions.</p>
-              </div>
-            </div>
-
-            <div className="mt-5 space-y-3">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Focus</p>
-                <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, developer platforms, and automation tooling with strong product awareness.</p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Stack</p>
-                  <p className="mt-2 text-sm font-semibold text-foreground">Python · Django · Next.js · TypeScript</p>
+            <div className="glow-border-inner p-5 sm:p-6">
+              <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+                <div>
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[#A78BFA]">System Snapshot</p>
+                  <p className="mt-2 text-sm font-semibold text-foreground-secondary">Engineering instincts, product context, and clean operating decisions.</p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Strength</p>
-                  <p className="mt-2 text-sm font-semibold text-foreground">Systems thinking with execution discipline</p>
+              </div>
+
+              <div className="mt-5 space-y-3">
+                <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#22D3EE]">Focus</p>
+                  <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, developer platforms, and automation tooling with strong product awareness.</p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#A78BFA]">Stack</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Python · Django · Next.js · TypeScript</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#A78BFA]">Strength</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Systems thinking with execution discipline</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -154,9 +172,9 @@ export default function HeroSection() {
           {focusAreas.map(({ label, icon: Icon }) => (
             <div
               key={label}
-              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl"
+              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl hover:border-[#8B5CF6]/40 transition duration-300 hover:text-white"
             >
-              <Icon className="h-5 w-5 shrink-0 text-accent-secondary" aria-hidden="true" />
+              <Icon className="h-5 w-5 shrink-0 text-[#A78BFA]" aria-hidden="true" />
               {label}
             </div>
           ))}
