@@ -194,4 +194,3 @@ Here are some screenshots of the updated portfolio design:
 ---
 
 *This README is automatically updated to reflect changes in the codebase.*
-
