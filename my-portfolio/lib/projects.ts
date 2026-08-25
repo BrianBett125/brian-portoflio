@@ -52,6 +52,7 @@ export const projects: Project[] = [
     ],
     category: "Learning system",
     accent: "from-[#8B5CF6] via-[#A78BFA] to-[#22D3EE]",
+    githubLink: "https://github.com/BrianBett125/Learning_Log",
   },
   {
     slug: "skillup",
@@ -82,6 +83,7 @@ export const projects: Project[] = [
     ],
     category: "Developer platform",
     accent: "from-[#8B5CF6] to-[#A78BFA]",
+    githubLink: "https://github.com/BrianBett125/skillup",
   },
   {
     slug: "nail-it",
@@ -116,6 +118,7 @@ export const projects: Project[] = [
     ],
     category: "Operations tool",
     accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
+    githubLink: "https://github.com/BrianBett125/Nail_It",
   },
   {
     slug: "polling-app",
@@ -150,6 +153,7 @@ export const projects: Project[] = [
     ],
     category: "Real-time platform",
     accent: "from-[#8B5CF6] via-[#22D3EE] to-[#8B5CF6]",
+    githubLink: "https://github.com/BrianBett125/Polling-App",
   },
   {
     slug: "java-from-scratch",
@@ -210,6 +214,7 @@ export const projects: Project[] = [
     ],
     category: "Automation",
     accent: "from-[#A78BFA] via-[#8B5CF6] to-[#22D3EE]",
+    githubLink: "https://github.com/BrianBett125/python-projects",
   },
 ];
 
