@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Brian Bett, a software engineer focused on backend architecture, developer platforms, automation, and durable product systems.",
+    "About Brian Bett, a software engineer focused on backend architecture, Java, Spring Boot, API development, developer platforms, automation, and durable product systems.",
+  alternates: {
+    canonical: getCanonicalUrl("/about"),
+  },
   openGraph: {
     title: "Brian Bett - About",
     description:
-      "About Brian Bett, a software engineer focused on backend architecture, developer platforms, automation, and durable product systems.",
-    url: getSiteUrl(),
+      "About Brian Bett, a software engineer focused on backend architecture, Java, Spring Boot, API development, developer platforms, automation, and durable product systems.",
+    url: getCanonicalUrl("/about"),
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
@@ -26,15 +29,15 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="mt-4 text-3xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Backend discipline for software that has to endure.
+            Software engineering with backend discipline.
           </h1>
         </div>
 
         <div className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-base leading-8 text-foreground-secondary backdrop-blur-xl sm:p-8 lg:text-lg">
           <p>
             I am Brian Bett, a software engineer who builds backend systems,
-            developer platforms, automation tools, and product workflows with
-            a bias toward durability, clarity, and operational usefulness.
+            APIs, developer platforms, automation tools, and product workflows
+            with a bias toward durability, clarity, and operational usefulness.
           </p>
           <p>
             I think in systems before I think in screens. Data models,
@@ -43,17 +46,19 @@ export default function AboutPage() {
             after the first version ships. My work is shaped by that reality.
           </p>
           <p>
-            My project work includes a Django learning log, a structured
-            developer learning platform, a construction inventory workflow, a
-            real-time polling app, and Python automation projects. Each project
-            is treated as a concrete operating problem: define the domain,
-            reduce confusion, protect the workflow, and make the system easier
-            to reason about over time.
+            My project work includes Java fundamentals and object-oriented
+            practice, a Django learning log, a structured developer learning
+            platform, a construction inventory workflow, a real-time polling
+            app, and Python automation projects. Each project is treated as a
+            concrete operating problem: define the domain, reduce confusion,
+            protect the workflow, and make the system easier to reason about
+            over time.
           </p>
           <p>
-            The stack represented in this portfolio includes Python, Django,
-            Spring Boot, PostgreSQL, MySQL, SQLite, Next.js, TypeScript,
-            Supabase, Docker, Bootstrap, HTML, CSS, and JavaScript.
+            The stack represented in this portfolio includes Java, Spring
+            Boot, Python, Django, REST APIs, PostgreSQL, MySQL, SQLite,
+            Next.js, TypeScript, Supabase, Docker, Bootstrap, HTML, CSS, and
+            JavaScript.
           </p>
           <p>
             My strongest work sits where product judgment meets system design:

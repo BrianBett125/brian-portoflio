@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
           <div className="max-w-md">
             <h3 className="font-bold text-xl bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-3">Brian Bett</h3>
-            <p className="text-foreground-secondary max-w-md">Software engineer building backend systems, developer platforms, automation tools, and real-world solutions.</p>
+            <p className="text-foreground-secondary max-w-md">Software engineer building backend systems, APIs, developer platforms, automation tools, and real-world solutions.</p>
           </div>
           
           <div className="grid w-full grid-cols-2 gap-8 sm:w-auto">

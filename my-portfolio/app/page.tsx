@@ -13,6 +13,7 @@ import {
   hardProblem,
 } from "@/lib/portfolio-insights";
 import { getProjects } from "@/lib/projects";
+import { homepageStackGroups } from "@/lib/technologies";
 import {
   AcademicCapIcon,
   BeakerIcon,
@@ -36,11 +37,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "Home",
     description:
-      "Brian Bett is a software engineer building backend systems, developer platforms, automation tools, and practical real-world solutions.",
+      "Brian Bett is a software engineer building backend systems, APIs, developer platforms, automation tools, and practical software with Java, Spring Boot, Python, Django, and modern frontend technologies.",
     openGraph: {
       title: "Brian Bett - Software Engineer",
       description:
-        "Backend systems, developer platforms, automation tools, and practical real-world solutions by Brian Bett.",
+        "Backend systems, APIs, developer platforms, automation tools, and practical software by Brian Bett.",
       url: getSiteUrl(),
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
@@ -49,23 +50,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const stackGroups = [
-  {
-    title: "Backend",
-    icon: ServerStackIcon,
-    items: ["Python", "Django", "Spring Boot", "PostgreSQL", "MySQL", "SQLite"],
-  },
-  {
-    title: "Frontend",
-    icon: CodeBracketSquareIcon,
-    items: ["Next.js", "TypeScript", "React", "HTML", "CSS", "JavaScript", "Bootstrap"],
-  },
-  {
-    title: "DevOps",
-    icon: CommandLineIcon,
-    items: ["Docker", "Supabase"],
-  },
-];
+const stackIcons = {
+  backend: ServerStackIcon,
+  "frontend-mobile": CodeBracketSquareIcon,
+  "data-infra": CommandLineIcon,
+};
+
+const stackGroups = homepageStackGroups.map((group) => ({
+  ...group,
+  title: group.label,
+  icon: stackIcons[group.id as keyof typeof stackIcons] ?? CodeBracketSquareIcon,
+}));
 
 const thinking = [
   "I approach problems as systems, not isolated screens or scripts.",
@@ -149,11 +144,11 @@ export default async function Home() {
           <div className="space-y-5 text-base leading-8 text-foreground-secondary lg:text-lg">
             <p>
               I am Brian Bett, a software engineer focused on backend
-              architecture, developer platforms, automation, and applications
-              that demand more than a polished interface. My work begins with
-              the structure beneath the surface: data, boundaries, workflows,
-              and the decisions that determine whether software remains useful
-              under real pressure.
+              architecture, API development, developer platforms, automation,
+              and applications that demand more than a polished interface. My
+              work begins with the structure beneath the surface: data,
+              boundaries, workflows, and the decisions that determine whether
+              software remains useful under real pressure.
             </p>
             <p>
               I approach engineering as a matter of judgment, not decoration.
@@ -163,11 +158,12 @@ export default async function Home() {
               difficult to misuse.
             </p>
             <p>
-              The work in this portfolio spans Python, Django, PostgreSQL,
-              MySQL, SQLite, Spring Boot, Next.js, TypeScript, Supabase,
-              Docker, and browser-native HTML, CSS, and JavaScript. Across that
-              range, the standard is consistent: organize the domain, reduce
-              ambiguity, and ship systems that people can depend on.
+              The work in this portfolio spans Java, Spring Boot, Python,
+              Django, REST APIs, PostgreSQL, MySQL, SQLite, Next.js,
+              TypeScript, Supabase, Docker, and browser-native HTML, CSS, and
+              JavaScript. Across that range, the standard is consistent:
+              organize the domain, reduce ambiguity, and ship systems that
+              people can depend on.
             </p>
             <p>
               I build software to remove operational drag, sharpen control, and
@@ -505,10 +501,10 @@ export default async function Home() {
             </h2>
             <p className="mt-4 text-base leading-8 text-foreground-secondary">
               The stack in this codebase points to backend-heavy product work:
-              Python and Django, Spring Boot, relational databases including
-              PostgreSQL, MySQL, and SQLite, typed Next.js interfaces,
-              real-time Supabase flows, JavaScript, and Docker-backed
-              automation.
+              Java and Spring Boot, Python and Django, REST API boundaries,
+              relational databases including PostgreSQL, MySQL, and SQLite,
+              typed Next.js interfaces, real-time Supabase flows, JavaScript,
+              and Docker-backed automation.
             </p>
           </div>
         </div>

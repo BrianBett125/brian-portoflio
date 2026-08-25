@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -19,11 +19,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: project.title,
     description: project.description,
+    alternates: {
+      canonical: getCanonicalUrl(`/projects/${slug}`),
+    },
     openGraph: {
       title: project.title,
       description: project.description,
       type: "article",
-      url: `${getSiteUrl()}/projects/${slug}`,
+      url: getCanonicalUrl(`/projects/${slug}`),
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
     },
@@ -48,11 +51,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     "@type": "CreativeWork",
     name: project.title,
     description: project.description,
-    url: `${getSiteUrl()}/projects/${project.slug}`,
+    url: getCanonicalUrl(`/projects/${project.slug}`),
+    sameAs: project.githubLink ? [project.githubLink] : undefined,
     creator: {
       "@type": "Person",
       name: "Brian Bett",
     },
+    programmingLanguage: project.techStack,
+    about: project.techStack,
     keywords: project.techStack.join(", "),
   };
 

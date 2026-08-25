@@ -80,7 +80,7 @@ export default function HeroSection() {
               style={{ fontSize: headlineSize, lineHeight: 1.05 }}
               className="max-w-5xl font-black tracking-tight text-foreground"
             >
-              Building <span className="gradient-text-animate glow-word">backend systems</span> that turn messy complexity into <span className="gradient-text-animate glow-word">product motion</span>.
+              Building <span className="gradient-text-animate glow-word">software systems</span> with backend depth and <span className="gradient-text-animate glow-word">product discipline</span>.
             </motion.h1>
 
             <motion.p
@@ -89,8 +89,10 @@ export default function HeroSection() {
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
               className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
             >
-              I design practical software across Python, Django, PostgreSQL, Next.js,
-              and TypeScript, with an emphasis on clarity, operational leverage, and systems that stay trustworthy under real pressure.
+              I design practical software across Java, Spring Boot, Python,
+              Django, REST APIs, databases, Next.js, and TypeScript, with an
+              emphasis on clarity, operational leverage, and systems that stay
+              trustworthy under real pressure.
             </motion.p>
 
             <motion.div
@@ -145,12 +147,12 @@ export default function HeroSection() {
               <div className="mt-5 space-y-3">
                 <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
                   <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-tertiary">Focus</p>
-                  <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, developer platforms, and automation tooling with strong product awareness.</p>
+                  <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, API-driven platforms, and automation tooling with strong product awareness.</p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
                     <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Stack</p>
-                    <p className="mt-2 text-sm font-semibold text-foreground">Python · Django · Next.js · TypeScript</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Java · Spring Boot · Python · Django</p>
                   </div>
                   <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
                     <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Strength</p>
