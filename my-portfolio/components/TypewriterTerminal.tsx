@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const TYPING_STRINGS = [
   "Building systems that scale, automate, and monetize.",
-  "Turning complex data flows into simple, robust APIs.",
+  "Turning complex data flows into simple, reliable APIs.",
   "Engineering for high performance and low operational drag.",
 ];
 
@@ -58,7 +58,7 @@ export default function TypewriterTerminal() {
         <span className="text-accent-primary font-bold">$</span> whoami
       </p>
       <p className="text-foreground font-bold mt-1">
-        Brian Bett — <span className="text-accent-tertiary">Backend Systems Engineer</span>
+        Brian Bett — <span className="text-accent-tertiary">Software Engineer</span>
       </p>
       
       <p className="text-foreground-secondary/80 mt-3">

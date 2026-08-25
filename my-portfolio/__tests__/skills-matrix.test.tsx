@@ -5,26 +5,37 @@ import SkillsMatrix from '../components/SkillsMatrix';
 describe('SkillsMatrix', () => {
   test('renders the first category selected by default', () => {
     render(<SkillsMatrix />);
-    const coreTab = screen.getByRole('tab', { name: /Core Stack/ });
-    expect(coreTab).toHaveAttribute('aria-selected', 'true');
-    // A Core Stack skill is visible.
-    expect(screen.getByText('Django')).toBeInTheDocument();
+    const languagesTab = screen.getByRole('tab', { name: /Languages/ });
+    expect(languagesTab).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByText('Java')).toBeInTheDocument();
   });
 
   test('switches category on click and updates aria-selected', () => {
     render(<SkillsMatrix />);
-    const toolsTab = screen.getByRole('tab', { name: /Tools & Ops/ });
+    const backendTab = screen.getByRole('tab', { name: /Backend/ });
 
-    fireEvent.click(toolsTab);
+    fireEvent.click(backendTab);
 
-    expect(toolsTab).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByRole('tab', { name: /Core Stack/ })).toHaveAttribute(
+    expect(backendTab).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: /Languages/ })).toHaveAttribute(
       'aria-selected',
       'false'
     );
-    // A tooling skill is now visible; a core-only skill is not.
-    expect(screen.getByText('Docker')).toBeInTheDocument();
-    expect(screen.queryByText('Django')).not.toBeInTheDocument();
+    expect(screen.getByText('Spring Boot')).toBeInTheDocument();
+    expect(screen.getByText('REST APIs')).toBeInTheDocument();
+    expect(screen.queryByText('Java')).not.toBeInTheDocument();
+  });
+
+  test('supports arrow-key tab navigation', () => {
+    render(<SkillsMatrix />);
+    const languagesTab = screen.getByRole('tab', { name: /Languages/ });
+
+    fireEvent.keyDown(languagesTab, { key: 'ArrowRight' });
+
+    expect(screen.getByRole('tab', { name: /Backend/ })).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
   });
 
   test('tabs meet the 44px minimum touch target via min-h-11', () => {

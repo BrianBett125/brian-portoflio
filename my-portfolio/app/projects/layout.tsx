@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "A selection of projects and work highlights by Brian Bett.",
+  description:
+    "Software engineering projects by Brian Bett, including Java, backend systems, APIs, Django applications, developer platforms, and automation tools.",
+  alternates: {
+    canonical: getCanonicalUrl("/projects"),
+  },
   openGraph: {
     title: "Brian Bett – Projects",
     description:
-      "Explore a selection of projects built by Brian Bett, showcasing various technologies and skills.",
-    url: getSiteUrl(),
+      "Explore projects built by Brian Bett across Java, backend systems, APIs, Django applications, developer platforms, and automation tools.",
+    url: getCanonicalUrl("/projects"),
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

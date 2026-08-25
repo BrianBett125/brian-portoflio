@@ -4,8 +4,10 @@ import { useState } from "react";
 import {
   CodeBracketSquareIcon,
   CommandLineIcon,
+  CircleStackIcon,
   ServerStackIcon,
 } from "@heroicons/react/24/outline";
+import { skillCategories } from "@/lib/technologies";
 
 type Category = {
   id: string;
@@ -14,40 +16,31 @@ type Category = {
   items: string[];
 };
 
-const categories: Category[] = [
-  {
-    id: "core",
-    label: "Core Stack",
-    icon: ServerStackIcon,
-    items: [
-      "Python",
-      "Django",
-      "Spring Boot",
-      "PostgreSQL",
-      "MySQL",
-      "SQLite",
-      "Next.js",
-      "TypeScript",
-      "React",
-    ],
-  },
-  {
-    id: "frontend",
-    label: "Frontend",
-    icon: CodeBracketSquareIcon,
-    items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS"],
-  },
-  {
-    id: "tooling",
-    label: "Tools & Ops",
-    icon: CommandLineIcon,
-    items: ["Docker", "Supabase", "Git", "Linux", "REST APIs", "MikroTik"],
-  },
-];
+const categoryIcons: Record<string, Category["icon"]> = {
+  languages: CodeBracketSquareIcon,
+  backend: ServerStackIcon,
+  "frontend-mobile": CodeBracketSquareIcon,
+  data: CircleStackIcon,
+  infrastructure: CommandLineIcon,
+};
+
+const categories: Category[] = skillCategories.map((category) => ({
+  ...category,
+  icon: categoryIcons[category.id] ?? CodeBracketSquareIcon,
+}));
 
 export default function SkillsMatrix() {
   const [activeId, setActiveId] = useState(categories[0].id);
   const active = categories.find((c) => c.id === activeId) ?? categories[0];
+  const activeIndex = categories.findIndex((c) => c.id === active.id);
+
+  const activateTabAtIndex = (index: number) => {
+    const next = categories[(index + categories.length) % categories.length];
+    setActiveId(next.id);
+    requestAnimationFrame(() => {
+      document.getElementById(`skills-tab-${next.id}`)?.focus();
+    });
+  };
 
   return (
     <div className="bento-card rounded-2xl p-5 sm:p-6">
@@ -62,8 +55,27 @@ export default function SkillsMatrix() {
               role="tab"
               id={`skills-tab-${category.id}`}
               aria-selected={selected}
+              tabIndex={selected ? 0 : -1}
               aria-controls={`skills-panel-${category.id}`}
               onClick={() => setActiveId(category.id)}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowRight") {
+                  event.preventDefault();
+                  activateTabAtIndex(activeIndex + 1);
+                }
+                if (event.key === "ArrowLeft") {
+                  event.preventDefault();
+                  activateTabAtIndex(activeIndex - 1);
+                }
+                if (event.key === "Home") {
+                  event.preventDefault();
+                  activateTabAtIndex(0);
+                }
+                if (event.key === "End") {
+                  event.preventDefault();
+                  activateTabAtIndex(categories.length - 1);
+                }
+              }}
               className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary ${
                 selected
                   ? "border-accent-primary/60 bg-accent-primary/15 text-foreground"
