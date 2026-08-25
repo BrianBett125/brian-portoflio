@@ -152,6 +152,36 @@ export const projects: Project[] = [
     accent: "from-[#8B5CF6] via-[#22D3EE] to-[#8B5CF6]",
   },
   {
+    slug: "java-from-scratch",
+    title: "Java From Scratch",
+    description:
+      "A progressive Java learning repository covering fundamentals, object-oriented programming, and practical coding exercises",
+    editorialTakeaway:
+      "Strong backend work starts with language fundamentals that make larger systems easier to reason about.",
+    problem:
+      "Java knowledge becomes fragile when fundamentals, object-oriented design, and practice exercises are learned in disconnected fragments.",
+    techStack: ["Java"],
+    whyThisStack: [
+      {
+        tech: "Java",
+        reason:
+          "Provides a strongly typed foundation for object-oriented programming, backend development, and Spring Boot application work.",
+      },
+    ],
+    solution:
+      "Java From Scratch organizes Java fundamentals, object-oriented programming, and practical exercises into a progressive learning repository.",
+    impact:
+      "Makes Java development practice visible and reviewable while building the foundation for production-oriented backend systems.",
+    architecture: [
+      "Progressive Java exercises organized around fundamentals and object-oriented programming.",
+      "Repository-first structure for reviewing examples, practicing syntax, and strengthening backend language fluency.",
+      "Practical coding exercises that support continued Spring Boot and API development growth.",
+    ],
+    category: "Learning system",
+    accent: "from-[#F97316] via-[#EF4444] to-[#22D3EE]",
+    githubLink: "https://github.com/BrianBett125/java-from-scratch",
+  },
+  {
     slug: "python-projects",
     title: "Python Projects",
     description: "Packages repeatable operational work into dependable automation tools",

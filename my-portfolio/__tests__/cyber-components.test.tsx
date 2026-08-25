@@ -39,7 +39,7 @@ describe('Cyberpunk Components', () => {
       // Check static terminal labels
       expect(screen.getByText('whoami')).toBeInTheDocument();
       expect(screen.getByText('brian@portfolio:~')).toBeInTheDocument();
-      expect(screen.getByText(/Backend Systems Engineer/)).toBeInTheDocument();
+      expect(screen.getByText(/Software Engineer/)).toBeInTheDocument();
       expect(screen.getByText('cat core_thesis.sh')).toBeInTheDocument();
     });
   });

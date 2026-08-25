@@ -16,11 +16,23 @@ export const metadata: Metadata = {
     template: "%s | Brian Bett",
   },
   description:
-    "Brian Bett's portfolio for backend systems, developer platforms, automation tools, and practical software engineering work.",
+    "Brian Bett's portfolio for software engineering work across Java, Spring Boot, Python, Django, APIs, backend systems, developer platforms, and automation tools.",
+  keywords: [
+    "Brian Bett",
+    "Software Engineer",
+    "Java",
+    "Spring Boot",
+    "Python",
+    "Django",
+    "REST APIs",
+    "Backend Development",
+    "Flutter",
+    "TypeScript",
+  ],
   openGraph: {
     title: "Brian Bett – Portfolio",
     description:
-      "Brian Bett's portfolio for backend systems, developer platforms, automation tools, and practical software engineering work.",
+      "Software engineering work across Java, Spring Boot, Python, Django, APIs, backend systems, developer platforms, and automation tools.",
     url: getSiteUrl(),
     siteName: "Brian Bett – Portfolio",
     images: [
@@ -45,7 +57,9 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Brian Bett",
+    title: "Brian Bett - Software Engineer",
+    description:
+      "Java, Spring Boot, Python, Django, APIs, backend systems, developer platforms, and automation tools.",
     card: "summary_large_image",
   },
   icons: {
@@ -54,12 +68,54 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${getSiteUrl()}/#person`,
+        name: "Brian Bett",
+        url: getSiteUrl(),
+        jobTitle: "Software Engineer",
+        knowsAbout: [
+          "Software Engineering",
+          "Java",
+          "Spring Boot",
+          "Python",
+          "Django",
+          "REST APIs",
+          "Backend Development",
+          "Flutter",
+          "TypeScript",
+        ],
+        sameAs: [
+          "https://github.com/BrianBett125",
+          "https://www.linkedin.com/in/brian-bett-kipkoech/",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${getSiteUrl()}/#website`,
+        name: "Brian Bett Portfolio",
+        url: getSiteUrl(),
+        author: {
+          "@id": `${getSiteUrl()}/#person`,
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${GeistSans.className} antialiased`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}d.classList.remove('light','dark');d.classList.add(t);d.dataset.theme=t;d.style.colorScheme=t;}catch(e){}})();`}
         </Script>
+        <Script
+          id="site-identity-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>
           <CursorGlow />
           <Navbar />

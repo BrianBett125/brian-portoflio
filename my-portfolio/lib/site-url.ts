@@ -2,7 +2,7 @@ const DEFAULT_SITE_URL = "http://localhost:3000";
 
 export function getSiteUrl() {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return process.env.NEXT_PUBLIC_SITE_URL;
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
   }
 
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
@@ -18,6 +18,11 @@ export function getSiteUrl() {
   }
 
   return DEFAULT_SITE_URL;
+}
+
+export function getCanonicalUrl(path = "") {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${getSiteUrl()}${normalizedPath === "/" ? "" : normalizedPath}`;
 }
 
 export function getMetadataBase() {
