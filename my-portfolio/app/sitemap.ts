@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
   const postRoutes = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString(),
+    ...(post.date ? { lastModified: new Date(post.date) } : {}),
   }));
 
   const routes = ['', '/about', '/projects', '/blog', '/contact'].map((route) => ({
@@ -23,5 +23,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...routes, ...projectRoutes, ...postRoutes];
+  const tagRoutes = [...new Set(posts.flatMap((post) => post.tags))].map((tag) => ({
+    url: `${baseUrl}/blog/tags/${encodeURIComponent(tag)}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...routes, ...projectRoutes, ...postRoutes, ...tagRoutes];
 }

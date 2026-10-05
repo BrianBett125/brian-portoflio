@@ -227,6 +227,21 @@ html.light .theme-icon-dark {
   box-shadow: 0 20px 55px rgba(7, 10, 21, 0.4);
 }
 
+figure[data-rehype-pretty-code-figure] {
+  overflow-x: auto;
+  margin-block: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.875rem;
+  background: #100b1d;
+  padding: 1rem;
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
 /* Bento glass-card base: hover translateY + border glow + shadow increase */
 .bento-card {
   position: relative;

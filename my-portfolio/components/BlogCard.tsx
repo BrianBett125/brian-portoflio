@@ -20,7 +20,8 @@ export default function BlogCard({ post }: { post: Post }) {
         <div className="mb-5">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-xs font-semibold text-foreground-secondary">
             <CalendarDaysIcon className="h-3.5 w-3.5" aria-hidden="true" />
-            {new Date(post.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })}
+            {post.date ? new Date(post.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) : "Date to be added"}
+            <span aria-hidden="true">·</span>{post.readingTime} min read
           </span>
         </div>
         
@@ -41,12 +42,13 @@ export default function BlogCard({ post }: { post: Post }) {
         {post.tags && post.tags.length > 0 && (
           <div className="mt-5 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-semibold text-foreground-secondary"
-              >
-                {tag}
-              </span>
+                <Link
+                  key={tag}
+                  href={`/blog/tags/${encodeURIComponent(tag)}`}
+                  className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-semibold text-foreground-secondary"
+                >
+                  {tag}
+                </Link>
             ))}
           </div>
         )}
@@ -54,7 +56,7 @@ export default function BlogCard({ post }: { post: Post }) {
         <div className="mt-auto flex justify-end pt-6">
           <Link
             href={`/blog/${post.slug}`}
-            className="flex items-center gap-1 text-sm font-bold text-accent-secondary transition-colors hover:text-cyan-300"
+          className="flex items-center gap-1 text-sm font-bold text-accent-secondary transition-colors hover:text-accent-primary"
             onClick={trackBlogPostClick}
           >
             Read more
