@@ -54,10 +54,10 @@ export default function CopyEmail({ email, className = "" }: CopyEmailProps) {
       type="button"
       onClick={copy}
       aria-live="polite"
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-ui-border/10 bg-ui-surface/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-ui-surface/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary ${className}`}
     >
       {copied ? (
-        <CheckIcon className="h-4 w-4 text-emerald-400" aria-hidden="true" />
+        <CheckIcon className="h-4 w-4 text-status-success" aria-hidden="true" />
       ) : (
         <ClipboardDocumentIcon className="h-4 w-4 text-accent-secondary" aria-hidden="true" />
       )}

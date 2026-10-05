@@ -31,7 +31,7 @@ export default function CursorGlow() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-30 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_70%)] blur-2xl md:block hidden"
+      className="cursor-glow pointer-events-none fixed left-0 top-0 z-30 h-[300px] w-[300px] rounded-full blur-2xl md:block hidden"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,

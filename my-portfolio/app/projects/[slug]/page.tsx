@@ -71,17 +71,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-accent-secondary/20 blur-3xl" />
-      <div className="absolute bottom-0 left-0 -z-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="absolute bottom-0 left-0 -z-10 h-80 w-80 rounded-full bg-accent-tertiary/10 blur-3xl" />
 
       <div className="mx-auto max-w-6xl">
         <Link
           href="/projects"
-          className="mb-8 inline-flex text-sm font-semibold text-accent-secondary transition hover:text-cyan-300"
+          className="mb-8 inline-flex text-sm font-semibold text-accent-secondary transition hover:text-accent-tertiary-strong"
         >
           Back to projects
         </Link>
 
-        <header className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-10">
+        <header className="relative overflow-hidden rounded-2xl border border-ui-border/10 bg-ui-surface/[0.06] p-6 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-10">
           <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${project.accent}`} />
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
             {project.category} case study
@@ -96,7 +96,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full border border-white/10 bg-white/[0.08] px-4 py-2 text-sm font-semibold text-foreground"
+                className="rounded-full border border-ui-border/10 bg-ui-surface/[0.08] px-4 py-2 text-sm font-semibold text-foreground"
               >
                 {tech}
               </span>
@@ -124,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             ].map(([title, body]) => (
               <div
                 key={title}
-                className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-8"
+                className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-6 backdrop-blur-xl sm:p-8"
               >
                 <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-secondary">
                   {title}
@@ -137,7 +137,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
 
           <aside className="space-y-5">
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.05] to-cyan-400/15 p-6 backdrop-blur-xl sm:p-8">
+            <div className="rounded-2xl border border-ui-border/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.05] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
               <h2 className="text-2xl font-bold text-foreground">
                 Architecture Overview
               </h2>
@@ -148,7 +148,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="mt-6 space-y-4">
                 {project.architecture.map((item, index) => (
                   <div key={item} className="flex gap-3">
-                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-black text-foreground">
+                    <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ui-surface/10 text-xs font-black text-foreground">
                       {index + 1}
                     </span>
                     <p className="text-sm leading-7 text-foreground-secondary">
@@ -159,20 +159,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-8">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-6 backdrop-blur-xl sm:p-8">
               <h2 className="text-xl font-bold text-foreground">Key decisions</h2>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-foreground-secondary">
                 {(project.keyDecisions ?? ["[TODO: Add verified project decisions.]" ]).map((decision) => <li key={decision}>{decision}</li>)}
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-8">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-6 backdrop-blur-xl sm:p-8">
               <h2 className="text-2xl font-bold text-foreground">Tech Stack</h2>
               <div className="mt-6 space-y-3">
                 {project.techStack.map((tech) => (
                   <div
                     key={tech}
-                    className="flex items-center justify-between rounded-2xl border border-white/10 bg-background/40 px-4 py-3"
+                    className="flex items-center justify-between rounded-2xl border border-ui-border/10 bg-background/40 px-4 py-3"
                   >
                     <span className="font-medium text-foreground">{tech}</span>
                     <span className="h-2 w-2 rounded-full bg-accent-secondary" aria-hidden="true" />
@@ -180,7 +180,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 ))}
               </div>
 
-              <div className="mt-8 border-t border-white/10 pt-6">
+              <div className="mt-8 border-t border-ui-border/10 pt-6">
                 <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-accent-secondary">
                   Why this stack
                 </h3>
@@ -213,7 +213,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={project.liveDemoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-foreground transition hover:border-accent-secondary/60 hover:bg-white/[0.08]"
+                    className="inline-flex rounded-full border border-ui-border/15 px-4 py-2 text-sm font-semibold text-foreground transition hover:border-accent-secondary/60 hover:bg-ui-surface/[0.08]"
                   >
                     Live Demo
                   </Link>

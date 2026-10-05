@@ -20,7 +20,7 @@ export default function NowPage() {
     <h1 className="mt-3 text-4xl font-black text-foreground sm:text-6xl">What I’m focused on</h1>
     <p className="mt-4 text-sm text-foreground-secondary">Last updated: {profile.now.updated}</p>
     <div className="mt-8 grid gap-4">
-      {items.map((item) => <article key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-7">
+      {items.map((item) => <article key={item.label} className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 sm:p-7">
         <h2 className="text-lg font-bold text-foreground">{item.label}</h2>
         <p className="mt-2 text-base leading-8 text-foreground-secondary">{item.value}</p>
       </article>)}

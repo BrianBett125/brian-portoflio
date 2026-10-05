@@ -11,7 +11,8 @@
     "lint": "next lint",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "screenshots": "node capture-screenshots.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

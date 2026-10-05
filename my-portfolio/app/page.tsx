@@ -191,7 +191,7 @@ export default async function Home() {
             </div>
             <div className="space-y-4 lg:col-span-2">
               {profile.experience.map((role) => (
-                <article key={`${role.company}-${role.role}`} className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-6">
+                <article key={`${role.company}-${role.role}`} className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 sm:p-6">
                   <div className="flex flex-wrap justify-between gap-2">
                     <h3 className="font-bold text-foreground">{role.role} · {role.company}</h3>
                     <p className="text-sm text-foreground-secondary">{role.startDate} – {role.endDate}</p>
@@ -208,7 +208,7 @@ export default async function Home() {
       <Reveal>
         <section aria-label="Education and certifications" className="w-full px-4 sm:px-6">
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-7">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 sm:p-7">
               <h2 className="text-2xl font-black text-foreground">Education</h2>
               <div className="mt-5 space-y-4">
                 {profile.education.map((item) => <article key={`${item.institution}-${item.qualification}`}>
@@ -218,7 +218,7 @@ export default async function Home() {
                 </article>)}
               </div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-7">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 sm:p-7">
               <h2 className="text-2xl font-black text-foreground">Certifications</h2>
               <div className="mt-5 space-y-4">
                 {profile.certifications.map((item) => <article key={`${item.issuer}-${item.name}`}>
@@ -264,7 +264,7 @@ export default async function Home() {
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-5">
             <SystemStatus />
-            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8">
               <CommandLineIcon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
               <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
                 Signature Interface
@@ -295,7 +295,7 @@ export default async function Home() {
                 Selected systems with operational weight.
               </h2>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-5 backdrop-blur-xl sm:p-6">
+            <div className="rounded-2xl border border-ui-border/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-5 backdrop-blur-xl sm:p-6">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-accent-tertiary-strong">
                 Portfolio proof
               </p>
@@ -313,7 +313,7 @@ export default async function Home() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-4 text-center backdrop-blur-xl"
+                className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.045] px-4 py-4 text-center backdrop-blur-xl"
               >
                 <p className="text-2xl font-black text-foreground sm:text-3xl">{stat.value}</p>
                 <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground-secondary">
@@ -328,7 +328,7 @@ export default async function Home() {
           <div className="mt-6 flex justify-end">
             <Link
               href="/projects"
-              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-bold text-foreground transition hover:border-accent-secondary/70 hover:bg-white/[0.09] sm:w-fit"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-ui-border/15 bg-ui-surface/[0.05] px-5 py-2.5 text-sm font-bold text-foreground transition hover:border-accent-secondary/70 hover:bg-ui-surface/[0.09] sm:w-fit"
             >
               View all projects
             </Link>
@@ -356,7 +356,7 @@ export default async function Home() {
               {portfolioThesis.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-xl"
+                  className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.06] p-4 backdrop-blur-xl"
                 >
                   <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-accent-secondary">
                     {item.title}
@@ -375,7 +375,7 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.75fr_1fr]">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8">
             <CpuChipIcon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
               How I Think
@@ -388,7 +388,7 @@ export default async function Home() {
             {thinking.map((item, index) => (
               <div
                 key={item}
-                className="group rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/50 hover:bg-white/[0.075]"
+                className="group rounded-2xl border border-ui-border/10 bg-ui-surface/[0.045] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-accent-secondary/50 hover:bg-ui-surface/[0.075]"
               >
                 <div className="flex gap-3 sm:gap-4">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-accent-tertiary text-sm font-black text-white">
@@ -417,7 +417,7 @@ export default async function Home() {
                 Systems that reduce drag, clarify ownership, and ship with less ambiguity.
               </h2>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl sm:p-6">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl sm:p-6">
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
                 Editorial note
               </p>
@@ -428,15 +428,15 @@ export default async function Home() {
           </div>
 
           <div className="mb-8 grid gap-4 md:grid-cols-3">
-            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+            <article className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Visibility</p>
               <p className="mt-3 text-sm leading-7 text-foreground-secondary">Clearer data flow, well-defined API boundaries, and system behavior that is easy to inspect and reason about.</p>
             </article>
-            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+            <article className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Reliability</p>
               <p className="mt-3 text-sm leading-7 text-foreground-secondary">Failure paths designed early, operational noise reduced, and infrastructure decisions grounded in real use.</p>
             </article>
-            <article className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+            <article className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-secondary">Leverage</p>
               <p className="mt-3 text-sm leading-7 text-foreground-secondary">Practical automation, better coordination, and product workflows that move with less manual overhead.</p>
             </article>
@@ -451,7 +451,7 @@ export default async function Home() {
                 Short notes from building real systems.
               </h2>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl sm:p-6">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl sm:p-6">
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
                 Editorial note
               </p>
@@ -466,11 +466,11 @@ export default async function Home() {
             {engineeringNotes.map((note, index) => (
               <article
                 key={note.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.08] sm:p-6"
+                className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-ui-surface/[0.08] sm:p-6"
               >
                 <div className="flex items-start justify-between gap-4">
                   <BeakerIcon className="h-7 w-7 shrink-0 text-accent-tertiary" aria-hidden="true" />
-                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-foreground-secondary">
+                  <span className="rounded-full border border-ui-border/10 bg-ui-surface/[0.06] px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-foreground-secondary">
                     Note {index + 1}
                   </span>
                 </div>
@@ -490,7 +490,7 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[1fr_0.85fr]">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8">
             <SparklesIcon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
               Operator Profile
@@ -502,7 +502,7 @@ export default async function Home() {
               {operatorProfile.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl border border-white/10 bg-black/[0.16] p-5"
+                  className="rounded-xl border border-ui-border/10 bg-ui-inset/[0.16] p-5"
                 >
                   <h3 className="text-base font-black text-foreground">
                     {item.label}
@@ -514,7 +514,7 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-tertiary/15 via-white/[0.055] to-accent-primary/20 p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-gradient-to-br from-accent-tertiary/15 via-white/[0.055] to-accent-primary/20 p-6 backdrop-blur-xl sm:p-8">
             <NewspaperIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               AI And Livelihood
@@ -532,7 +532,7 @@ export default async function Home() {
                 <a
                   key={essay.href}
                   href={essay.href}
-                  className="block rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-bold text-foreground transition hover:border-accent-tertiary/60 hover:bg-white/[0.1]"
+                  className="block rounded-xl border border-ui-border/10 bg-ui-surface/[0.06] px-4 py-3 text-sm font-bold text-foreground transition hover:border-accent-tertiary/60 hover:bg-ui-surface/[0.1]"
                 >
                   {essay.title}
                 </a>
@@ -546,7 +546,7 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
             <WrenchScrewdriverIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               Currently Building
@@ -560,7 +560,7 @@ export default async function Home() {
               system behavior.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8">
             <CircleStackIcon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
               Technical Strength
@@ -583,7 +583,7 @@ export default async function Home() {
       <Reveal>
       <section className="px-4 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
+          <div className="rounded-2xl border border-ui-border/10 bg-gradient-to-br from-accent-primary/20 via-white/[0.055] to-accent-tertiary/15 p-6 backdrop-blur-xl sm:p-8">
             <ExclamationTriangleIcon className="h-8 w-8 text-accent-tertiary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-tertiary-strong">
               A Hard Problem I Solved
@@ -604,7 +604,7 @@ export default async function Home() {
             ].map(([title, body]) => (
               <div
                 key={title}
-                className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 backdrop-blur-xl sm:p-6"
+                className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-5 backdrop-blur-xl sm:p-6"
               >
                 <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-accent-secondary">
                   {title}
@@ -614,7 +614,7 @@ export default async function Home() {
                 </p>
               </div>
             ))}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 backdrop-blur-xl sm:p-6">
+            <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-5 backdrop-blur-xl sm:p-6">
               <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-accent-secondary">
                 Common mistakes
               </h3>
@@ -652,7 +652,7 @@ export default async function Home() {
 
       <Reveal>
       <section className="px-4 sm:px-6">
-        <div className="mx-auto grid max-w-6xl gap-5 rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="mx-auto grid max-w-6xl gap-5 rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <AcademicCapIcon className="h-8 w-8 text-accent-secondary sm:h-9 sm:w-9" aria-hidden="true" />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
@@ -666,7 +666,7 @@ export default async function Home() {
             {currentLearning.map((item) => (
               <div
                 key={item}
-                className="flex min-h-14 items-center gap-3 rounded-xl border border-white/10 bg-background/40 px-4 text-sm font-bold text-foreground"
+                className="flex min-h-14 items-center gap-3 rounded-xl border border-ui-border/10 bg-background/40 px-4 text-sm font-bold text-foreground"
               >
                 <SparklesIcon className="h-5 w-5 shrink-0 text-accent-tertiary" aria-hidden="true" />
                 {item}
@@ -679,7 +679,7 @@ export default async function Home() {
 
       <Reveal>
       <section id="contact" className="px-4 sm:px-6">
-        <div className="mx-auto grid max-w-6xl gap-8 rounded-2xl border border-white/10 bg-white/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.8fr_1fr]">
+        <div className="mx-auto grid max-w-6xl gap-8 rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-6 backdrop-blur-xl sm:p-8 lg:grid-cols-[0.8fr_1fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-secondary">
               <EnvelopeIcon className="mr-2 inline h-4 w-4" aria-hidden="true" />
@@ -698,7 +698,7 @@ export default async function Home() {
               <CopyEmail email="brianbett756@gmail.com" />
               <a
                 href="tel:+254728085834"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-black/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.07]"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-ui-border/10 bg-ui-inset/[0.14] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-ui-surface/[0.07]"
               >
                 +254 728 085 834
               </a>

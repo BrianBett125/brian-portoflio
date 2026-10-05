@@ -41,13 +41,13 @@ export default function ContactPage() {
             <CopyEmail email={EMAIL} />
             <a
               href={`mailto:${EMAIL}`}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-ui-border/10 bg-ui-surface/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-ui-surface/[0.08]"
             >
               Open in mail app
             </a>
             <a
               href="tel:+254728085834"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-ui-border/10 bg-ui-surface/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-secondary/50 hover:bg-ui-surface/[0.08]"
             >
               +254 728 085 834
             </a>
@@ -55,7 +55,7 @@ export default function ContactPage() {
               href="https://github.com/BrianBett125"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-primary/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-ui-border/10 bg-ui-surface/[0.05] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-accent-primary/50 hover:bg-ui-surface/[0.08]"
             >
               <CodeBracketIcon className="h-4 w-4 text-accent-secondary" aria-hidden="true" />
               GitHub
@@ -63,7 +63,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-8">
+        <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.06] p-5 shadow-2xl shadow-accent-primary/10 backdrop-blur-xl sm:p-8">
           <ContactForm />
         </div>
       </div>

@@ -91,11 +91,11 @@ export default function ContactForm() {
           aria-invalid={Boolean(errors.email)}
           aria-describedby={errors.email ? "email-error" : undefined}
           {...register("email")}
-          className="w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
+          className="w-full rounded-2xl border border-ui-border/10 bg-ui-surface/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
           placeholder="you@example.com"
         />
         {errors.email && (
-          <p id="email-error" className="text-xs text-red-300">
+          <p id="email-error" className="text-xs text-status-error">
             {errors.email.message}
           </p>
         )}
@@ -114,11 +114,11 @@ export default function ContactForm() {
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
           {...register("message")}
-          className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
+          className="w-full resize-none rounded-2xl border border-ui-border/10 bg-ui-surface/[0.06] px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground-secondary/60 focus:border-accent-secondary focus:ring-4 focus:ring-accent-secondary/20"
           placeholder="Tell me what you want to build, improve, or automate."
         />
         {errors.message && (
-          <p id="message-error" className="text-xs text-red-300">
+          <p id="message-error" className="text-xs text-status-error">
             {errors.message.message}
           </p>
         )}
@@ -139,7 +139,7 @@ export default function ContactForm() {
               : "Email draft prepared for brianbett756@gmail.com."}
           </p>
         )}
-        {status === "error" && <p className="text-xs text-red-300">{error}</p>}
+        {status === "error" && <p className="text-xs text-status-error">{error}</p>}
       </div>
     </form>
   );

@@ -9,11 +9,11 @@ html.dark {
   --color-accent: #00ffcc;
   --color-text-primary: #E5E7EB;
   --color-text-secondary: #9CA3AF;
-  --color-border: rgba(139, 92, 246, 0.2);
-  --color-border-hover: rgba(139, 92, 246, 0.4);
+  --color-border: rgba(123, 47, 247, 0.2);
+  --color-border-hover: rgba(123, 47, 247, 0.4);
 
   --background: var(--color-bg);
-  --background-secondary: #0e1527;
+  --background-secondary: #170b30;
   --card: var(--color-surface);
   --foreground: var(--color-text-primary);
   --foreground-secondary: var(--color-text-secondary);
@@ -22,23 +22,29 @@ html.dark {
   --accent-tertiary: var(--color-accent);
   --accent-primary-strong: var(--color-primary-glow);
   --accent-tertiary-strong: var(--color-accent);
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --ui-surface: rgb(255 255 255);
+  --ui-inset: rgb(0 0 0);
+  --ui-border: rgb(255 255 255);
+  --ui-overlay-weak: rgba(255, 255, 255, 0.04);
+  --ui-overlay-strong: rgba(255, 255, 255, 0.08);
+  --story-fill: rgba(10, 15, 28, 0.7);
+  --status-success: #4ade80;
+  --status-warning: #fbbf24;
+  --status-error: #f87171;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
   --gradient-secondary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   
-  --glow-intensity-sm: rgba(139, 92, 246, 0.15);
-  --glow-intensity-md: rgba(139, 92, 246, 0.25);
-  --glow-intensity-lg: rgba(139, 92, 246, 0.4);
+  --glow-intensity-sm: rgba(123, 47, 247, 0.15);
+  --glow-intensity-md: rgba(123, 47, 247, 0.25);
+  --glow-intensity-lg: rgba(123, 47, 247, 0.4);
   
-  --bg-radial-1: rgba(139, 92, 246, 0.12);
-  --bg-radial-2: rgba(167, 139, 250, 0.08);
-  --bg-radial-3: rgba(34, 211, 238, 0.06);
-  --bg-radial-4: rgba(139, 92, 246, 0.08);
+  --bg-radial-1: rgba(123, 47, 247, 0.12);
+  --bg-radial-2: rgba(185, 156, 255, 0.08);
+  --bg-radial-3: rgba(0, 255, 204, 0.06);
+  --bg-radial-4: rgba(123, 47, 247, 0.08);
   
-  --bg-grid-color: rgba(139, 92, 246, 0.035);
+  --bg-grid-color: rgba(123, 47, 247, 0.035);
   color-scheme: dark;
 }
 
@@ -50,8 +56,8 @@ html.light {
   --color-accent: #007A68;
   --color-text-primary: #111827;
   --color-text-secondary: #4B5563;
-  --color-border: rgba(139, 92, 246, 0.12);
-  --color-border-hover: rgba(139, 92, 246, 0.3);
+  --color-border: rgba(109, 40, 217, 0.16);
+  --color-border-hover: rgba(109, 40, 217, 0.34);
 
   --background: var(--color-bg);
   --background-secondary: #F3F4F6;
@@ -63,23 +69,29 @@ html.light {
   --accent-tertiary: var(--color-accent);
   --accent-primary-strong: var(--color-primary);
   --accent-tertiary-strong: var(--color-accent);
-  --success: #059669;
-  --warning: #d97706;
-  --error: #dc2626;
+  --ui-surface: rgb(13 2 33);
+  --ui-inset: rgb(243 244 246);
+  --ui-border: rgb(13 2 33);
+  --ui-overlay-weak: rgba(13, 2, 33, 0.035);
+  --ui-overlay-strong: rgba(13, 2, 33, 0.07);
+  --story-fill: rgba(255, 255, 255, 0.82);
+  --status-success: #047857;
+  --status-warning: #92400e;
+  --status-error: #b91c1c;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
   --gradient-secondary: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   
-  --glow-intensity-sm: rgba(139, 92, 246, 0.06);
-  --glow-intensity-md: rgba(139, 92, 246, 0.12);
-  --glow-intensity-lg: rgba(139, 92, 246, 0.2);
+  --glow-intensity-sm: rgba(109, 40, 217, 0.06);
+  --glow-intensity-md: rgba(109, 40, 217, 0.12);
+  --glow-intensity-lg: rgba(109, 40, 217, 0.2);
   
-  --bg-radial-1: rgba(139, 92, 246, 0.05);
-  --bg-radial-2: rgba(167, 139, 250, 0.03);
-  --bg-radial-3: rgba(8, 145, 178, 0.03);
-  --bg-radial-4: rgba(139, 92, 246, 0.03);
+  --bg-radial-1: rgba(109, 40, 217, 0.05);
+  --bg-radial-2: rgba(91, 33, 182, 0.03);
+  --bg-radial-3: rgba(0, 122, 104, 0.03);
+  --bg-radial-4: rgba(109, 40, 217, 0.03);
   
-  --bg-grid-color: rgba(139, 92, 246, 0.015);
+  --bg-grid-color: rgba(109, 40, 217, 0.02);
   color-scheme: light;
 }
 
@@ -94,6 +106,12 @@ html.light {
   --color-accent-tertiary: var(--accent-tertiary);
   --color-accent-primary-strong: var(--accent-primary-strong);
   --color-accent-tertiary-strong: var(--accent-tertiary-strong);
+  --color-ui-surface: var(--ui-surface);
+  --color-ui-inset: var(--ui-inset);
+  --color-ui-border: var(--ui-border);
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-error: var(--status-error);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -133,17 +151,17 @@ body::before {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.3);
+  background: rgba(123, 47, 247, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.5);
+  background: rgba(123, 47, 247, 0.5);
 }
 
 /* Custom Selection */
 ::selection {
-  background-color: rgba(139, 92, 246, 0.3);
-  color: #ffffff;
+  background-color: var(--accent-primary);
+  color: white;
 }
 
 /* Subtle utility for focus rings aligned with accent */
@@ -302,8 +320,8 @@ html.light .theme-icon-dark {
 .story-panel {
   border: 1px solid var(--color-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
-    rgba(10, 15, 28, 0.7);
+    linear-gradient(180deg, var(--ui-overlay-weak), transparent),
+    var(--story-fill);
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 55px rgba(7, 10, 21, 0.4);
 }
@@ -313,7 +331,7 @@ figure[data-rehype-pretty-code-figure] {
   margin-block: 1.5rem;
   border: 1px solid var(--color-border);
   border-radius: 0.875rem;
-  background: #100b1d;
+  background: var(--background-secondary);
   padding: 1rem;
 }
 
@@ -397,7 +415,7 @@ html.light .bento-card:hover {
   position: absolute;
   inset: -4px;
   border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.5);
+  background: color-mix(in srgb, var(--status-success) 50%, transparent);
   filter: blur(6px);
   animation: glow-pulse 2.4s ease-in-out infinite;
 }
@@ -409,7 +427,7 @@ html.light .bento-card:hover {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.05);
+  box-shadow: 0 20px 25px -5px color-mix(in srgb, var(--color-primary) 15%, transparent), 0 10px 10px -5px color-mix(in srgb, var(--color-primary) 5%, transparent);
 }
 
 /* Reusable glow utilities using CSS shadow tokens */
@@ -451,14 +469,14 @@ html.light .bento-card:hover {
 }
 
 .btn-cyber-secondary {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--ui-overlay-weak);
   border: 1px solid var(--color-border);
   color: var(--foreground);
 }
 
 .btn-cyber-secondary:hover {
   transform: scale(1.04);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--ui-overlay-strong);
   border-color: var(--color-border-hover);
   box-shadow: 0 0 20px var(--glow-intensity-sm);
 }
@@ -474,7 +492,7 @@ html.light .bento-card:hover {
   overflow: hidden;
   padding: 1.5px;
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--ui-overlay-strong);
 }
 
 .glow-border-container::before {
@@ -507,10 +525,10 @@ html.light .bento-card:hover {
 .gradient-text-animate {
   background: linear-gradient(
     to right,
-    #8B5CF6, /* neon violet */
-    #A78BFA, /* glow violet */
-    #22D3EE, /* accent cyan */
-    #8B5CF6
+    var(--color-primary),
+    var(--color-primary-glow),
+    var(--color-accent),
+    var(--color-primary)
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
@@ -525,7 +543,11 @@ html.light .bento-card:hover {
 }
 
 .glow-word {
-  text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);
+  text-shadow: 0 0 15px color-mix(in srgb, var(--color-primary-glow) 40%, transparent);
+}
+
+.cursor-glow {
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-primary) 8%, transparent) 0%, transparent 70%);
 }
 
 /* Link hover animation */
@@ -565,7 +587,7 @@ html.light .bento-card:hover {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--color-primary) 50%, transparent);
   transform: translateY(-2px);
 }
 

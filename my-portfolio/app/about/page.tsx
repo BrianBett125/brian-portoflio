@@ -34,7 +34,7 @@ export default function AboutPage() {
           </h1>
         </div>
 
-        <div className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-base leading-8 text-foreground-secondary backdrop-blur-xl sm:p-8 lg:text-lg">
+        <div className="space-y-5 rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 text-base leading-8 text-foreground-secondary backdrop-blur-xl sm:p-8 lg:text-lg">
           <p>
             I am Brian Bett, a software engineer who builds backend systems,
             APIs, developer platforms, automation tools, and product workflows

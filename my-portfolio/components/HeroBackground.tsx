@@ -49,9 +49,9 @@ export default function HeroBackground() {
 
     // Retrieve colors dynamically from the CSS design tokens
     const styles = getComputedStyle(document.documentElement);
-    const primaryColor = styles.getPropertyValue("--color-primary").trim() || "#8B5CF6";
-    const primaryGlowColor = styles.getPropertyValue("--color-primary-glow").trim() || "#A78BFA";
-    const accentColor = styles.getPropertyValue("--color-accent").trim() || "#22D3EE";
+    const primaryColor = styles.getPropertyValue("--color-primary").trim() || "#7b2ff7";
+    const primaryGlowColor = styles.getPropertyValue("--color-primary-glow").trim() || "#b99cff";
+    const accentColor = styles.getPropertyValue("--color-accent").trim() || "#00ffcc";
     const colors = [primaryColor, primaryGlowColor, accentColor];
     
     // Initialize particles
@@ -70,7 +70,8 @@ export default function HeroBackground() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw a very subtle digital grid lines overlay
-      ctx.strokeStyle = "rgba(139, 92, 246, 0.015)";
+      ctx.strokeStyle = primaryColor;
+      ctx.globalAlpha = 0.035;
       ctx.lineWidth = 1;
       const gridSize = 48;
       for (let x = 0; x < canvas.width; x += gridSize) {
@@ -85,6 +86,7 @@ export default function HeroBackground() {
         ctx.lineTo(canvas.width, y);
         ctx.stroke();
       }
+      ctx.globalAlpha = 1;
 
       // Update & Draw particles
       particles.forEach((p) => {

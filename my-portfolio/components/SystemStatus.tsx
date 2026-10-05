@@ -23,14 +23,14 @@ export default function SystemStatus() {
   }, []);
 
   return (
-    <div className="grid gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-sm backdrop-blur-xl sm:grid-cols-2">
+    <div className="grid gap-3 rounded-2xl border border-ui-border/10 bg-ui-surface/[0.05] p-4 text-sm backdrop-blur-xl sm:grid-cols-2">
       <div className="flex items-center gap-2 text-foreground">
         <span className="relative flex h-3 w-3" aria-hidden="true">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
-          <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-status-success opacity-50" />
+          <span className="relative inline-flex h-3 w-3 rounded-full bg-status-success" />
         </span>
         <span className="font-bold">System Status:</span>
-        <span className="text-emerald-300">Online</span>
+        <span className="text-status-success">Online</span>
       </div>
       <div className="text-foreground-secondary sm:text-right">
         <span className="font-bold text-foreground">Last Updated:</span>{" "}

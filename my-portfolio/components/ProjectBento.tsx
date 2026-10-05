@@ -59,14 +59,14 @@ export default function ProjectBento({ projects, featured = false }: ProjectBent
             <div className="relative">
               <div className="flex items-center justify-between gap-3">
                 <div
-                  className={`flex items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br ${project.accent} font-black text-white shadow-lg shadow-accent-primary/20 ${
+                  className={`flex items-center justify-center rounded-2xl border border-ui-border/10 bg-gradient-to-br ${project.accent} font-black text-white shadow-lg shadow-accent-primary/20 ${
                     isFeature ? "h-16 w-16 text-2xl" : "h-12 w-12 text-lg"
                   }`}
                   aria-hidden="true"
                 >
                   {initials(project.title)}
                 </div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.07] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-foreground-secondary">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-ui-border/10 bg-ui-surface/[0.07] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-foreground-secondary">
                   <Squares2X2Icon className="h-3.5 w-3.5" aria-hidden="true" />
                   {project.category}
                 </span>
@@ -99,14 +99,14 @@ export default function ProjectBento({ projects, featured = false }: ProjectBent
                 {project.techStack.slice(0, isFeature ? 6 : 3).map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-white/10 bg-white/[0.07] px-3 py-1 text-xs font-medium text-foreground-secondary"
+                    className="rounded-full border border-ui-border/10 bg-ui-surface/[0.07] px-3 py-1 text-xs font-medium text-foreground-secondary"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-4 text-sm font-bold">
+              <div className="mt-5 flex items-center gap-4 border-t border-ui-border/10 pt-4 text-sm font-bold">
                 <span className="inline-flex items-center gap-1.5 text-accent-secondary transition group-hover:text-accent-tertiary">
                   Case study
                   <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
