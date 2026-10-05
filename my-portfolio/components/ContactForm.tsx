@@ -12,6 +12,10 @@ const formSchema = z.object({
 
 type ContactFormInputs = z.infer<typeof formSchema>;
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [deliveryMode, setDeliveryMode] = useState<"direct" | "mailto" | null>(null);
@@ -43,10 +47,10 @@ export default function ContactForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await res.json().catch(() => null);
+      const result: unknown = await res.json().catch(() => null);
 
       if (!res.ok) {
-        if (result?.fallback === "mailto") {
+        if (isRecord(result) && result.fallback === "mailto") {
           openMailto(data);
           setDeliveryMode("mailto");
           setStatus("success");
@@ -55,10 +59,14 @@ export default function ContactForm() {
         }
 
         let errorMsg = "Failed to send message.";
-        if (typeof result?.error === "string") {
+        if (isRecord(result) && typeof result.error === "string") {
           errorMsg = result.error;
-        } else if (Array.isArray(result?.error)) {
-          errorMsg = result.error.map((issue: any) => issue.message).join(" ");
+        } else if (isRecord(result) && Array.isArray(result.error)) {
+          errorMsg = result.error
+            .filter(isRecord)
+            .map((issue) => issue.message)
+            .filter((message): message is string => typeof message === "string")
+            .join(" ");
         }
 
         setStatus("error");
@@ -69,9 +77,9 @@ export default function ContactForm() {
       setDeliveryMode("direct");
       setStatus("success");
       reset();
-    } catch (e: any) {
+    } catch (e: unknown) {
       setStatus("error");
-      setError(e.message || "A network error occurred while sending your message.");
+      setError(e instanceof Error ? e.message : "A network error occurred while sending your message.");
     }
   }
 

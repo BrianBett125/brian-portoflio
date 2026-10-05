@@ -4,6 +4,8 @@ export type Project = {
   description: string;
   editorialTakeaway?: string;
   problem: string;
+  myRole?: string;
+  keyDecisions?: string[];
   techStack: string[];
   whyThisStack: {
     tech: string;
@@ -26,6 +28,8 @@ export const projects: Project[] = [
     editorialTakeaway:
       "The architecture treats recall as a product feature, not a side effect.",
     problem: "Most knowledge is lost because it is never written down in a structure that is easy to return to.",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a real architecture or product decision.]"],
     techStack: ["Python", "Django", "SQLite", "Bootstrap"],
     whyThisStack: [
       {
@@ -61,6 +65,8 @@ export const projects: Project[] = [
     editorialTakeaway:
       "Progress only compounds when the learning model is durable enough to guide the next step.",
     problem: "Developers can plateau when learning is scattered across tutorials, exercises, and disconnected practice.",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a real architecture or product decision.]"],
     techStack: ["Python", "PostgreSQL"],
     whyThisStack: [
       {
@@ -92,6 +98,8 @@ export const projects: Project[] = [
     editorialTakeaway:
       "Operational software has to stay legible in the middle of a noisy workflow.",
     problem: "Construction materials can be difficult to track once they move through active site operations.",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a real architecture or product decision.]"],
     techStack: ["HTML", "CSS", "JavaScript"],
     whyThisStack: [
       {
@@ -127,6 +135,8 @@ export const projects: Project[] = [
     editorialTakeaway:
       "Real-time feedback only matters when the state model stays clean under pressure.",
     problem: "Collecting feedback is often slower than the moment when the feedback is most useful.",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a real architecture or product decision.]"],
     techStack: ["Next.js", "TypeScript", "Supabase"],
     whyThisStack: [
       {
@@ -186,12 +196,44 @@ export const projects: Project[] = [
     githubLink: "https://github.com/BrianBett125/java-from-scratch",
   },
   {
+    slug: "simple-shell",
+    title: "Simple Shell",
+    description: "A shell implementation project focused on command execution and process behavior",
+    problem: "[TODO: Describe the actual constraints this shell was built to address.]",
+    myRole: "[TODO: Describe your contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a verified implementation decision.]"],
+    techStack: ["[TODO: Confirm languages and tools]"],
+    whyThisStack: [{ tech: "[TODO: Confirm technology]", reason: "[TODO: Explain the project's actual language and systems constraints.]" }],
+    solution: "[TODO: Describe implemented shell behavior.]",
+    impact: "[TODO: Add a verifiable outcome; remove unsupported metrics.]",
+    architecture: ["[TODO: Add the actual command parsing and execution flow.]"],
+    category: "Systems programming",
+    accent: "from-[#8B5CF6] via-[#22D3EE] to-[#A78BFA]",
+  },
+  {
+    slug: "internet-billing-system",
+    title: "Internet Billing System",
+    description: "Private client work involving a billing workflow and MikroTik integration",
+    problem: "[TODO: Describe the client-approved problem statement without disclosing confidential details.]",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add client-approved technical decisions.]"],
+    techStack: ["[TODO: Add confirmed technologies]"],
+    whyThisStack: [{ tech: "[TODO: Confirmed technology]", reason: "[TODO: Add client-approved rationale.]" }],
+    solution: "[TODO: Describe the delivered or ongoing work at a client-approved level.]",
+    impact: "[TODO: Add a verifiable outcome approved for public sharing.]",
+    architecture: ["[TODO: Add a sanitized architecture summary; omit confidential details.]"],
+    category: "Private client work",
+    accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
+  },
+  {
     slug: "python-projects",
     title: "Python Projects",
     description: "Packages repeatable operational work into dependable automation tools",
     editorialTakeaway:
       "Automation is mostly a packaging problem: repeatable inputs, predictable runtime, and trustworthy output.",
     problem: "Repeated operational tasks cost time and attention when they are handled manually.",
+    myRole: "[TODO: Describe your verified contribution and ownership.]",
+    keyDecisions: ["[TODO: Add a real architecture or product decision.]"],
     techStack: ["Python", "Docker"],
     whyThisStack: [
       {

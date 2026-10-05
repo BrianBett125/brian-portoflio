@@ -32,7 +32,7 @@ export default function HeroBackground() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
+    const particles: Particle[] = [];
     const maxParticles = 50;
     const connectionDistance = 110;
 

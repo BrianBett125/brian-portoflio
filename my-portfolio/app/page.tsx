@@ -7,6 +7,7 @@ import ProjectBento from "@/components/ProjectBento";
 import Reveal from "@/components/Reveal";
 import SkillsMatrix from "@/components/SkillsMatrix";
 import SystemStatus from "@/components/SystemStatus";
+import Testimonials from "@/components/Testimonials";
 import {
   currentLearning,
   engineeringNotes,
@@ -32,12 +33,15 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getSiteUrl } from "@/lib/site-url";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { profile } from "@/src/content/profile";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "Home",
     description:
-      "Brian Bett is a software engineer building backend systems, APIs, developer platforms, automation tools, and practical software with Java, Spring Boot, Python, Django, and modern frontend technologies.",
+      `${profile.name}, ${profile.headline}. ${profile.valueStatement}`,
     openGraph: {
       title: "Brian Bett - Software Engineer",
       description:
@@ -115,6 +119,7 @@ const portfolioThesis = [
 
 export default async function Home() {
   const projects = await getProjects();
+  const hasCv = existsSync(path.join(process.cwd(), "public/cv/Brian-Bett-Kipkoech-CV.pdf"));
 
   // Honest metrics, derived from real data so the numbers can never drift.
   const distinctTech = new Set(projects.flatMap((p) => p.techStack)).size;
@@ -127,7 +132,7 @@ export default async function Home() {
 
   return (
     <div className="w-full space-y-16 overflow-hidden sm:space-y-20 lg:space-y-24">
-      <HeroSection />
+      <HeroSection hasCv={hasCv} />
 
       <Reveal>
       <section id="about" className="px-4 sm:px-6">
@@ -173,6 +178,67 @@ export default async function Home() {
         </div>
       </section>
       </Reveal>
+
+      <Reveal>
+        <section aria-labelledby="experience-heading" className="w-full px-4 sm:px-6">
+          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
+            <div>
+              <p className="section-eyebrow text-sm font-semibold text-accent-secondary">Career</p>
+              <h2 id="experience-heading" className="mt-3 text-3xl font-black text-foreground sm:text-4xl">Experience</h2>
+            </div>
+            <div className="space-y-4 lg:col-span-2">
+              {profile.experience.map((role) => (
+                <article key={`${role.company}-${role.role}`} className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-6">
+                  <div className="flex flex-wrap justify-between gap-2">
+                    <h3 className="font-bold text-foreground">{role.role} · {role.company}</h3>
+                    <p className="text-sm text-foreground-secondary">{role.startDate} – {role.endDate}</p>
+                  </div>
+                  <p className="mt-1 text-sm text-foreground-secondary">{role.location}</p>
+                  <p className="mt-3 text-sm leading-7 text-foreground-secondary">{role.summary}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section aria-label="Education and certifications" className="w-full px-4 sm:px-6">
+          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-7">
+              <h2 className="text-2xl font-black text-foreground">Education</h2>
+              <div className="mt-5 space-y-4">
+                {profile.education.map((item) => <article key={`${item.institution}-${item.qualification}`}>
+                  <h3 className="font-bold text-foreground">{item.qualification}</h3>
+                  <p className="text-sm text-foreground-secondary">{item.institution} · {item.startDate}–{item.endDate}</p>
+                  <p className="mt-2 text-sm leading-7 text-foreground-secondary">{item.details}</p>
+                </article>)}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 sm:p-7">
+              <h2 className="text-2xl font-black text-foreground">Certifications</h2>
+              <div className="mt-5 space-y-4">
+                {profile.certifications.map((item) => <article key={`${item.issuer}-${item.name}`}>
+                  <h3 className="font-bold text-foreground">{item.name}</h3>
+                  <p className="text-sm text-foreground-secondary">{item.issuer} · {item.date}</p>
+                  {item.url && <a href={item.url} className="mt-2 inline-block text-sm text-accent-secondary underline">View credential</a>}
+                </article>)}
+              </div>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {profile.testimonials.length > 0 && (
+        <Reveal>
+          <Testimonials testimonials={profile.testimonials.map((item) => ({
+            name: item.name,
+            role: item.role,
+            photo: item.photo ?? "/images/avatar-1.jpg",
+            testimonial: item.quote,
+          }))} />
+        </Reveal>
+      )}
 
       <Reveal>
       <section className="px-4 sm:px-6">
