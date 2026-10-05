@@ -79,7 +79,7 @@ export default function SkillsMatrix() {
               className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary ${
                 selected
                   ? "border-accent-primary/60 bg-accent-primary/15 text-foreground"
-                  : "border-white/10 bg-white/[0.05] text-foreground-secondary hover:border-accent-primary/50 hover:text-foreground"
+                  : "border-ui-border/10 bg-ui-surface/[0.05] text-foreground-secondary hover:border-accent-primary/50 hover:text-foreground"
               }`}
             >
               <Icon className="h-4 w-4 shrink-0 text-accent-secondary" aria-hidden="true" />
@@ -99,7 +99,7 @@ export default function SkillsMatrix() {
         {active.items.map((item) => (
           <span
             key={item}
-            className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 text-sm font-semibold text-foreground-secondary transition hover:-translate-y-0.5 hover:border-accent-primary/50 hover:bg-accent-primary/10 hover:text-foreground"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-ui-border/10 bg-ui-surface/[0.05] px-4 text-sm font-semibold text-foreground-secondary transition hover:-translate-y-0.5 hover:border-accent-primary/50 hover:bg-accent-primary/10 hover:text-foreground"
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-secondary/70 transition group-hover:bg-accent-tertiary" aria-hidden="true" />
             {item}

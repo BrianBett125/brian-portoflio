@@ -13,12 +13,12 @@ export default function BlogCard({ post }: { post: Post }) {
   };
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.055] p-5 shadow-2xl shadow-accent-primary/5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-white/[0.085] sm:min-h-[330px] sm:p-6">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-primary via-accent-secondary to-cyan-400" />
-      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent-primary/20 blur-3xl transition duration-500 group-hover:bg-cyan-400/20" />
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 shadow-2xl shadow-accent-primary/5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-accent-secondary/50 hover:bg-ui-surface/[0.085] sm:min-h-[330px] sm:p-6">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary" />
+      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent-primary/20 blur-3xl transition duration-500 group-hover:bg-accent-tertiary/20" />
       <div className="relative flex h-full flex-col">
         <div className="mb-5">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-xs font-semibold text-foreground-secondary">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-ui-border/10 bg-ui-surface/[0.07] px-3 py-1.5 text-xs font-semibold text-foreground-secondary">
             <CalendarDaysIcon className="h-3.5 w-3.5" aria-hidden="true" />
             {post.date ? new Date(post.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) : "Date to be added"}
             <span aria-hidden="true">·</span>{post.readingTime} min read
@@ -45,7 +45,7 @@ export default function BlogCard({ post }: { post: Post }) {
                 <Link
                   key={tag}
                   href={`/blog/tags/${encodeURIComponent(tag)}`}
-                  className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-semibold text-foreground-secondary"
+                  className="rounded-full border border-ui-border/10 bg-ui-surface/[0.06] px-3 py-1 text-xs font-semibold text-foreground-secondary"
                 >
                   {tag}
                 </Link>

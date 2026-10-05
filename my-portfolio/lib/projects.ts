@@ -55,7 +55,7 @@ export const projects: Project[] = [
       "Bootstrap interface for structured, responsive views.",
     ],
     category: "Learning system",
-    accent: "from-[#8B5CF6] via-[#A78BFA] to-[#22D3EE]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/Learning_Log",
   },
   {
@@ -88,7 +88,7 @@ export const projects: Project[] = [
       "Platform model focused on organizing developer progression.",
     ],
     category: "Developer platform",
-    accent: "from-[#8B5CF6] to-[#A78BFA]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/skillup",
   },
   {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
       "Focused UI surface for tracking construction-site materials.",
     ],
     category: "Operations tool",
-    accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/Nail_It",
   },
   {
@@ -162,7 +162,7 @@ export const projects: Project[] = [
       "Supabase backend for real-time data workflows.",
     ],
     category: "Real-time platform",
-    accent: "from-[#8B5CF6] via-[#22D3EE] to-[#8B5CF6]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/Polling-App",
   },
   {
@@ -192,7 +192,7 @@ export const projects: Project[] = [
       "Practical coding exercises that support continued Spring Boot and API development growth.",
     ],
     category: "Learning system",
-    accent: "from-[#F97316] via-[#EF4444] to-[#22D3EE]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/java-from-scratch",
   },
   {
@@ -208,7 +208,7 @@ export const projects: Project[] = [
     impact: "[TODO: Add a verifiable outcome; remove unsupported metrics.]",
     architecture: ["[TODO: Add the actual command parsing and execution flow.]"],
     category: "Systems programming",
-    accent: "from-[#8B5CF6] via-[#22D3EE] to-[#A78BFA]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
   },
   {
     slug: "internet-billing-system",
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     impact: "[TODO: Add a verifiable outcome approved for public sharing.]",
     architecture: ["[TODO: Add a sanitized architecture summary; omit confidential details.]"],
     category: "Private client work",
-    accent: "from-[#22D3EE] via-[#8B5CF6] to-[#A78BFA]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
   },
   {
     slug: "python-projects",
@@ -255,7 +255,7 @@ export const projects: Project[] = [
       "Collection structure centered on practical operational problems.",
     ],
     category: "Automation",
-    accent: "from-[#A78BFA] via-[#8B5CF6] to-[#22D3EE]",
+    accent: "from-accent-primary via-accent-secondary to-accent-tertiary",
     githubLink: "https://github.com/BrianBett125/python-projects",
   },
 ];

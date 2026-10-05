@@ -35,12 +35,12 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
         <div
           className="mb-6 flex flex-wrap items-center gap-3"
         >
-          <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-foreground-secondary backdrop-blur-xl sm:text-[0.7rem]">
+          <span className="rounded-full border border-ui-border/10 bg-ui-surface/[0.04] px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-foreground-secondary backdrop-blur-xl sm:text-[0.7rem]">
             {profile.headline}
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-700/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+          <span className="inline-flex items-center gap-2 rounded-full border border-status-success/25 bg-status-success/10 px-3 py-1.5 text-xs font-semibold text-status-success dark:text-status-success">
             <span className="glow-dot" aria-hidden="true">
-              <span className="relative flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="relative flex h-2 w-2 rounded-full bg-status-success" />
             </span>
             {profile.availability}
           </span>
@@ -108,7 +108,7 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
             className="glow-border-container shadow-2xl shadow-accent-primary/10"
           >
             <div className="glow-border-inner p-5 sm:p-6">
-              <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+              <div className="flex items-center justify-between gap-3 border-b border-ui-border/10 pb-4">
                 <div>
                   <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-accent-secondary">System Snapshot</p>
                   <p className="mt-2 text-sm font-semibold text-foreground-secondary">Engineering instincts, product context, and clean operating decisions.</p>
@@ -116,16 +116,16 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
               </div>
 
               <div className="mt-5 space-y-3">
-                <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                <div className="rounded-2xl border border-ui-border/5 bg-ui-surface/[0.03] p-4">
                   <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-tertiary">Focus</p>
                   <p className="mt-2 text-sm leading-7 text-foreground-secondary">Backend systems, API-driven platforms, and automation tooling with strong product awareness.</p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                  <div className="rounded-2xl border border-ui-border/5 bg-ui-surface/[0.03] p-4">
                     <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Stack</p>
                     <p className="mt-2 text-sm font-semibold text-foreground">Java · Spring Boot · Python · Django</p>
                   </div>
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+                  <div className="rounded-2xl border border-ui-border/5 bg-ui-surface/[0.03] p-4">
                     <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-accent-secondary">Strength</p>
                     <p className="mt-2 text-sm font-semibold text-foreground">Systems thinking with execution discipline</p>
                   </div>
@@ -142,7 +142,7 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
           {focusAreas.map(({ label, icon: Icon }) => (
             <div
               key={label}
-              className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl hover:border-accent-primary/40 transition duration-300 hover:text-white"
+              className="flex min-h-14 items-center gap-3 rounded-2xl border border-ui-border/10 bg-ui-surface/[0.04] px-4 py-3 text-sm font-semibold text-foreground-secondary backdrop-blur-xl hover:border-accent-primary/40 transition duration-300 hover:text-white"
             >
               <Icon className="h-5 w-5 shrink-0 text-accent-secondary" aria-hidden="true" />
               {label}

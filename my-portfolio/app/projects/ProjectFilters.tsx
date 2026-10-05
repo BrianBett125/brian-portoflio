@@ -27,7 +27,7 @@ export default function ProjectFilters({ projects }: { projects: Project[] }) {
             className={`min-h-10 shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary ${
               selectedTech === tech
                 ? "bg-gradient-to-r from-accent-primary to-accent-secondary text-white shadow-lg shadow-accent-primary/20"
-                : "border border-white/10 bg-white/[0.06] text-foreground-secondary hover:border-accent-primary/50 hover:text-foreground"
+                : "border border-ui-border/10 bg-ui-surface/[0.06] text-foreground-secondary hover:border-accent-primary/50 hover:text-foreground"
             }`}
             aria-pressed={selectedTech === tech}
           >

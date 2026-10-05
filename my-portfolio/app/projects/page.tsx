@@ -24,7 +24,7 @@ export default async function ProjectsPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl sm:p-6">
+          <div className="rounded-2xl border border-ui-border/10 bg-ui-surface/[0.055] p-5 backdrop-blur-xl sm:p-6">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-secondary">
               Editorial lens
             </p>

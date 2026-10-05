@@ -46,14 +46,14 @@ export default function TypewriterTerminal() {
   }, [displayText, isDeleting, stringIndex, typingSpeed, prefersReducedMotion]);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/40 p-4 font-mono text-xs sm:text-sm leading-6 shadow-2xl backdrop-blur-md relative overflow-hidden select-none">
+    <div className="rounded-2xl border border-ui-border/10 bg-ui-inset/40 p-4 font-mono text-xs sm:text-sm leading-6 shadow-2xl backdrop-blur-md relative overflow-hidden select-none">
       {/* Terminal Screen Scanline Effect */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-20" />
       
-      <div className="flex items-center gap-1.5 pb-2 mb-3 border-b border-white/5 text-foreground-secondary/40">
+      <div className="flex items-center gap-1.5 pb-2 mb-3 border-b border-ui-border/5 text-foreground-secondary/40">
         <span className="h-2.5 w-2.5 rounded-full bg-accent-primary" />
         <span className="h-2.5 w-2.5 rounded-full bg-accent-tertiary" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+        <span className="h-2.5 w-2.5 rounded-full bg-ui-surface/20" />
         <span className="ml-1 text-[10px] uppercase tracking-wider font-semibold">brian@portfolio:~</span>
       </div>
       

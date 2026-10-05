@@ -11,7 +11,7 @@ export default function OpenGraphImage() {
       <div style={{ color: "#00ffcc", fontSize: 24, letterSpacing: 8 }}>BRIAN BETT KIPKOECH</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div style={{ fontSize: 68, fontWeight: 700 }}>{profile.headline}</div>
-        <div style={{ fontSize: 28, color: "#d9c9ff" }}>Backend systems · Product engineering · UTC+3</div>
+        <div style={{ fontSize: 28, color: "#b99cff" }}>Backend systems · Product engineering · UTC+3</div>
       </div>
       <div style={{ color: "#00ffcc", fontSize: 24 }}>{profile.email}</div>
     </div>,

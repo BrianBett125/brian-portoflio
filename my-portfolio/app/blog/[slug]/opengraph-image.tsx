@@ -12,7 +12,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ slu
       <div style={{ color: "#00ffcc", fontSize: 24, letterSpacing: 8 }}>FIELD NOTES</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div style={{ fontSize: 66, fontWeight: 700 }}>{post?.title ?? "Engineering essay"}</div>
-        <div style={{ fontSize: 27, color: "#d9c9ff" }}>{post?.description ?? "Brian Bett Kipkoech · Backend-Focused Full-Stack Engineer"}</div>
+        <div style={{ fontSize: 27, color: "#b99cff" }}>{post?.description ?? "Brian Bett Kipkoech · Backend-Focused Full-Stack Engineer"}</div>
       </div>
       <div style={{ color: "#00ffcc", fontSize: 24 }}>Brian Bett Kipkoech</div>
     </div>,
