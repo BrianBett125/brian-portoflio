@@ -1,0 +1,3 @@
+lib/generated/prisma/**
+.next/**
+node_modules/**

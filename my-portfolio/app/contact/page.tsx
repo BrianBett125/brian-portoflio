@@ -1,6 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import CopyEmail from "@/components/CopyEmail";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl } from "@/lib/site-url";
 import { CodeBracketIcon } from "@heroicons/react/24/outline";
 
 const EMAIL = "brianbett756@gmail.com";
@@ -8,10 +8,12 @@ const EMAIL = "brianbett756@gmail.com";
 export const metadata = {
   title: "Contact",
   description: "Get in touch with Brian Bett.",
+  alternates: { canonical: getCanonicalUrl("/contact") },
   openGraph: {
     title: "Brian Bett – Contact",
     description: "Get in touch with Brian Bett.",
-    url: getSiteUrl(),
+    url: getCanonicalUrl("/contact"),
+    images: ["/opengraph-image"],
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

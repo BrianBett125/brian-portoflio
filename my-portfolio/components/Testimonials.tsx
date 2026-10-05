@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 interface TestimonialProps {
   name: string;
@@ -53,7 +53,7 @@ interface TestimonialsProps {
   testimonials: TestimonialProps[];
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -63,7 +63,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -97,7 +97,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div key={index} variants={itemVariants as any}>
+            <motion.div key={index} variants={itemVariants}>
               <TestimonialCard {...testimonial} />
             </motion.div>
           ))}

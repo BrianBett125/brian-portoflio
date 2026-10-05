@@ -20,7 +20,8 @@ export default function HeroBackground() {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReducedMotion) {
+    const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
+    if (prefersReducedMotion || isSmallScreen) {
       setShouldRender(false);
       return;
     }
@@ -32,7 +33,7 @@ export default function HeroBackground() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
+    const particles: Particle[] = [];
     const maxParticles = 50;
     const connectionDistance = 110;
 

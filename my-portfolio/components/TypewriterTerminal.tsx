@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 const TYPING_STRINGS = [
   "Building systems that scale, automate, and monetize.",
@@ -10,11 +11,13 @@ const TYPING_STRINGS = [
 
 export default function TypewriterTerminal() {
   const [stringIndex, setStringIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(TYPING_STRINGS[0]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(60);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion || window.matchMedia("(max-width: 767px)").matches) return;
     const currentString = TYPING_STRINGS[stringIndex];
     let timer: NodeJS.Timeout;
 
@@ -40,7 +43,7 @@ export default function TypewriterTerminal() {
 
     timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, stringIndex, typingSpeed]);
+  }, [displayText, isDeleting, stringIndex, typingSpeed, prefersReducedMotion]);
 
   return (
     <div className="rounded-2xl border border-white/10 bg-black/40 p-4 font-mono text-xs sm:text-sm leading-6 shadow-2xl backdrop-blur-md relative overflow-hidden select-none">

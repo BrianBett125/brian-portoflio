@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/Providers";
 import { getMetadataBase, getSiteUrl } from "@/lib/site-url";
 import CursorGlow from "@/components/CursorGlow";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
@@ -35,13 +36,7 @@ export const metadata: Metadata = {
       "Software engineering work across Java, Spring Boot, Python, Django, APIs, backend systems, developer platforms, and automation tools.",
     url: getSiteUrl(),
     siteName: "Brian Bett – Portfolio",
-    images: [
-      {
-        url: `${getSiteUrl()}/og.png`,
-        width: 1920,
-        height: 1080,
-      },
-    ],
+    images: ["/opengraph-image"],
     locale: "en-US",
     type: "website",
   },
@@ -74,9 +69,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {
         "@type": "Person",
         "@id": `${getSiteUrl()}/#person`,
-        name: "Brian Bett",
+        name: "Brian Bett Kipkoech",
         url: getSiteUrl(),
-        jobTitle: "Software Engineer",
+        jobTitle: "Backend-Focused Full-Stack Engineer",
         knowsAbout: [
           "Software Engineering",
           "Java",
@@ -87,10 +82,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "Backend Development",
           "Flutter",
           "TypeScript",
+          "React",
+          "Next.js",
+          "PostgreSQL",
+          "Docker",
         ],
         sameAs: [
           "https://github.com/BrianBett125",
-          "https://www.linkedin.com/in/brian-bett-kipkoech/",
+          "https://linkedin.com/in/brian-bett-kipkoech",
+          "https://x.com/Yow_Brah",
         ],
       },
       {
@@ -111,15 +111,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}d.classList.remove('light','dark');d.classList.add(t);d.dataset.theme=t;d.style.colorScheme=t;}catch(e){}})();`}
         </Script>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Script
           id="site-identity-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Providers>
+          <ScrollProgress />
           <CursorGlow />
           <Navbar />
-          <main className="flex flex-col items-center py-8 sm:py-12 lg:py-16">
+          <main id="main-content" tabIndex={-1} className="flex flex-col items-center py-8 sm:py-12 lg:py-16">
             {children}
           </main>
           <Footer />

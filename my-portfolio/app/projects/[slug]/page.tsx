@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       description: project.description,
       type: "article",
       url: getCanonicalUrl(`/projects/${slug}`),
+      images: [`/projects/${slug}/opengraph-image`],
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
     },
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       card: "summary",
       title: project.title,
       description: project.description,
+      images: [`/projects/${slug}/opengraph-image`],
     },
   };
 }
@@ -116,8 +118,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <section className="grid gap-5">
             {[
               ["Problem", project.problem],
+              ["My role", project.myRole ?? "[TODO: Describe your verified contribution and ownership.]"],
               ["Solution", project.solution],
-              ["Impact", project.impact],
+              ["Outcome", project.impact],
             ].map(([title, body]) => (
               <div
                 key={title}
@@ -138,6 +141,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <h2 className="text-2xl font-bold text-foreground">
                 Architecture Overview
               </h2>
+              <div className="mt-5 rounded-xl border border-dashed border-accent-secondary/40 bg-background/40 p-5" role="img" aria-label={`Architecture diagram placeholder for ${project.title}`}>
+                <p className="text-xs font-bold uppercase tracking-wider text-accent-secondary">Architecture diagram</p>
+                <p className="mt-2 text-sm text-foreground-secondary">[TODO: Add a verified diagram or remove this placeholder.]</p>
+              </div>
               <div className="mt-6 space-y-4">
                 {project.architecture.map((item, index) => (
                   <div key={item} className="flex gap-3">
@@ -150,6 +157,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-8">
+              <h2 className="text-xl font-bold text-foreground">Key decisions</h2>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-foreground-secondary">
+                {(project.keyDecisions ?? ["[TODO: Add verified project decisions.]" ]).map((decision) => <li key={decision}>{decision}</li>)}
+              </ul>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-8">
@@ -183,6 +197,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
+                <span className="basis-full text-xs font-bold uppercase tracking-[0.18em] text-accent-secondary">Links</span>
                 {project.githubLink && (
                   <Link
                     href={project.githubLink}

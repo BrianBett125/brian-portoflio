@@ -2,15 +2,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { contactFormSchema, type ContactFormData, type ContactFormInput } from "@/lib/contact-validation";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
-const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
+type ContactFormInputs = ContactFormData;
 
-type ContactFormInputs = z.infer<typeof formSchema>;
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -22,8 +21,8 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ContactFormInputs>({
-    resolver: zodResolver(formSchema),
+  } = useForm<ContactFormInput, unknown, ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
   });
 
   function openMailto(data: ContactFormInputs) {
@@ -43,10 +42,10 @@ export default function ContactForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await res.json().catch(() => null);
+      const result: unknown = await res.json().catch(() => null);
 
       if (!res.ok) {
-        if (result?.fallback === "mailto") {
+        if (isRecord(result) && result.fallback === "mailto") {
           openMailto(data);
           setDeliveryMode("mailto");
           setStatus("success");
@@ -55,10 +54,14 @@ export default function ContactForm() {
         }
 
         let errorMsg = "Failed to send message.";
-        if (typeof result?.error === "string") {
+        if (isRecord(result) && typeof result.error === "string") {
           errorMsg = result.error;
-        } else if (Array.isArray(result?.error)) {
-          errorMsg = result.error.map((issue: any) => issue.message).join(" ");
+        } else if (isRecord(result) && Array.isArray(result.error)) {
+          errorMsg = result.error
+            .filter(isRecord)
+            .map((issue) => issue.message)
+            .filter((message): message is string => typeof message === "string")
+            .join(" ");
         }
 
         setStatus("error");
@@ -69,9 +72,9 @@ export default function ContactForm() {
       setDeliveryMode("direct");
       setStatus("success");
       reset();
-    } catch (e: any) {
+    } catch (e: unknown) {
       setStatus("error");
-      setError(e.message || "A network error occurred while sending your message.");
+      setError(e instanceof Error ? e.message : "A network error occurred while sending your message.");
     }
   }
 
@@ -96,6 +99,10 @@ export default function ContactForm() {
             {errors.email.message}
           </p>
         )}
+      </div>
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Leave this field empty</label>
+        <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
       </div>
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-semibold text-foreground">

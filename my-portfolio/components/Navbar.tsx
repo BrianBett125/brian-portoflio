@@ -13,6 +13,7 @@ import {
   HomeIcon,
   UserCircleIcon,
   XMarkIcon,
+  CommandLineIcon,
 } from "@heroicons/react/24/outline";
 
 const navItems = [
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/about", label: "About", icon: UserCircleIcon },
   { href: "/projects", label: "Projects", icon: FolderOpenIcon },
   { href: "/blog", label: "Blog", icon: DocumentTextIcon },
+  { href: "/now", label: "Now", icon: UserCircleIcon },
   { href: "/contact", label: "Contact", icon: ChatBubbleLeftRightIcon },
 ];
 
@@ -32,6 +34,7 @@ export default function Navbar() {
   };
 
   const closeMenu = () => setMenuOpen(false);
+  const openCommandPalette = () => window.dispatchEvent(new Event("open-command-palette"));
 
   return (
     <motion.header 
@@ -63,6 +66,10 @@ export default function Navbar() {
             </Link>
           ))}
           <ThemeToggle />
+          <button type="button" onClick={openCommandPalette} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-foreground/10 px-3 text-foreground-secondary hover:text-foreground" aria-label="Open command palette">
+            <CommandLineIcon className="h-4 w-4" aria-hidden="true" />
+            <span>Search</span><kbd className="rounded border border-foreground/20 px-1.5 py-0.5 text-[0.65rem]">Ctrl/⌘ K</kbd>
+          </button>
         </nav>
         
         <button 
@@ -127,6 +134,9 @@ export default function Navbar() {
               ))}
               <div className="pt-2 border-t border-foreground/10 mt-2">
                 <ThemeToggle />
+                <button type="button" onClick={openCommandPalette} className="ml-3 inline-flex min-h-11 items-center gap-2 text-foreground-secondary" aria-label="Open command palette">
+                  <CommandLineIcon className="h-4 w-4" aria-hidden="true" /> Search (Ctrl/⌘ K)
+                </button>
               </div>
             </motion.nav>
           </>

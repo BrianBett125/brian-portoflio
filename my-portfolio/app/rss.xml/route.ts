@@ -1,16 +1,8 @@
 import { getAllPosts } from "@/lib/posts";
 import { getSiteUrl } from "@/lib/site-url";
+import { escapeXml } from "@/lib/xml";
 
 export const revalidate = 3600; // Regenerate RSS every hour
-
-function escapeXml(unsafe: string) {
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
-}
 
 export async function GET() {
   const siteUrl = getSiteUrl();
@@ -18,14 +10,14 @@ export async function GET() {
 
   const items = posts
     .map((post) => {
-      const url = `${siteUrl}/blog/${post.slug}`;
+      const url = escapeXml(`${siteUrl}/blog/${post.slug}`);
       const categories = (post.tags || [])
         .map((t) => `<category>${escapeXml(t)}</category>`) 
         .join("");
-      const pubDate = new Date(post.date).toUTCString();
+      const pubDate = post.date ? `<pubDate>${new Date(post.date).toUTCString()}</pubDate>` : "";
       const description = post.description ? escapeXml(post.description) : "";
       const enclosure = post.thumbnail
-        ? `<enclosure url="${escapeXml(post.thumbnail)}" type="image/svg+xml" />`
+        ? `<enclosure url="${escapeXml(post.thumbnail.startsWith("http") ? post.thumbnail : `${siteUrl}${post.thumbnail}`)}" type="image/png" />`
         : "";
 
       return `
@@ -34,7 +26,7 @@ export async function GET() {
           <link>${url}</link>
           <guid>${url}</guid>
           <description>${description}</description>
-          <pubDate>${pubDate}</pubDate>
+          ${pubDate}
           ${categories}
           ${enclosure}
         </item>

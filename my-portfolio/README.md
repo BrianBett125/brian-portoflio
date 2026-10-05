@@ -1,81 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Brian Bett Kipkoech Portfolio
 
-## Getting Started
+Recruiter-focused portfolio built with Next.js 15, React 19, TypeScript, Tailwind CSS, Framer Motion, Prisma, Jest, and MDX.
 
-First, run the development server:
+## Local setup
+
+Use Node.js 22 and npm 10.8 or newer.
 
 ```bash
+npm ci
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>. The public site works without email credentials. The contact form displays its mailto fallback until Resend is configured. `NEXTAUTH_SECRET` and `NEXTAUTH_URL` are only needed for the private analytics sign-in flow. The dashboard currently uses example chart data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-## Contact Email
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Production | Absolute public origin used for canonical URLs, sitemap, RSS, and Open Graph. Example: `https://brianbett.dev`. |
+| `RESEND_API_KEY` | For direct email | Resend API key for contact delivery and sender confirmation. |
+| `RESEND_FROM_EMAIL` | For direct email | Verified Resend sender, for example `Portfolio <hello@example.com>`. |
+| `NEXTAUTH_SECRET` | Dashboard sign-in | Secret used to sign NextAuth sessions. |
+| `NEXTAUTH_URL` | Dashboard sign-in | Canonical origin for NextAuth callbacks. |
+| `DATABASE_URL` | Prisma commands | SQLite connection for the existing Prisma schema, for example `file:./prisma/dev.db`. The current dashboard uses static sample data. |
 
-The contact form accepts a visitor email and notes, then posts to `/api/contact`.
-Direct delivery to `brianbett756@gmail.com` requires these environment variables
-in local development or in the deployment provider:
+Vercel Web Analytics is enabled through `@vercel/analytics`; it does not require a client key and does not set analytics cookies. The contact endpoint uses an in-memory per-process limiter (5 requests per minute per client address). Multi-instance deployments should put a shared limiter at the hosting edge or in a shared store.
+
+Copy `.env.example` to `.env.local` and set values locally. Do not commit secret values.
+
+## Docker
+
+Build and run the production standalone image:
 
 ```bash
-RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL=Portfolio <verified-sender@yourdomain.com>
+docker build -t brian-portfolio .
+docker run --rm -p 3000:3000 \
+  -e NEXT_PUBLIC_SITE_URL=http://localhost:3000 \
+  -e NEXTAUTH_URL=http://localhost:3000 \
+  -e NEXTAUTH_SECRET=replace-with-a-long-random-secret \
+  brian-portfolio
 ```
 
-If `RESEND_API_KEY` is missing, the API returns a `mailto` fallback and the
-browser opens a prepared email addressed to `brianbett756@gmail.com`.
+The site is available at <http://localhost:3000>. Add `RESEND_API_KEY` and `RESEND_FROM_EMAIL` to enable direct contact delivery. The image runs as an unprivileged user and contains the Next.js standalone server.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Checks
 
-## Learn More
+```bash
+npm run lint
+npm test -- --runInBand
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Content editing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Update identity, availability, social links, experience, education, certifications, testimonials, and `/now` details in [`src/content/profile.ts`](src/content/profile.ts).
+- Update project case studies in [`lib/projects.ts`](lib/projects.ts). Replace every `[TODO: ...]` value with verified information. Keep client-approved details only for private client work.
+- Blog posts remain MDX files in [`content/blog`](content/blog). Frontmatter supports `title`, `description` or `summary`, `date`, `tags`, `draft`, `thumbnail`, and `canonicalUrl`. Drafts are visible during development and excluded from production pages, sitemap, and RSS.
+- Drop the CV PDF at `public/cv/Brian-Bett-Kipkoech-CV.pdf`; the homepage download action appears when the file exists.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Analytics
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Screenshots
-
-Here are some screenshots of the application:
-
-### Home Page
-![Home Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/home-page.png)
-
-### Testimonials Section
-![Testimonials Section](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/testimonials-section.png)
-
-### About Page
-![About Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/about-page.png)
-
-### Projects Page
-![Projects Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/projects-page.png)
-
-### Contact Page
-![Contact Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/contact-page.png)
-
-### Featured Projects Section
-![Featured Projects Section](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/featured-projects-section.png)
-
-### Blog Page
-![Blog Page](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/blog-page.png)
-
-### Projects Page (Featured)
-![Projects Page (Featured)](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/projects-page-featured.png)
-
-### Blog Page (Featured)
-![Blog Page (Featured)](https://raw.githubusercontent.com/BrianBett/my-portfolio/main/screenshots/blog-page-featured.png)
+The private `/analytics` dashboard remains behind NextAuth. Vercel Web Analytics tracks privacy-friendly page views without cookies. Dashboard charts are currently static sample data and are not fed by Vercel Analytics.

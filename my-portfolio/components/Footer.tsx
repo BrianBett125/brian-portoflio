@@ -10,6 +10,7 @@ import {
   PhoneIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import { profile } from "@/src/content/profile";
 
 const links = [
   { href: "/about", label: "About", icon: UserCircleIcon },
@@ -24,7 +25,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
           <div className="max-w-md">
-            <h3 className="font-bold text-xl bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-3">Brian Bett</h3>
+            <h3 className="font-bold text-xl bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-3">{profile.name}</h3>
             <p className="text-foreground-secondary max-w-md">Software engineer building backend systems, APIs, developer platforms, automation tools, and real-world solutions.</p>
           </div>
           
@@ -59,15 +60,21 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/BrianBett125" target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                  <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
                     <CodeBracketIcon className="h-4 w-4" aria-hidden="true" />
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/brian-bett-kipkoech/" target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                  <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
                     <LinkIcon className="h-4 w-4" aria-hidden="true" />
                     LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href={profile.x} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-2 transition-colors hover:text-accent-primary">
+                    <LinkIcon className="h-4 w-4" aria-hidden="true" />
+                    X
                   </a>
                 </li>
               </ul>
@@ -78,7 +85,7 @@ export default function Footer() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-foreground/5 pt-6 text-sm text-foreground-secondary sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Brian Bett. All rights reserved.</p>
           <p>
-            Built with <a className="text-accent-primary hover:text-accent-secondary transition-colors" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>
+            Built with <a className="text-accent-secondary underline underline-offset-4 hover:text-accent-primary transition-colors" href="https://nextjs.org" target="_blank" rel="noreferrer">Next.js</a>
           </p>
         </div>
       </div>

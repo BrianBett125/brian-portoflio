@@ -2,11 +2,11 @@
 
 :root,
 html.dark {
-  --color-bg: #0A0F1C;
-  --color-surface: #111827;
-  --color-primary: #8B5CF6;
-  --color-primary-glow: #A78BFA;
-  --color-accent: #22D3EE;
+  --color-bg: #0d0221;
+  --color-surface: #170b30;
+  --color-primary: #7b2ff7;
+  --color-primary-glow: #b99cff;
+  --color-accent: #00ffcc;
   --color-text-primary: #E5E7EB;
   --color-text-secondary: #9CA3AF;
   --color-border: rgba(139, 92, 246, 0.2);
@@ -45,9 +45,9 @@ html.dark {
 html.light {
   --color-bg: #F9FAFB;
   --color-surface: #FFFFFF;
-  --color-primary: #8B5CF6; /* KEEP violet as primary */
-  --color-primary-glow: #A78BFA;
-  --color-accent: #0891B2; /* Muted cyan accent for light mode readability */
+  --color-primary: #6D28D9;
+  --color-primary-glow: #5B21B6;
+  --color-accent: #007A68;
   --color-text-primary: #111827;
   --color-text-secondary: #4B5563;
   --color-border: rgba(139, 92, 246, 0.12);
@@ -106,7 +106,6 @@ body {
     radial-gradient(circle at 60% 120%, var(--bg-radial-4), transparent 40%),
     var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height: 1.6;
   letter-spacing: 0.01em; /* Subtle spacing for premium feel */
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -152,6 +151,118 @@ body::before {
   outline-color: color-mix(in oklab, var(--accent-primary), transparent 40%);
 }
 
+:focus-visible {
+  outline: 3px solid var(--accent-tertiary);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  border-radius: 0.75rem;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 60;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
+  pointer-events: none;
+}
+
+.command-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: max(8vh, 1rem) 0.5rem 1rem;
+  background: rgb(0 0 0 / 0.58);
+  backdrop-filter: blur(5px);
+}
+
+.command-dialog {
+  width: min(100%, 42rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border-hover);
+  border-radius: 1rem;
+  background: var(--background);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.42);
+}
+
+.command-input {
+  width: 100%;
+  min-height: 3.5rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  padding: 0 1rem;
+  color: var(--foreground);
+  font: inherit;
+}
+
+.command-input:focus-visible {
+  outline: 3px solid var(--accent-tertiary);
+  outline-offset: -3px;
+}
+
+.reveal-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-section {
+      animation: reveal-entry linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 22%;
+    }
+    @keyframes reveal-entry {
+      from { opacity: 0.35; transform: translateY(1rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-enter { animation: page-enter 120ms ease-out both; }
+  @keyframes page-enter { from { opacity: 0.85; } to { opacity: 1; } }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: page-fade-out 100ms ease both; }
+  ::view-transition-new(root) { animation: page-fade-in 150ms ease both; }
+  @keyframes page-fade-out { to { opacity: 0.75; } }
+  @keyframes page-fade-in { from { opacity: 0.75; } to { opacity: 1; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 html.dark .theme-icon-light {
   display: block;
 }
@@ -195,6 +306,21 @@ html.light .theme-icon-dark {
     rgba(10, 15, 28, 0.7);
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 55px rgba(7, 10, 21, 0.4);
+}
+
+figure[data-rehype-pretty-code-figure] {
+  overflow-x: auto;
+  margin-block: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.875rem;
+  background: #100b1d;
+  padding: 1rem;
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.75;
 }
 
 /* Bento glass-card base: hover translateY + border glow + shadow increase */
@@ -479,6 +605,15 @@ html.light .bento-card:hover {
 
 html {
   scroll-behavior: smooth;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
 }
 
 /*
