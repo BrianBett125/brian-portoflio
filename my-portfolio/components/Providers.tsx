@@ -2,30 +2,18 @@
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SessionProvider } from "next-auth/react";
-import { usePlausible } from "next-plausible";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
-
-function PlausibleEvents() {
-  const plausible = usePlausible();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    plausible("pageview", { props: { path: pathname } });
-  }, [pathname, plausible]);
-
-  return null;
-}
+import { MotionConfig } from "framer-motion";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
-      <ThemeProvider>
-        {children}
-        <PlausibleEvents />
-        <Analytics />
-      </ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <ThemeProvider>
+          {children}
+          <Analytics />
+        </ThemeProvider>
+      </MotionConfig>
     </SessionProvider>
   );
 }

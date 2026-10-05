@@ -2,11 +2,11 @@
 
 :root,
 html.dark {
-  --color-bg: #0A0F1C;
-  --color-surface: #111827;
-  --color-primary: #8B5CF6;
-  --color-primary-glow: #A78BFA;
-  --color-accent: #22D3EE;
+  --color-bg: #0d0221;
+  --color-surface: #170b30;
+  --color-primary: #7b2ff7;
+  --color-primary-glow: #b99cff;
+  --color-accent: #00ffcc;
   --color-text-primary: #E5E7EB;
   --color-text-secondary: #9CA3AF;
   --color-border: rgba(139, 92, 246, 0.2);
@@ -45,9 +45,9 @@ html.dark {
 html.light {
   --color-bg: #F9FAFB;
   --color-surface: #FFFFFF;
-  --color-primary: #8B5CF6; /* KEEP violet as primary */
-  --color-primary-glow: #A78BFA;
-  --color-accent: #0891B2; /* Muted cyan accent for light mode readability */
+  --color-primary: #6D28D9;
+  --color-primary-glow: #5B21B6;
+  --color-accent: #007A68;
   --color-text-primary: #111827;
   --color-text-secondary: #4B5563;
   --color-border: rgba(139, 92, 246, 0.12);
@@ -106,7 +106,6 @@ body {
     radial-gradient(circle at 60% 120%, var(--bg-radial-4), transparent 40%),
     var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   line-height: 1.6;
   letter-spacing: 0.01em; /* Subtle spacing for premium feel */
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -150,6 +149,37 @@ body::before {
 /* Subtle utility for focus rings aligned with accent */
 * {
   outline-color: color-mix(in oklab, var(--accent-primary), transparent 40%);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-tertiary);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  border-radius: 0.75rem;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 html.dark .theme-icon-light {

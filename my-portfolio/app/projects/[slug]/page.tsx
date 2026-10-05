@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       description: project.description,
       type: "article",
       url: getCanonicalUrl(`/projects/${slug}`),
+      images: [`/projects/${slug}/opengraph-image`],
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
     },
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       card: "summary",
       title: project.title,
       description: project.description,
+      images: [`/projects/${slug}/opengraph-image`],
     },
   };
 }

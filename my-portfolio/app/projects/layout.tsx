@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       "Explore projects built by Brian Bett across Java, backend systems, APIs, Django applications, developer platforms, and automation tools.",
     url: getCanonicalUrl("/projects"),
+    images: ["/opengraph-image"],
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

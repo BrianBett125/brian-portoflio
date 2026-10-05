@@ -38,15 +38,18 @@ import path from "node:path";
 import { profile } from "@/src/content/profile";
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  const canonical = getSiteUrl();
   return {
     title: "Home",
     description:
       `${profile.name}, ${profile.headline}. ${profile.valueStatement}`,
+    alternates: { canonical },
     openGraph: {
       title: "Brian Bett - Software Engineer",
       description:
         "Backend systems, APIs, developer platforms, automation tools, and practical software by Brian Bett.",
       url: getSiteUrl(),
+      images: ["/opengraph-image"],
       siteName: "Brian Bett Portfolio",
       locale: "en_US",
       type: "website",

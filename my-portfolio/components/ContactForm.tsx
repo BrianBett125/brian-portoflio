@@ -2,15 +2,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { contactFormSchema, type ContactFormData, type ContactFormInput } from "@/lib/contact-validation";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
-const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type ContactFormInputs = z.infer<typeof formSchema>;
+type ContactFormInputs = ContactFormData;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -26,8 +21,8 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ContactFormInputs>({
-    resolver: zodResolver(formSchema),
+  } = useForm<ContactFormInput, unknown, ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
   });
 
   function openMailto(data: ContactFormInputs) {
@@ -104,6 +99,10 @@ export default function ContactForm() {
             {errors.email.message}
           </p>
         )}
+      </div>
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Leave this field empty</label>
+        <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
       </div>
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-semibold text-foreground">

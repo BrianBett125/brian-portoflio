@@ -1,16 +1,18 @@
 import { getAllPosts } from "@/lib/posts";
 import BlogCard from "@/components/BlogCard";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 export const metadata = {
   title: "Blog",
   description:
     "Engineering essays by Brian Bett on AI, systems, backend architecture, and the future of work.",
+  alternates: { canonical: getCanonicalUrl("/blog") },
   openGraph: {
     title: "Brian Bett - Blog",
     description:
       "Engineering essays by Brian Bett on AI, systems, backend architecture, and the future of work.",
-    url: getSiteUrl(),
+    url: getCanonicalUrl("/blog"),
+    images: ["/opengraph-image"],
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
