@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       "About Brian Bett, a software engineer focused on backend architecture, Java, Spring Boot, API development, developer platforms, automation, and durable product systems.",
     url: getCanonicalUrl("/about"),
+    images: ["/opengraph-image"],
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",

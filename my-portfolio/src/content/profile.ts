@@ -33,7 +33,7 @@ export const profile = {
   name: "Brian Bett Kipkoech",
   headline: "Backend-Focused Full-Stack Engineer",
   valueStatement:
-    "I build dependable backend systems and clear product workflows with Java, Spring Boot, Python, Django, TypeScript, and PostgreSQL.",
+    "With over 3 years of experience, I build dependable backend systems and clear product workflows with Java, Spring Boot, Python, Django, TypeScript, and PostgreSQL.",
   yearsExperience: "Over 3 years",
   availability: "Open to work · Remote-ready · UTC+3",
   email: "brianbett756@gmail.com",
@@ -42,6 +42,12 @@ export const profile = {
   x: "https://x.com/Yow_Brah",
   roles: ["Full-Stack Engineer", "Backend Engineer", "Freelance Engineer"],
   location: "UTC+3",
+  now: {
+    updated: "[TODO: Add the date this page reflects]",
+    currentFocus: "[TODO: Describe what you are currently building or working on.]",
+    learning: "[TODO: Describe a current learning focus.]",
+    note: "[TODO: Add a short current note, or remove this item.]",
+  },
   stack: [
     "Java",
     "Spring Boot",

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowRightIcon,
@@ -35,10 +32,7 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
       <div className="absolute bottom-0 right-0 -z-10 h-72 w-72 rounded-full bg-accent-tertiary/10 blur-3xl sm:h-96 sm:w-96" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+        <div
           className="mb-6 flex flex-wrap items-center gap-3"
         >
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-foreground-secondary backdrop-blur-xl sm:text-[0.7rem]">
@@ -50,52 +44,37 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
             </span>
             {profile.availability}
           </span>
-        </motion.div>
+        </div>
 
         {/* Terminal Intro above headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <div
           className="mb-8 max-w-2xl"
         >
           <TypewriterTerminal />
-        </motion.div>
+        </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            <p
               className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-accent-secondary"
             >
               {profile.name}
-            </motion.p>
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            <h1
               style={{ fontSize: headlineSize, lineHeight: 1.05 }}
               className="max-w-5xl font-black tracking-tight text-foreground"
             >
               {profile.headline}
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            <p
               className="mt-7 max-w-3xl text-base leading-8 text-foreground-secondary sm:text-xl"
             >
               {profile.valueStatement}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.7 }}
+            <div
               className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:gap-4"
             >
               <Link
@@ -121,14 +100,11 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
                 See projects
                 <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* Premium signature card with rotating border glow */}
-          <motion.aside
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
+          <aside
             className="glow-border-container shadow-2xl shadow-accent-primary/10"
           >
             <div className="glow-border-inner p-5 sm:p-6">
@@ -156,13 +132,10 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
                 </div>
               </div>
             </div>
-          </motion.aside>
+          </aside>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.7 }}
+        <div
           className="mt-10 grid gap-3 sm:mt-14 sm:grid-cols-3"
           aria-label="Engineering focus areas"
         >
@@ -175,7 +148,7 @@ export default function HeroSection({ hasCv }: { hasCv: boolean }) {
               {label}
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

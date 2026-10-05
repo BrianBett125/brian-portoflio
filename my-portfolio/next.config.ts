@@ -14,6 +14,7 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   outputFileTracingRoot: path.resolve(__dirname),
+  output: "standalone",
   reactStrictMode: true,
   poweredByHeader: false,
 };

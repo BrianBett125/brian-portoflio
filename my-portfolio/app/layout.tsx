@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/Providers";
 import { getMetadataBase, getSiteUrl } from "@/lib/site-url";
 import CursorGlow from "@/components/CursorGlow";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Providers>
+          <ScrollProgress />
           <CursorGlow />
           <Navbar />
           <main id="main-content" tabIndex={-1} className="flex flex-col items-center py-8 sm:py-12 lg:py-16">

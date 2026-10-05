@@ -13,6 +13,7 @@ export const metadata = {
     title: "Brian Bett – Contact",
     description: "Get in touch with Brian Bett.",
     url: getCanonicalUrl("/contact"),
+    images: ["/opengraph-image"],
     siteName: "Brian Bett Portfolio",
     locale: "en_US",
     type: "website",
